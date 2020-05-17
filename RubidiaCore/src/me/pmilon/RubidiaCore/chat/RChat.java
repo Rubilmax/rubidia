@@ -259,7 +259,8 @@ public class RChat {
 		    	if(getInfos().size() >= INFOS_SHOWN){
 					if(getInfos().size() < this.getInfoStartShift()+INFOS_SHOWN)this.setInfoStartShift(getInfos().size()-INFOS_SHOWN);
 		    		for(int i = getInfos().size()-this.getInfoStartShift()-INFOS_SHOWN;i < getInfos().size()-this.getInfoStartShift();i++){
-		    			text.addExtra(ComponentSerializer.parse(getInfos().get(i).getJson())[0]);
+		    			WrappedChatComponent component = getInfos().get(i);
+		    			if (component != null) text.addExtra(ComponentSerializer.parse(component.getJson())[0]);
 		    			text.addExtra("\n");
 		    		}
 		    	}else{
@@ -267,7 +268,8 @@ public class RChat {
 		    			text.addExtra(" \n");
 		    		}
 		    		for(int i = 0;i < getInfos().size();i++){
-		    			text.addExtra(ComponentSerializer.parse(getInfos().get(i).getJson())[0]);
+		    			WrappedChatComponent component = getInfos().get(i);
+		    			if (component != null) text.addExtra(ComponentSerializer.parse(component.getJson())[0]);
 		    			text.addExtra("\n");
 		    		}
 		    	}

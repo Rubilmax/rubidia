@@ -1,6 +1,6 @@
 name: RubidiaPets
 version: 2.0
-api-version: 1.13
+api-version: 1.15
 main: me.pmilon.RubidiaPets.PetsPlugin
 author: Rubilmax
 softdepend: [RubidiaMonsters]

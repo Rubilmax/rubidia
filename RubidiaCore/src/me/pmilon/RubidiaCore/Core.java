@@ -1,6 +1,8 @@
 package me.pmilon.RubidiaCore;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -119,6 +121,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -1592,11 +1595,12 @@ public class Core extends JavaPlugin implements Listener {
 		REnchantment.registerEnchantments();
 		Events.onEnable(this);
 		EntityHandler.onEnable(this);
-		Crafts.initialize(this);// must be initialized after weapons initialization
+		Crafts.initialize();// must be initialized after weapons initialization
 
 		RItemStacks.enable();
 		console.sendMessage("§a   Rubidia Core plugin enabled!");
 
+		//1/min task
 		new BukkitTask(this) {
 
 			@Override
@@ -1605,7 +1609,7 @@ public class Core extends JavaPlugin implements Listener {
 				if (world != null) {
 					if (world.getTime() != 16000) {
 						world.setTime(16000);
-						world.setGameRuleValue("doDaylightCycle", "false");
+						world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
 					}
 				}
 
@@ -1623,7 +1627,8 @@ public class Core extends JavaPlugin implements Listener {
 			}
 
 		}.runTaskTimer(0, 60 * 20);
-		// 1/min task
+		
+		// 1/sec task
 		new BukkitTask(this) {
 
 			@Override
@@ -1684,7 +1689,8 @@ public class Core extends JavaPlugin implements Listener {
 			public void onCancel() {
 			}
 		}.runTaskTimer(0, 20);
-		// 1/sec Task
+		
+		// 4/sec Task
 		new BukkitTask(this) {
 
 			@Override
@@ -1823,6 +1829,12 @@ public class Core extends JavaPlugin implements Listener {
 					Core.console.sendMessage("§eSaved backup configs!");
 				}
 				Core.console.sendMessage("§eSaved configs!");
+				
+				try (PrintWriter out = new PrintWriter("restart_state.txt")) {
+					out.println(RandomUtils.random.nextInt());
+				} catch (FileNotFoundException e) {
+					Core.console.sendMessage("Couldn't write state to restart_state.txt!");
+				}
 			}
 
 			@Override

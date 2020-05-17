@@ -55,7 +55,7 @@ public class QuestColl extends Database<String,Quest> {
 								Configs.getQuestsConfig().getItemStack(path + ".itemStack"),
 								material,
 								Configs.getQuestsConfig().getString(path + ".monsterUUID"),
-								((Location) Configs.getQuestsConfig().get(path + ".location")),
+								(Location) Configs.getQuestsConfig().get(path + ".location"),
 								Configs.getQuestsConfig().getString(path + ".infoName"),
 								Configs.getQuestsConfig().getString(path + ".targetUUID"),
 								Configs.getQuestsConfig().getString(path + ".sidequestUUID"),
