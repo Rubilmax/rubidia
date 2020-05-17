@@ -1,0 +1,12 @@
+name: RubidiaPets
+version: 2.0
+api-version: 1.13
+main: me.pmilon.RubidiaPets.PetsPlugin
+author: Rubilmax
+softdepend: [RubidiaMonsters]
+commands:
+  pet:
+    description: Give a pet to a player.
+  pets:
+    aliases: p
+    description: See your pets and their statistics.

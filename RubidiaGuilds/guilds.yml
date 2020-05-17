@@ -1,0 +1,122 @@
+guilds:
+  00000000-0000-0000-0000-000000000000:
+    name: none
+    description: default faction
+    level: 0
+    experience: 0.0
+    members: []
+    claimUUIDs: []
+    claimBuildable: false
+    claimDoorsUsable: true
+    claimChestsUsable: false
+    alive: true
+    permanent: true
+    display:
+      material: BANNER
+      data: 5
+      glowing: false
+    alliesUUIDs: []
+    enemiesUUIDs: []
+    glowing: false
+    peaceful: false
+    lastConnection: 1470427359415
+    claimMobsDamageable: false
+    capeCost: 10
+    displayItem:
+      ==: org.bukkit.inventory.ItemStack
+      type: BANNER
+      damage: 10
+      meta:
+        ==: ItemMeta
+        meta-type: BANNER
+        display-name: §fCape de none
+        ItemFlags: !!set
+          HIDE_PLACED_ON: null
+          HIDE_ENCHANTS: null
+          HIDE_POTION_EFFECTS: null
+          HIDE_ATTRIBUTES: null
+          HIDE_DESTROYS: null
+    defaultRankId: 6
+    ranks:
+      '0':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          type: IRON_AXE
+        name: Leader
+        id: 0
+        canSetHome:
+          '0': true
+          '1': true
+          '2': true
+          '3': true
+          '4': true
+          '5': true
+          '6': true
+          '7': true
+        canHome:
+          '0': true
+          '1': true
+          '2': true
+          '3': true
+          '4': true
+          '5': true
+          '6': true
+          '7': true
+        canBuild: true
+        canClaim: true
+        canInvite: true
+        canUseDoors: true
+        canUseChests: true
+        canRename: true
+        canChangeDescription: true
+        canModifyDisplay: true
+        canModifyClaimsPrefs: true
+        canModifyRanksUnderPrefs: true
+        canModifyPerMemberPrefs: true
+        canManageRelations: true
+        canSetDefaultRank: true
+        canGiveBank: true
+        canTakeBank: true
+        canOffer: true
+        canDamageMobs: true
+      '6':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          type: WOOD_SPADE
+        name: Recruit
+        id: 6
+        canSetHome:
+          '0': false
+          '1': false
+          '2': false
+          '3': false
+          '4': false
+          '5': false
+          '6': false
+          '7': false
+        canHome:
+          '0': false
+          '1': false
+          '2': false
+          '3': false
+          '4': false
+          '5': false
+          '6': false
+          '7': false
+        canBuild: false
+        canClaim: false
+        canInvite: false
+        canUseDoors: false
+        canUseChests: false
+        canRename: false
+        canChangeDescription: false
+        canModifyDisplay: false
+        canModifyClaimsPrefs: false
+        canModifyRanksUnderPrefs: false
+        canModifyPerMemberPrefs: false
+        canManageRelations: false
+        canSetDefaultRank: false
+        canGiveBank: false
+        canTakeBank: false
+        canOffer: false
+        canDamageMobs: false

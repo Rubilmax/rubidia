@@ -1,0 +1,10 @@
+name: RubidiaSecretPaths
+version: 2.0
+api-version: 1.13
+main: me.pmilon.RubidiaPaths.SecretPathsManager
+author: Rubilmax
+depend: [WorldEdit, RubidiaCore]
+commands:
+  portal:
+    description: Edit or create a portal.
+    aliases: p

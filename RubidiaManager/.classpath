@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/MultiverseCore.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/WorldEdit.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/spigot.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaCore.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaGuilds.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaWG.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/WorldGuard.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

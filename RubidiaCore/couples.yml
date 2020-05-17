@@ -1,0 +1,42 @@
+couples:
+buffs:
+  '0':
+    name: Longevity-Longévité
+    type: MAX_HEALTH
+    level: 20
+    xpTime: 8
+  '1':
+    name: Tonicity-Tonicité
+    type: MAX_ENERGY
+    level: 20
+    xpTime: 16
+  '2':
+    name: Lightness-Légèreté
+    type: WALK_SPEED
+    level: 20
+    xpTime: 32
+  '3':
+    name: Halo of love-Aura de l'amour
+    type: DEFENSE
+    level: 25
+    xpTime: 64
+  '4':
+    name: Love at first sight-Coup de foudre
+    type: CRITIC_CHANCE
+    level: 25
+    xpTime: 128
+  '5':
+    name: Dangers of love-Dangers de l'amour
+    type: CRITIC_DAMAGE
+    level: 30
+    xpTime: 256
+  '6':
+    name: Supremacy of love-Suprématie de l'amour
+    type: ABILITY_DAMAGE
+    level: 30
+    xpTime: 512
+  '7':
+    name: Mastery of love-Maîtrise de l'amour
+    type: XP
+    level: 50
+    xpTime: 1024

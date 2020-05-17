@@ -1,0 +1,3695 @@
+﻿weapons:
+  ca0096a1-c178-4a02-881c-83dd42ea7797:
+    name: Hache en bois
+    rarity: COMMON
+    type: WOODEN_AXE
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 0
+    maxDamages: 2
+    level: 0
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.35
+    itemDamage: 0.05
+  2d2b23ad-dc3e-427c-b887-2123249d7d25:
+    name: Hache Lourde
+    rarity: COMMON
+    type: WOODEN_AXE
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 1
+    maxDamages: 3
+    level: 2
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.37
+    itemDamage: 0.1
+  92833249-04fc-42ad-a795-25a0a67c95fc:
+    name: Hache Rodney
+    rarity: COMMON
+    type: WOODEN_AXE
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 3
+    maxDamages: 7
+    level: 5
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.39999999999999997
+    itemDamage: 0.15
+  13fcaf55-e4e3-497b-a3f0-42aef3c35da4:
+    name: Hache Parmil
+    rarity: COMMON
+    type: WOODEN_AXE
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 5
+    maxDamages: 8
+    level: 7
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.42
+    itemDamage: 0.2
+  88ac3f59-3b40-4f75-8536-30f80f411e89:
+    name: Hache Morrow
+    rarity: COMMON
+    type: WOODEN_AXE
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 6
+    maxDamages: 9
+    level: 9
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.43999999999999995
+    itemDamage: 0.25
+  2eab9a55-23ba-4db1-80a6-2fe124cadec7:
+    name: Hache Scintillante
+    rarity: COMMON
+    type: WOODEN_AXE
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 7
+    maxDamages: 12
+    level: 11
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.45999999999999996
+    itemDamage: 0.3
+  0311c8ff-d7d6-4c19-8ace-bb83dc5caf65:
+    name: Hache Schyadin
+    rarity: COMMON
+    type: WOODEN_AXE
+    rClass: VAGRANT
+    dropChance: 0.045
+    minDamages: 9
+    maxDamages: 13
+    level: 14
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.49
+    itemDamage: 0.35
+  6d058e0c-81f4-4c46-9f39-d614eb0b223a:
+    name: Hache Ténèbre
+    rarity: COMMON
+    type: STONE_AXE
+    rClass: PALADIN
+    dropChance: 0.045
+    minDamages: 10
+    maxDamages: 15
+    level: 16
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.51
+    itemDamage: 0.1
+  517f496d-237e-4a57-a193-46e7fa1bdd20:
+    name: Hache Grang
+    rarity: COMMON
+    type: STONE_AXE
+    rClass: PALADIN
+    dropChance: 0.045
+    minDamages: 12
+    maxDamages: 16
+    level: 19
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.54
+    itemDamage: 0.15
+  f57f2ca4-a58c-4da0-9fde-08eb153b6b97:
+    name: Hache Tao
+    rarity: COMMON
+    type: STONE_AXE
+    rClass: PALADIN
+    dropChance: 0.04
+    minDamages: 14
+    maxDamages: 19
+    level: 20
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.55
+    itemDamage: 0.2
+  df78a820-1659-43d0-a037-56a724c47db2:
+    name: Hache Proem
+    rarity: COMMON
+    type: STONE_AXE
+    rClass: PALADIN
+    dropChance: 0.04
+    minDamages: 17
+    maxDamages: 22
+    level: 23
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.58
+    itemDamage: 0.25
+  0e4c13f5-974e-46b1-808c-c28a7eae3860:
+    name: Hache Sépale
+    rarity: COMMON
+    type: STONE_AXE
+    rClass: PALADIN
+    dropChance: 0.035
+    minDamages: 26
+    maxDamages: 31
+    level: 28
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.63
+    itemDamage: 0.3
+  d406bc4e-2d18-49cb-a553-1472ea4562b0:
+    name: Hache Corin
+    rarity: COMMON
+    type: STONE_AXE
+    rClass: PALADIN
+    dropChance: 0.035
+    minDamages: 21
+    maxDamages: 29
+    level: 31
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.6599999999999999
+    itemDamage: 0.35
+  16c145af-9f79-48cf-9c74-cf032e0eba9f:
+    name: Hache du Merci
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.03
+    minDamages: 24
+    maxDamages: 31
+    level: 35
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.7
+    itemDamage: 0.1
+  0b9423e7-209f-421b-a966-0fd5268d3e17:
+    name: Hache Furie
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.025
+    minDamages: 26
+    maxDamages: 35
+    level: 38
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.73
+    itemDamage: 0.2
+  39a75f24-7d4a-4ee4-b8a5-cb631afc6000:
+    name: Hache Sith
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.025
+    minDamages: 30
+    maxDamages: 37
+    level: 43
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.78
+    itemDamage: 0.25
+  4b74ef80-7d50-43ba-b543-c553958e0091:
+    name: Hache Future
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.02
+    minDamages: 32
+    maxDamages: 39
+    level: 45
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.8
+    itemDamage: 0.15
+  3020a17a-4952-4d30-80c4-e425fcc91ef2:
+    name: Hache Multilames
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.02
+    minDamages: 34
+    maxDamages: 42
+    level: 49
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.84
+    itemDamage: 0.3
+  070d71e8-1a7d-4b5d-b431-29bfc77375de:
+    name: Hache Pangril
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.015
+    minDamages: 38
+    maxDamages: 47
+    level: 54
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.89
+    itemDamage: 0.35
+  07fe3add-485d-4162-a01d-c38083fb0fbd:
+    name: Hache Deltra
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.015
+    minDamages: 40
+    maxDamages: 51
+    level: 58
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.9299999999999999
+    itemDamage: 0.4
+  e6191f79-d28e-4ad2-a535-0717cc4e0864:
+    name: Hache Melodra
+    rarity: COMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.01
+    minDamages: 43
+    maxDamages: 54
+    level: 64
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.99
+    itemDamage: 0.45
+  3132e941-b524-45bf-9be0-cfd4d0352ec9:
+    name: Hache Ambidextre
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.01
+    minDamages: 47
+    maxDamages: 58
+    level: 69
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.04
+    itemDamage: 0.25
+  41e6b91b-0b32-43b7-9125-f169ac0bf3d8:
+    name: Hache Squelettique
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.005
+    minDamages: 51
+    maxDamages: 63
+    level: 73
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.08
+    itemDamage: 0.75
+  5962a71a-64f2-4360-be29-157f7c4ca4a5:
+    name: Hache Draconique
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.005
+    minDamages: 55
+    maxDamages: 68
+    level: 77
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.12
+    itemDamage: 0.7
+  577362fd-99aa-4d18-9886-99716e2c092d:
+    name: Hache Mythique
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.005
+    minDamages: 59
+    maxDamages: 72
+    level: 82
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.17
+    itemDamage: 0.45
+  d77f91d2-726a-49ae-92e9-d086c647349c:
+    name: Hache du Gardien
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.002
+    minDamages: 64
+    maxDamages: 79
+    level: 89
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.24
+    itemDamage: 0.2
+  0001c9fa-bc1c-46c8-aceb-d0f503fe9b6c:
+    name: Hache Inferno
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.002
+    minDamages: 66
+    maxDamages: 83
+    level: 91
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.26
+    itemDamage: 0.35
+  9ff3f13e-e3ba-47e8-9e21-1ead179051f4:
+    name: Hache Séraphique
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.001
+    minDamages: 70
+    maxDamages: 91
+    level: 97
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.3199999999999998
+    itemDamage: 0.65
+  dda43a20-2a23-4b8b-b5cc-7da20c9f8806:
+    name: Doloire Ancestral
+    rarity: COMMON
+    type: DIAMOND_AXE
+    rClass: PALADIN
+    dropChance: 0.001
+    minDamages: 85
+    maxDamages: 103
+    level: 100
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.35
+    itemDamage: 0.3
+  466c6314-3c2e-4a7c-b5ec-337a6ee59b19:
+    name: Épée en bois
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 0
+    maxDamages: 2
+    level: 0
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.6
+    itemDamage: 0.05
+  67c78a1e-e6cb-4244-ab67-2b16fdb024a9:
+    name: Épée Longue
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 1
+    maxDamages: 3
+    level: 2
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.624
+    itemDamage: 0.1
+  3d2beeaf-0895-4e95-8625-f586f78e33ff:
+    name: Épée Aiguisée
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 4
+    maxDamages: 6
+    level: 5
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.6599999999999999
+    itemDamage: 0.15
+  7c838c41-6a30-49b9-b563-de985982bf17:
+    name: Épée Pirma
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 5
+    maxDamages: 7
+    level: 7
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.6839999999999999
+    itemDamage: 0.2
+  c8be62db-f50a-4321-bd01-e5b48b9d4251:
+    name: Épée Mertyl
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 6
+    maxDamages: 8
+    level: 9
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.708
+    itemDamage: 0.25
+  0d4792d5-698d-40a9-9242-f34cb7f83757:
+    name: Épée Virta
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 8
+    maxDamages: 10
+    level: 11
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.732
+    itemDamage: 0.45
+  bc2266cf-215c-4c1f-8111-5c1921168829:
+    name: Épée Parrow
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.045
+    minDamages: 9
+    maxDamages: 11
+    level: 12
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.744
+    itemDamage: 0.35
+  5fa51293-7e06-4488-b6c0-06ab9be823a1:
+    name: Épée Blew
+    rarity: COMMON
+    type: WOODEN_SWORD
+    rClass: VAGRANT
+    dropChance: 0.045
+    minDamages: 10
+    maxDamages: 12
+    level: 15
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.78
+    itemDamage: 0.4
+  ea40dc62-ee02-4b4b-b57d-7ce5380a0323:
+    name: Épée Arcane
+    rarity: COMMON
+    type: STONE_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.04
+    minDamages: 12
+    maxDamages: 16
+    level: 17
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.804
+    itemDamage: 0.2
+  96762eca-68c0-497c-bf83-fa08387665de:
+    name: Épée du Désespoir
+    rarity: COMMON
+    type: STONE_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.04
+    minDamages: 15
+    maxDamages: 18
+    level: 20
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.84
+    itemDamage: 0.25
+  41d1c557-4001-455e-a114-d583b2065848:
+    name: Épée Trelma
+    rarity: COMMON
+    type: STONE_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.035
+    minDamages: 17
+    maxDamages: 19
+    level: 24
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.888
+    itemDamage: 0.3
+  ff59903e-4585-47a7-97c8-a6fe177038fd:
+    name: Épée Darkon
+    rarity: COMMON
+    type: STONE_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.035
+    minDamages: 18
+    maxDamages: 21
+    level: 29
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.948
+    itemDamage: 0.35
+  f116399c-c2eb-4b31-b413-857a616a57b5:
+    name: Épée Multilames
+    rarity: COMMON
+    type: STONE_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.035
+    minDamages: 20
+    maxDamages: 23
+    level: 31
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.972
+    itemDamage: 0.4
+  0abd36d0-44c5-41f4-b871-6ef12d2621d5:
+    name: Épée Mathryl
+    rarity: COMMON
+    type: STONE_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.03
+    minDamages: 22
+    maxDamages: 25
+    level: 36
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.032
+    itemDamage: 0.45
+  2de8a312-a0e1-4ea7-810c-519259c80f69:
+    name: Épée Polison
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.03
+    minDamages: 24
+    maxDamages: 26
+    level: 39
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.068
+    itemDamage: 0.05
+  2d1f4f3b-ad6c-4029-8d5c-4e336eca3f5b:
+    name: Épée Ténèbre
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.025
+    minDamages: 28
+    maxDamages: 31
+    level: 44
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.1280000000000001
+    itemDamage: 0.5
+  70e7585c-3e35-4e3b-868b-681a998f9b40:
+    name: Épée Vampirique
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.025
+    minDamages: 32
+    maxDamages: 35
+    level: 48
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.1760000000000002
+    itemDamage: 0.6
+  a31d315e-7096-497d-bd66-cfd7355f6a3f:
+    name: Dague Lunaire
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.02
+    minDamages: 36
+    maxDamages: 39
+    level: 54
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.248
+    itemDamage: 0.45
+  11429042-a7c5-4ba9-9f12-07ef34b14d69:
+    name: Épée Deltra
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.015
+    minDamages: 37
+    maxDamages: 42
+    level: 59
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.3079999999999998
+    itemDamage: 0.15
+  3d1a5f81-a4b9-468e-b3be-4775ca73bd51:
+    name: Épée Immatérielle
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.015
+    minDamages: 40
+    maxDamages: 44
+    level: 62
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.3439999999999999
+    itemDamage: 0.55
+  8420cd45-357e-4022-83c9-c78f5e9ef96d:
+    name: Épée Ambidextre
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.01
+    minDamages: 42
+    maxDamages: 46
+    level: 67
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.404
+    itemDamage: 0.2
+  d73ee175-6c1b-4cee-a285-c12f3b64e301:
+    name: Épée Céleste
+    rarity: COMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.01
+    minDamages: 47
+    maxDamages: 50
+    level: 71
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.452
+    itemDamage: 0.35
+  027a34c8-76de-4088-8db3-ffaadce98850:
+    name: Épée Squelettique
+    rarity: COMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.005
+    minDamages: 49
+    maxDamages: 53
+    level: 76
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.512
+    itemDamage: 0.15
+  2b53c5df-393d-4df1-a190-d33cc230de99:
+    name: Épée Draconique
+    rarity: COMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.005
+    minDamages: 52
+    maxDamages: 56
+    level: 81
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.572
+    itemDamage: 0.6
+  36e0a3cf-f00f-4388-9180-b46610d7dca3:
+    name: Épée Mythique
+    rarity: COMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.002
+    minDamages: 55
+    maxDamages: 61
+    level: 84
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.608
+    itemDamage: 0.25
+  53e6a5ca-389c-4e6b-9dea-d7389fa9ad13:
+    name: Épée du Gardien
+    rarity: COMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.002
+    minDamages: 65
+    maxDamages: 67
+    level: 87
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.6440000000000001
+    itemDamage: 0.2
+  e6c930a9-6613-48a1-990e-f70565cc6e62:
+    name: Épée Inferno
+    rarity: COMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.001
+    minDamages: 66
+    maxDamages: 71
+    level: 92
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.7040000000000002
+    itemDamage: 0.35
+  1e894972-6613-4122-89d5-b5282499a619:
+    name: Épée Séraphique
+    rarity: COMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.001
+    minDamages: 73
+    maxDamages: 77
+    level: 98
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.7759999999999998
+    itemDamage: 0.45
+  e720a989-38c5-4087-aac8-4e10c05ebf73:
+    name: Épée Ancestrale
+    rarity: COMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.001
+    minDamages: 85
+    maxDamages: 91
+    level: 100
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.7999999999999998
+    itemDamage: 0.3
+  f72a946d-87c5-457f-83e2-1c9645c9ff82:
+    name: Arc en Bois
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 0
+    maxDamages: 2
+    level: 0
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.4
+    itemDamage: 0.025
+  1b3323f7-7cc8-4915-ba92-fd82617f0e5e:
+    name: Arc Long
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 1
+    maxDamages: 3
+    level: 2
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.43000000000000005
+    itemDamage: 0.05
+  705a826c-6f3a-462b-a207-5cf6ca6fe9ec:
+    name: Arc Tendu
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 3
+    maxDamages: 5
+    level: 5
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.47500000000000003
+    itemDamage: 0.075
+  402abbfa-fa66-4bc7-a279-21e5f1c9def0:
+    name: Arc Trerta
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 4
+    maxDamages: 7
+    level: 8
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.52
+    itemDamage: 0.2
+  51a154e2-bd8d-451f-b14d-64e15f134b87:
+    name: Arc Morta
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 5
+    maxDamages: 9
+    level: 9
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.535
+    itemDamage: 0.1
+  92b3b465-abf0-4d15-9e05-153679899efe:
+    name: Arc Nortim
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 6
+    maxDamages: 10
+    level: 11
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.565
+    itemDamage: 0.125
+  e2b90b0b-415b-4590-af75-f2d62ae6474b:
+    name: Arc Ferrow
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.045
+    minDamages: 8
+    maxDamages: 11
+    level: 13
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.595
+    itemDamage: 0.15
+  a826c08c-63df-4367-8f17-742af235d28e:
+    name: Arc Précis
+    rarity: COMMON
+    type: BOW
+    rClass: VAGRANT
+    dropChance: 0.045
+    minDamages: 12
+    maxDamages: 13
+    level: 15
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.625
+    itemDamage: 0.175
+  ce947127-2ec5-45d0-a1d8-78208ca69b24:
+    name: Arc Puissant
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.04
+    minDamages: 13
+    maxDamages: 16
+    level: 16
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.64
+    itemDamage: 0.225
+  0368b2ed-3c00-4ef5-83f7-b26c1c112c4d:
+    name: Arc Nierta
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.04
+    minDamages: 15
+    maxDamages: 17
+    level: 19
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.685
+    itemDamage: 0.275
+  71bc8e9a-3440-4bc0-93cd-c8d008f4772b:
+    name: Arc Kirma
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.035
+    minDamages: 18
+    maxDamages: 19
+    level: 22
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.73
+    itemDamage: 0.3
+  85b10434-100c-44f1-8a0f-7fc9cfdbc27d:
+    name: Arc Polam
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.035
+    minDamages: 20
+    maxDamages: 21
+    level: 25
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.775
+    itemDamage: 0.325
+  a76774d3-cd6a-447f-8a31-d80efca815ce:
+    name: Arc Lortra
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.03
+    minDamages: 21
+    maxDamages: 23
+    level: 29
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.835
+    itemDamage: 0.375
+  69a85011-6155-48df-992e-de8656138823:
+    name: Arc Alpha
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.03
+    minDamages: 24
+    maxDamages: 26
+    level: 33
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.895
+    itemDamage: 0.4
+  19bb77f1-215b-4edc-9b57-885a9565b29b:
+    name: Arc Carbone
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.025
+    minDamages: 27
+    maxDamages: 29
+    level: 37
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.955
+    itemDamage: 0.45
+  ef8df154-768e-4be2-8bfa-f04ff6ab47db:
+    name: Arc Hernea
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.025
+    minDamages: 30
+    maxDamages: 32
+    level: 41
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.0150000000000001
+    itemDamage: 0.475
+  a853828d-ba4c-4208-bc16-4563a0d84f5c:
+    name: Arc Vampirique
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.02
+    minDamages: 32
+    maxDamages: 34
+    level: 45
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.075
+    itemDamage: 0.8
+  3900a111-9e2d-4986-91fe-d03de0f25576:
+    name: Arc Elfique
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.02
+    minDamages: 38
+    maxDamages: 39
+    level: 49
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.135
+    itemDamage: 0.525
+  71e9811d-93fc-4790-9dcb-b8061d9adcab:
+    name: Arc Pointu
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.015
+    minDamages: 39
+    maxDamages: 41
+    level: 53
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.1949999999999998
+    itemDamage: 0.675
+  af334601-038e-47ac-b27e-a5dcfd71d3ad:
+    name: Arc Deltra
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.015
+    minDamages: 43
+    maxDamages: 44
+    level: 58
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.27
+    itemDamage: 0.6
+  a7018728-0a1b-4a9e-90c3-cb1f1daf9de5:
+    name: Arc Ambidextre
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.01
+    minDamages: 45
+    maxDamages: 46
+    level: 64
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.3599999999999999
+    itemDamage: 0.575
+  66d39c42-d8ba-4cb9-a704-72d9347ece18:
+    name: Arc Céleste
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.01
+    minDamages: 49
+    maxDamages: 50
+    level: 68
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.42
+    itemDamage: 0.725
+  b0becf6d-11e9-4107-ab42-97efbcd87e38:
+    name: Arc Squelettique
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.005
+    minDamages: 52
+    maxDamages: 53
+    level: 73
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.495
+    itemDamage: 0.7
+  6a10d83b-ef65-444d-a8db-4e701be4bea8:
+    name: Arc Draconique
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.005
+    minDamages: 56
+    maxDamages: 58
+    level: 79
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.585
+    itemDamage: 0.95
+  673a70e7-cdd6-4cfe-b02f-306a08e33e5c:
+    name: Arc Mythique
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.003
+    minDamages: 59
+    maxDamages: 61
+    level: 83
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.645
+    itemDamage: 0.85
+  18c40f6b-7576-4216-a33f-8fe687bbedbc:
+    name: Arc du Gardien
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.001
+    minDamages: 66
+    maxDamages: 67
+    level: 88
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.7199999999999998
+    itemDamage: 0.625
+  2d3e0dde-8ab2-4224-9615-6a29c5ff4ecc:
+    name: Arc Inferno
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.002
+    minDamages: 73
+    maxDamages: 74
+    level: 92
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.7799999999999998
+    itemDamage: 0.775
+  9afb8a5d-4be9-47e0-82c0-621d91067060:
+    name: Arc Séraphique
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.001
+    minDamages: 79
+    maxDamages: 83
+    level: 96
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.8399999999999999
+    itemDamage: 0.9
+  a8a8e091-2f73-47ee-8dca-05016ad25103:
+    name: Arc Ancestral
+    rarity: COMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.001
+    minDamages: 92
+    maxDamages: 96
+    level: 100
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.9
+    itemDamage: 0.75
+  62749533-3038-4a00-adb3-4039b734855c:
+    name: Baguette en Chêne
+    rarity: COMMON
+    type: WOODEN_HOE
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 0
+    maxDamages: 2
+    level: 0
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.55
+    itemDamage: 0.05
+  603ea1f9-61fa-4139-a8c3-fe6b7d17c634:
+    name: Baguette Longue
+    rarity: COMMON
+    type: WOODEN_HOE
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 1
+    maxDamages: 3
+    level: 2
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.5690000000000001
+    itemDamage: 0.1
+  45827c53-3427-4c6d-becd-0f2c1f1d7ac9:
+    name: Baguette Cubique
+    rarity: COMMON
+    type: WOODEN_HOE
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 2
+    maxDamages: 5
+    level: 4
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.5880000000000001
+    itemDamage: 0.15
+  6cb87674-1519-49c8-990e-801efa9cc461:
+    name: Baguette Saphire
+    rarity: COMMON
+    type: WOODEN_HOE
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 4
+    maxDamages: 7
+    level: 8
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.626
+    itemDamage: 0.2
+  8cd2b515-6951-4df8-948f-35f715a3b092:
+    name: Baguette Quartz
+    rarity: COMMON
+    type: WOODEN_HOE
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 7
+    maxDamages: 10
+    level: 11
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.6545000000000001
+    itemDamage: 0.3
+  48ce4d09-5ccc-479f-8821-2a7a791de7a2:
+    name: Baguette Nangril
+    rarity: COMMON
+    type: WOODEN_HOE
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 8
+    maxDamages: 11
+    level: 13
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.6735
+    itemDamage: 0.35
+  c9fd23f5-9713-47d9-a449-06dd48538bd9:
+    name: Baguette Lorrow
+    rarity: COMMON
+    type: STONE_HOE
+    rClass: MAGE
+    dropChance: 0.045
+    minDamages: 10
+    maxDamages: 12
+    level: 16
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.7020000000000001
+    itemDamage: 0.05
+  90af3d6c-4586-49e8-868e-fd6b81bb3acc:
+    name: Bâton Ensorcelé
+    rarity: COMMON
+    type: STONE_HOE
+    rClass: MAGE
+    dropChance: 0.045
+    minDamages: 12
+    maxDamages: 14
+    level: 19
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.7305
+    itemDamage: 0.15
+  fd95778f-7f96-47a7-90f3-8e0c6a58b2d9:
+    name: Bâton Maudit
+    rarity: COMMON
+    type: STONE_HOE
+    rClass: MAGE
+    dropChance: 0.04
+    minDamages: 13
+    maxDamages: 14
+    level: 21
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.7495
+    itemDamage: 0.2
+  2f2fd9c1-7295-4a8c-806e-26134a0c6568:
+    name: Bâton Symbolique
+    rarity: COMMON
+    type: STONE_HOE
+    rClass: MAGE
+    dropChance: 0.04
+    minDamages: 14
+    maxDamages: 17
+    level: 24
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.778
+    itemDamage: 0.25
+  422d8a21-6d45-4d47-a578-608bdce7901e:
+    name: Bâton Cosmique
+    rarity: COMMON
+    type: STONE_HOE
+    rClass: MAGE
+    dropChance: 0.035
+    minDamages: 16
+    maxDamages: 18
+    level: 28
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.8160000000000001
+    itemDamage: 0.3
+  259d3b56-8b19-43d0-8aae-ee0f894f504d:
+    name: Bâton Rigueux
+    rarity: COMMON
+    type: STONE_HOE
+    rClass: MAGE
+    dropChance: 0.035
+    minDamages: 17
+    maxDamages: 21
+    level: 31
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.8445
+    itemDamage: 0.35
+  4a6709a7-bbfe-41dd-828e-b9da4cc7ce03:
+    name: Bâton Irréel
+    rarity: COMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.03
+    minDamages: 20
+    maxDamages: 23
+    level: 36
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.892
+    itemDamage: 0.15
+  97f5cfdb-6cd9-474f-bec6-6581e884a6d5:
+    name: Bâton Arcane
+    rarity: COMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.03
+    minDamages: 23
+    maxDamages: 25
+    level: 40
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.93
+    itemDamage: 0.2
+  440dc6b8-7def-4a59-8afe-a28d834d9952:
+    name: Bâton Hurlant
+    rarity: COMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.025
+    minDamages: 25
+    maxDamages: 28
+    level: 43
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.9585
+    itemDamage: 0.05
+  d10fa734-d85f-4a31-8c45-501ba0c578af:
+    name: Bâton Vampirique
+    rarity: COMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.025
+    minDamages: 29
+    maxDamages: 32
+    level: 49
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.0155
+    itemDamage: 0.55
+  1579e1b7-cc88-4933-b863-cfe2dbe4bf1a:
+    name: Bâton Morkon
+    rarity: COMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.02
+    minDamages: 31
+    maxDamages: 34
+    level: 53
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.0535
+    itemDamage: 0.35
+  bc4f0517-fdab-4770-a9b9-2b47429f52cf:
+    name: Bâton Deltra
+    rarity: COMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.02
+    minDamages: 33
+    maxDamages: 38
+    level: 59
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.1105
+    itemDamage: 0.4
+  fd4a7bb2-9867-4f5a-bda6-0138162ba319:
+    name: Bâton Céleste
+    rarity: COMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.015
+    minDamages: 37
+    maxDamages: 39
+    level: 64
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.158
+    itemDamage: 0.3
+  49760222-3695-454b-bc1a-93848e0193b0:
+    name: Catalyseur Mirage
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.015
+    minDamages: 39
+    maxDamages: 41
+    level: 68
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.1960000000000002
+    itemDamage: 0.05
+  db61975e-1996-4dca-857e-8ee6932a3d95:
+    name: Catalyseur Squelettique
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.01
+    minDamages: 42
+    maxDamages: 44
+    level: 74
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.2530000000000001
+    itemDamage: 0.1
+  8fc8ff86-2b59-4fa8-92f6-e9e8bdcdae69:
+    name: Catalyseur Draconique
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.01
+    minDamages: 46
+    maxDamages: 49
+    level: 79
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.3005
+    itemDamage: 0.65
+  ac1d0ec0-5e81-4ba3-82fb-e05e9c74b7e6:
+    name: Catalyseur Mythique
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.005
+    minDamages: 48
+    maxDamages: 52
+    level: 83
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.3385
+    itemDamage: 0.4
+  817e3cd5-b91b-4fac-887f-fc2592c06c49:
+    name: Catalyseur du Gardien
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.001
+    minDamages: 55
+    maxDamages: 57
+    level: 87
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.3765
+    itemDamage: 0.15
+  e9babbaf-cb5c-45d4-a585-6c496fa988b1:
+    name: Catalyseur Inferno
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.003
+    minDamages: 59
+    maxDamages: 63
+    level: 92
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.424
+    itemDamage: 0.55
+  a33ea53f-b84e-4544-bc78-e9c37d0acf9f:
+    name: Catalyseur Séraphique
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.001
+    minDamages: 66
+    maxDamages: 70
+    level: 97
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.4715
+    itemDamage: 0.6
+  2b596bd5-f9e4-4475-a6c7-00cda7991d46:
+    name: Catalyseur Ancestral
+    rarity: COMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.001
+    minDamages: 79
+    maxDamages: 87
+    level: 100
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.5
+    itemDamage: 0.25
+  35fdcb19-cc0e-42ae-bd68-e949929e7508:
+    name: Hachereau
+    rarity: UNCOMMON
+    type: WOODEN_AXE
+    rClass: PALADIN
+    dropChance: 0.045
+    minDamages: 6
+    maxDamages: 10
+    level: 8
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.43
+    itemDamage: 0.4
+  51314ed1-367d-4902-990e-8bd16262ba9c:
+    name: Machette
+    rarity: UNCOMMON
+    type: STONE_AXE
+    rClass: PALADIN
+    dropChance: 0.035
+    minDamages: 11
+    maxDamages: 16
+    level: 13
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.48
+    itemDamage: 0.05
+  c065ce29-a1d4-49d4-917c-7b05c8795243:
+    name: Tomahawk
+    rarity: UNCOMMON
+    type: IRON_AXE
+    rClass: PALADIN
+    dropChance: 0.01
+    minDamages: 29
+    maxDamages: 33
+    level: 32
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.6699999999999999
+    itemDamage: 0.05
+  6f311834-7ac2-4e89-a091-b6533c0fdfd3:
+    name: Hache Kolom
+    rarity: UNCOMMON
+    type: GOLDEN_AXE
+    rClass: PALADIN
+    dropChance: 0.02
+    minDamages: 34
+    maxDamages: 52
+    level: 41
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.76
+    itemDamage: 0.0
+  07b327f1-c101-4041-8393-4df806e1e81e:
+    name: Hache Parsure
+    rarity: UNCOMMON
+    type: GOLDEN_AXE
+    rClass: PALADIN
+    dropChance: 0.005
+    minDamages: 46
+    maxDamages: 57
+    level: 63
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.98
+    itemDamage: 0.0
+  308d554e-cf95-4425-a5bc-088740a36070:
+    name: Dague
+    rarity: UNCOMMON
+    type: WOODEN_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.045
+    minDamages: 7
+    maxDamages: 9
+    level: 8
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.696
+    itemDamage: 0.3
+  5b1f0753-fc09-4eb6-a6ce-3a3451eb98c2:
+    name: Cimeterre
+    rarity: UNCOMMON
+    type: STONE_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.03
+    minDamages: 10
+    maxDamages: 14
+    level: 16
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.792
+    itemDamage: 0.15
+  f5a1a165-9fec-49ad-b6a1-e17747c173fa:
+    name: Sabre Lohk
+    rarity: UNCOMMON
+    type: IRON_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.02
+    minDamages: 23
+    maxDamages: 26
+    level: 34
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.008
+    itemDamage: 0.4
+  30bf00ac-f030-4069-84e7-4d9f76ec6993:
+    name: Épée Haltu
+    rarity: UNCOMMON
+    type: GOLDEN_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.008
+    minDamages: 32
+    maxDamages: 35
+    level: 47
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.1640000000000001
+    itemDamage: 0.0
+  9ed6ed64-218d-414e-bafd-075479b9dd7e:
+    name: Épée Barhil
+    rarity: UNCOMMON
+    type: DIAMOND_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.005
+    minDamages: 44
+    maxDamages: 47
+    level: 69
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.428
+    itemDamage: 0.05
+  a5e92d61-faf2-4810-8a44-69b564015359:
+    name: Arc Léger
+    rarity: UNCOMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.045
+    minDamages: 7
+    maxDamages: 9
+    level: 7
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.505
+    itemDamage: 0.2
+  252ac16f-1f28-419f-94a0-d4f347bfaa86:
+    name: Arc Misère
+    rarity: UNCOMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.035
+    minDamages: 16
+    maxDamages: 17
+    level: 18
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.67
+    itemDamage: 0.25
+  cd018c5c-5d13-4a6d-ae76-41074097741d:
+    name: Arc Tristesse
+    rarity: UNCOMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.02
+    minDamages: 29
+    maxDamages: 31
+    level: 36
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.9400000000000001
+    itemDamage: 0.425
+  8a424adf-6f9b-435f-89c2-89e90bfb67c7:
+    name: Arc Possédé
+    rarity: UNCOMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.008
+    minDamages: 40
+    maxDamages: 42
+    level: 48
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.12
+    itemDamage: 0.5
+  08f64bf8-12ef-4467-a243-b0961e30d5eb:
+    name: Arc Ancien
+    rarity: UNCOMMON
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.005
+    minDamages: 52
+    maxDamages: 54
+    level: 67
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.4049999999999998
+    itemDamage: 0.65
+  692c9f69-d0f2-41f9-a99a-73faad3743f6:
+    name: Baguetteau
+    rarity: UNCOMMON
+    type: WOODEN_HOE
+    rClass: MAGE
+    dropChance: 0.045
+    minDamages: 5
+    maxDamages: 8
+    level: 9
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.6355000000000001
+    itemDamage: 0.4
+  eba9b8ec-e898-49f5-9a56-19c6afb1456b:
+    name: Bâton Azur
+    rarity: UNCOMMON
+    type: STONE_HOE
+    rClass: MAGE
+    dropChance: 0.032
+    minDamages: 13
+    maxDamages: 15
+    level: 18
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.7210000000000001
+    itemDamage: 0.1
+  5dc5629f-596d-4a49-b6c0-453f4024203f:
+    name: Bâtonnet Brise
+    rarity: UNCOMMON
+    type: IRON_HOE
+    rClass: MAGE
+    dropChance: 0.021
+    minDamages: 19
+    maxDamages: 22
+    level: 29
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.8255
+    itemDamage: 0.1
+  ceb4b788-bea9-4739-a3c3-9af76f7a30de:
+    name: Bâton Darhik
+    rarity: UNCOMMON
+    type: GOLDEN_HOE
+    rClass: MAGE
+    dropChance: 0.008
+    minDamages: 37
+    maxDamages: 40
+    level: 62
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.139
+    itemDamage: 0.0
+  a3e1e016-5442-43b7-8663-a1352669cab0:
+    name: Catalyseur Astral
+    rarity: UNCOMMON
+    type: DIAMOND_HOE
+    rClass: MAGE
+    dropChance: 0.005
+    minDamages: 42
+    maxDamages: 45
+    level: 71
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.2245
+    itemDamage: 0.5
+  1111e687-326d-45de-b8c9-ae463891164e:
+    name: Plastron Coton
+    rarity: COMMON
+    type: LEATHER_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.052
+    minDamages: 2
+    maxDamages: 4
+    level: 4
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  1a2860d1-044c-4508-9516-88f4711f2c08:
+    name: Jambières Coton
+    rarity: COMMON
+    type: LEATHER_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.057
+    minDamages: 1
+    maxDamages: 3
+    level: 3
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  cbfee27d-afe0-4708-a84d-c9ce327ae62e:
+    name: Bottes Coton
+    rarity: COMMON
+    type: LEATHER_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.06
+    minDamages: 1
+    maxDamages: 2
+    level: 2
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  f31914ef-ca6a-4bbb-92e6-405b40750bd4:
+    name: Casque Cuir
+    rarity: COMMON
+    type: LEATHER_HELMET
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 2
+    maxDamages: 4
+    level: 5
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  9f1fb4a4-9543-482b-a479-0f5f6906f6c8:
+    name: Plastron Cuir
+    rarity: COMMON
+    type: LEATHER_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.048
+    minDamages: 4
+    maxDamages: 7
+    level: 8
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  f53a2f51-d040-4a97-94d0-a1b3e4fc5129:
+    name: Jambières Cuir
+    rarity: COMMON
+    type: LEATHER_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.053
+    minDamages: 3
+    maxDamages: 5
+    level: 7
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  559b1ece-40ef-4299-8f9b-72233cf3647a:
+    name: Bottes Cuir
+    rarity: COMMON
+    type: LEATHER_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 2
+    maxDamages: 4
+    level: 6
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  7e8c5c2d-9f10-4149-afc1-2060bb31b26e:
+    name: Casque Fortune
+    rarity: COMMON
+    type: LEATHER_HELMET
+    rClass: VAGRANT
+    dropChance: 0.047
+    minDamages: 3
+    maxDamages: 6
+    level: 9
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  493d577a-ae4f-44d8-9e7e-a844e08f9d89:
+    name: Plastron Fortune
+    rarity: COMMON
+    type: LEATHER_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.044
+    minDamages: 6
+    maxDamages: 10
+    level: 13
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  9817e0c0-b8c9-4246-9f20-cd299d66441b:
+    name: Jambières Fortune
+    rarity: COMMON
+    type: LEATHER_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.048
+    minDamages: 5
+    maxDamages: 8
+    level: 12
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  eea59c50-0f41-430d-a9ee-0245b464c197:
+    name: Bottes Fortune
+    rarity: COMMON
+    type: LEATHER_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.046
+    minDamages: 3
+    maxDamages: 5
+    level: 10
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  56bde1b6-1952-4531-a2ea-e7974730343c:
+    name: Casque Keriphis
+    rarity: COMMON
+    type: CHAINMAIL_HELMET
+    rClass: VAGRANT
+    dropChance: 0.041
+    minDamages: 7
+    maxDamages: 10
+    level: 21
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  d0f1436d-b28d-4511-b079-6ca7bfb81ace:
+    name: Plastron Keriphis
+    rarity: COMMON
+    type: CHAINMAIL_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.038
+    minDamages: 13
+    maxDamages: 17
+    level: 26
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  174f139e-0422-4de6-a025-b326047e30f6:
+    name: Jambières Keriphis
+    rarity: COMMON
+    type: CHAINMAIL_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.04
+    minDamages: 8
+    maxDamages: 12
+    level: 24
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  8931b92e-f5c0-430f-8f7c-2221a3d7e904:
+    name: Bottes Keriphis
+    rarity: COMMON
+    type: CHAINMAIL_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.042
+    minDamages: 7
+    maxDamages: 9
+    level: 23
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  fd38db72-6aa7-4ca1-8d75-477c641c747a:
+    name: Casque Keimay
+    rarity: COMMON
+    type: CHAINMAIL_HELMET
+    rClass: VAGRANT
+    dropChance: 0.037
+    minDamages: 9
+    maxDamages: 12
+    level: 27
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  2bf20aee-687f-4876-bc94-c86cafdbeaf2:
+    name: Plastron Keimay
+    rarity: COMMON
+    type: CHAINMAIL_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.034
+    minDamages: 18
+    maxDamages: 21
+    level: 32
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  f1aa51cd-1cee-44c8-9f92-f973146fe6e9:
+    name: Jambières Keimay
+    rarity: COMMON
+    type: CHAINMAIL_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.036
+    minDamages: 11
+    maxDamages: 13
+    level: 31
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  2e4e60b6-fd7c-49a2-abce-c7b0cf057be7:
+    name: Bottes Keimay
+    rarity: COMMON
+    type: CHAINMAIL_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.035
+    minDamages: 7
+    maxDamages: 10
+    level: 29
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  b175299e-63b8-4119-aa55-3664a0521818:
+    name: Casque Epine
+    rarity: COMMON
+    type: IRON_HELMET
+    rClass: VAGRANT
+    dropChance: 0.031
+    minDamages: 11
+    maxDamages: 15
+    level: 35
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  7db3831a-dd9e-4f67-b37a-ddbd06f4081e:
+    name: Plastron Epine
+    rarity: COMMON
+    type: IRON_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.029
+    minDamages: 21
+    maxDamages: 26
+    level: 42
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  daa00526-77f0-48e1-ae87-665dad64be42:
+    name: Jambières Epine
+    rarity: COMMON
+    type: IRON_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.031
+    minDamages: 13
+    maxDamages: 16
+    level: 39
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  30a5c2c6-fea7-4a35-9d84-b91d1c3e0f03:
+    name: Bottes Epine
+    rarity: COMMON
+    type: IRON_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.03
+    minDamages: 11
+    maxDamages: 13
+    level: 37
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  5baabb34-2c56-4f9a-9213-e647dacf4dc8:
+    name: Casque Vortex
+    rarity: COMMON
+    type: IRON_HELMET
+    rClass: VAGRANT
+    dropChance: 0.027
+    minDamages: 13
+    maxDamages: 16
+    level: 43
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  cbc95902-7703-4434-8916-ac7f223b4cf6:
+    name: Plastron Vortex
+    rarity: COMMON
+    type: IRON_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.023
+    minDamages: 25
+    maxDamages: 29
+    level: 48
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  820dfcd0-7540-4638-9604-4802c7b392c1:
+    name: Jambières Vortex
+    rarity: COMMON
+    type: IRON_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.025
+    minDamages: 17
+    maxDamages: 19
+    level: 47
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  0439e9d8-b460-47fa-a26e-a85246755248:
+    name: Bottes Vortex
+    rarity: COMMON
+    type: IRON_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.024
+    minDamages: 12
+    maxDamages: 15
+    level: 45
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  b7347697-5ce5-4ce9-9694-4765f822badc:
+    name: Casque Tempête
+    rarity: COMMON
+    type: IRON_HELMET
+    rClass: VAGRANT
+    dropChance: 0.022
+    minDamages: 15
+    maxDamages: 19
+    level: 51
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  e491bca3-f425-43f5-9cca-8cea620e645a:
+    name: Plastron Tempête
+    rarity: COMMON
+    type: IRON_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.019
+    minDamages: 28
+    maxDamages: 34
+    level: 58
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  dd19ef30-4c3e-422e-8c60-c83f9b306baf:
+    name: Jambières Tempête
+    rarity: COMMON
+    type: IRON_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.022
+    minDamages: 19
+    maxDamages: 25
+    level: 56
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  bf1d0d63-ce7a-4cc7-81c1-ebf7f94a3213:
+    name: Bottes Tempête
+    rarity: COMMON
+    type: IRON_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.021
+    minDamages: 14
+    maxDamages: 22
+    level: 53
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  828a27e4-ada2-48cf-9645-e8091141bb00:
+    name: Casque Squelettique
+    rarity: COMMON
+    type: DIAMOND_HELMET
+    rClass: VAGRANT
+    dropChance: 0.018
+    minDamages: 20
+    maxDamages: 24
+    level: 61
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  36f82a77-6782-479b-a468-365a2141a6fa:
+    name: Plastron Squelettique
+    rarity: COMMON
+    type: DIAMOND_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.016
+    minDamages: 35
+    maxDamages: 44
+    level: 68
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  b081c2c1-df38-4da9-b423-64caa7af2213:
+    name: Jambières Squelettiques
+    rarity: COMMON
+    type: DIAMOND_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.017
+    minDamages: 24
+    maxDamages: 30
+    level: 65
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  bfe9a438-8728-4f84-81de-1d31a368f702:
+    name: Bottes Squelettiques
+    rarity: COMMON
+    type: DIAMOND_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.019
+    minDamages: 21
+    maxDamages: 25
+    level: 63
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  d4b261eb-22c6-4bf2-889f-84f7ab328de8:
+    name: Casque Draconique
+    rarity: COMMON
+    type: DIAMOND_HELMET
+    rClass: VAGRANT
+    dropChance: 0.015
+    minDamages: 26
+    maxDamages: 30
+    level: 72
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  ab76f899-fa75-4f01-8eb8-15427a804e4f:
+    name: Plastron Draconique
+    rarity: COMMON
+    type: DIAMOND_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.011
+    minDamages: 46
+    maxDamages: 57
+    level: 80
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  bbca3d0a-06ce-49c3-8bbc-86d972686cac:
+    name: Jambières Draconiques
+    rarity: COMMON
+    type: DIAMOND_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.012
+    minDamages: 29
+    maxDamages: 37
+    level: 77
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  7fd4f494-3236-4ba8-836e-7857e1457d1e:
+    name: Bottes Draconiques
+    rarity: COMMON
+    type: DIAMOND_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.013
+    minDamages: 26
+    maxDamages: 33
+    level: 75
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  2e722b81-5cc3-4446-93d4-d3597178b148:
+    name: Casque Mythique
+    rarity: COMMON
+    type: DIAMOND_HELMET
+    rClass: VAGRANT
+    dropChance: 0.011
+    minDamages: 33
+    maxDamages: 38
+    level: 83
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  30ceecc4-1c88-4015-a67f-740b56d13253:
+    name: Plastron Mythique
+    rarity: COMMON
+    type: DIAMOND_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.007
+    minDamages: 54
+    maxDamages: 69
+    level: 91
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  b176dbb3-165f-49cb-a42f-e1589b9cd78e:
+    name: Jambières Mythiques
+    rarity: COMMON
+    type: DIAMOND_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.008
+    minDamages: 37
+    maxDamages: 43
+    level: 88
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  6b19a182-e00d-44f4-a08a-23d25b866f59:
+    name: Bottes Mythiques
+    rarity: COMMON
+    type: DIAMOND_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.009
+    minDamages: 32
+    maxDamages: 37
+    level: 86
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  f6385a9e-3d8c-41f5-9eed-175354372d1b:
+    name: Casque Séraphique
+    rarity: COMMON
+    type: DIAMOND_HELMET
+    rClass: VAGRANT
+    dropChance: 0.006
+    minDamages: 41
+    maxDamages: 52
+    level: 94
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  e5ace204-fa74-42f8-83c8-0a98d27ecb80:
+    name: Plastron Séraphique
+    rarity: COMMON
+    type: DIAMOND_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.001
+    minDamages: 63
+    maxDamages: 81
+    level: 100
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  c64855ae-011d-4339-9c63-55f7f41b7ffc:
+    name: Jambières Séraphiques
+    rarity: COMMON
+    type: DIAMOND_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.002
+    minDamages: 44
+    maxDamages: 56
+    level: 99
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  6cedb808-2192-4d94-9443-8623791b4967:
+    name: Bottes Séraphiques
+    rarity: COMMON
+    type: DIAMOND_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.003
+    minDamages: 41
+    maxDamages: 49
+    level: 97
+    attack: false
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  13c5f494-a782-4e12-940c-9260bb98e242:
+    name: Casque Pointe
+    rarity: SET
+    type: CHAINMAIL_HELMET
+    rClass: RANGER
+    dropChance: 0.0
+    minDamages: 5
+    maxDamages: 8
+    level: 15
+    attack: false
+    setId: 1
+    setUUID: 5f592f54-879c-478f-a602-40efa6d60423
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  b24eb74c-dbaf-4f36-a862-7778a1708e36:
+    name: Plastron Pointe
+    rarity: SET
+    type: CHAINMAIL_CHESTPLATE
+    rClass: RANGER
+    dropChance: 0.0
+    minDamages: 8
+    maxDamages: 12
+    level: 15
+    attack: false
+    setId: 1
+    setUUID: 5f592f54-879c-478f-a602-40efa6d60423
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  3794bc52-4d36-454a-8642-1add5a05a207:
+    name: Jambières Pointe
+    rarity: SET
+    type: CHAINMAIL_LEGGINGS
+    rClass: RANGER
+    dropChance: 0.0
+    minDamages: 6
+    maxDamages: 9
+    level: 15
+    attack: false
+    setId: 1
+    setUUID: 5f592f54-879c-478f-a602-40efa6d60423
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  e48bd0d6-7c2e-4bb4-9d66-bb3370d021ae:
+    name: Bottes Pointe
+    rarity: SET
+    type: CHAINMAIL_BOOTS
+    rClass: RANGER
+    dropChance: 0.0
+    minDamages: 5
+    maxDamages: 7
+    level: 15
+    attack: false
+    setId: 1
+    setUUID: 5f592f54-879c-478f-a602-40efa6d60423
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  3be8a1bd-3a53-46f9-9bd0-d24c2cb43c0d:
+    name: Casque Charge
+    rarity: SET
+    type: CHAINMAIL_HELMET
+    rClass: PALADIN
+    dropChance: 0.0
+    minDamages: 5
+    maxDamages: 9
+    level: 15
+    attack: false
+    setId: 2
+    setUUID: d15b9b87-a0b5-426a-af19-33a40fae8196
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  c5eed8be-5292-47b6-8566-5f23ea504a32:
+    name: Plastron Charge
+    rarity: SET
+    type: CHAINMAIL_CHESTPLATE
+    rClass: PALADIN
+    dropChance: 0.0
+    minDamages: 8
+    maxDamages: 13
+    level: 15
+    attack: false
+    setId: 2
+    setUUID: d15b9b87-a0b5-426a-af19-33a40fae8196
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  91219a75-c7c3-4331-aa79-0e4791a651d5:
+    name: Jambières Charge
+    rarity: SET
+    type: CHAINMAIL_LEGGINGS
+    rClass: PALADIN
+    dropChance: 0.0
+    minDamages: 6
+    maxDamages: 9
+    level: 15
+    attack: false
+    setId: 2
+    setUUID: d15b9b87-a0b5-426a-af19-33a40fae8196
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  72875192-4717-4cce-ad5a-cfa0ef1057b2:
+    name: Bottes Charge
+    rarity: SET
+    type: CHAINMAIL_BOOTS
+    rClass: PALADIN
+    dropChance: 0.0
+    minDamages: 5
+    maxDamages: 8
+    level: 15
+    attack: false
+    setId: 2
+    setUUID: d15b9b87-a0b5-426a-af19-33a40fae8196
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  1153ff32-cc30-48cc-b0c4-38305b053d25:
+    name: Casque Ombre
+    rarity: SET
+    type: CHAINMAIL_HELMET
+    rClass: ASSASSIN
+    dropChance: 0.0
+    minDamages: 5
+    maxDamages: 7
+    level: 15
+    attack: false
+    setId: 3
+    setUUID: 2f372063-fd26-4066-91b4-cf353579e32e
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  4b9298a5-d353-48d4-a20e-f3eb18a7ee4e:
+    name: Plastron Ombre
+    rarity: SET
+    type: CHAINMAIL_CHESTPLATE
+    rClass: ASSASSIN
+    dropChance: 0.0
+    minDamages: 8
+    maxDamages: 12
+    level: 15
+    attack: false
+    setId: 3
+    setUUID: 2f372063-fd26-4066-91b4-cf353579e32e
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  61974b36-8e76-4a6e-ba53-5d9527da72a9:
+    name: Jambières Ombre
+    rarity: SET
+    type: CHAINMAIL_LEGGINGS
+    rClass: ASSASSIN
+    dropChance: 0.0
+    minDamages: 7
+    maxDamages: 9
+    level: 15
+    attack: false
+    setId: 3
+    setUUID: 2f372063-fd26-4066-91b4-cf353579e32e
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  00ce111e-6b06-4a1e-a0a4-7d57e145b07d:
+    name: Bottes Ombre
+    rarity: SET
+    type: CHAINMAIL_BOOTS
+    rClass: ASSASSIN
+    dropChance: 0.0
+    minDamages: 5
+    maxDamages: 7
+    level: 15
+    attack: false
+    setId: 3
+    setUUID: 2f372063-fd26-4066-91b4-cf353579e32e
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  f8f94c7f-0076-447e-b271-e7613646d316:
+    name: Casque Poudre
+    rarity: SET
+    type: CHAINMAIL_HELMET
+    rClass: MAGE
+    dropChance: 0.0
+    minDamages: 5
+    maxDamages: 8
+    level: 15
+    attack: false
+    setId: 4
+    setUUID: 95920998-e80b-487a-a58b-7da33665a2de
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  5f6b5b92-776d-4006-8222-71b41b1dd4fd:
+    name: Plastron Poudre
+    rarity: SET
+    type: CHAINMAIL_CHESTPLATE
+    rClass: MAGE
+    dropChance: 0.0
+    minDamages: 8
+    maxDamages: 13
+    level: 15
+    attack: false
+    setId: 4
+    setUUID: 95920998-e80b-487a-a58b-7da33665a2de
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  76a27dfc-cb9e-42e1-b997-1dde3fe61e47:
+    name: Bottes Poudre
+    rarity: SET
+    type: CHAINMAIL_BOOTS
+    rClass: MAGE
+    dropChance: 0.0
+    minDamages: 4
+    maxDamages: 6
+    level: 15
+    attack: false
+    setId: 4
+    setUUID: 95920998-e80b-487a-a58b-7da33665a2de
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  d380afd2-520e-490e-9e22-072cecde7902:
+    name: Jambières Poudre
+    rarity: SET
+    type: CHAINMAIL_LEGGINGS
+    rClass: MAGE
+    dropChance: 0.0
+    minDamages: 7
+    maxDamages: 9
+    level: 15
+    attack: false
+    setId: 4
+    setUUID: 95920998-e80b-487a-a58b-7da33665a2de
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  f9611f52-d82d-4f5f-a349-881541944fb1:
+    name: Casque Energie
+    rarity: SET
+    type: IRON_HELMET
+    rClass: MAGE
+    dropChance: 0.05
+    minDamages: 21
+    maxDamages: 25
+    level: 60
+    attack: false
+    setId: 6
+    setUUID: 64a5e950-f24e-4434-8783-735aeb461bd9
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  571be378-d3aa-427f-bedf-646df882fcc2:
+    name: Casque Snipe
+    rarity: SET
+    type: IRON_HELMET
+    rClass: RANGER
+    dropChance: 0.05
+    minDamages: 20
+    maxDamages: 25
+    level: 60
+    attack: false
+    setId: 7
+    setUUID: a4561565-79a7-4aaf-973e-23bc5cba7078
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  5fed4e90-397a-4ed3-ab94-91edb082db51:
+    name: Plastron Invisible
+    rarity: SET
+    type: IRON_CHESTPLATE
+    rClass: ASSASSIN
+    dropChance: 0.05
+    minDamages: 28
+    maxDamages: 34
+    level: 60
+    attack: false
+    setId: 8
+    weaponUse: MELEE
+    setUUID: cf7672f9-c046-4aac-aab2-00de0346959b
+    attackSpeed: 0.0
+  f76719b2-0ef9-47b7-897d-155e6812a015:
+    name: Casque Invisible
+    rarity: SET
+    type: IRON_HELMET
+    rClass: ASSASSIN
+    dropChance: 0.05
+    minDamages: 21
+    maxDamages: 24
+    level: 60
+    attack: false
+    setId: 8
+    weaponUse: MELEE
+    setUUID: cf7672f9-c046-4aac-aab2-00de0346959b
+    attackSpeed: 0.0
+  f85d50b6-91e7-4bdc-8e62-f0809520a650:
+    name: Plastron Berzerk
+    rarity: SET
+    type: IRON_CHESTPLATE
+    rClass: PALADIN
+    dropChance: 0.05
+    minDamages: 30
+    maxDamages: 35
+    level: 60
+    attack: false
+    setId: 9
+    weaponUse: MELEE
+    setUUID: a58ab971-2952-4f5b-aa2f-2c783cdb8f51
+    attackSpeed: 0.0
+  c7b63a31-5503-432f-ad69-5ba24adbdbde:
+    name: Bottes Invisible
+    rarity: SET
+    type: IRON_BOOTS
+    rClass: ASSASSIN
+    dropChance: 0.05
+    minDamages: 20
+    maxDamages: 23
+    level: 60
+    attack: false
+    setId: 8
+    weaponUse: MELEE
+    setUUID: cf7672f9-c046-4aac-aab2-00de0346959b
+    attackSpeed: 0.0
+  bbec9c27-04d4-4313-acc5-8bfe6fc415dc:
+    name: Bottes Energie
+    rarity: SET
+    type: IRON_BOOTS
+    rClass: MAGE
+    dropChance: 0.05
+    minDamages: 19
+    maxDamages: 23
+    level: 60
+    attack: false
+    setId: 6
+    weaponUse: MELEE
+    setUUID: 64a5e950-f24e-4434-8783-735aeb461bd9
+    attackSpeed: 0.0
+  dcd8b1e8-3c9e-45a0-a4b4-b7dfc0ad2861:
+    name: Jambières Berzerk
+    rarity: SET
+    type: IRON_LEGGINGS
+    rClass: PALADIN
+    dropChance: 0.05
+    minDamages: 23
+    maxDamages: 26
+    level: 60
+    attack: false
+    setId: 9
+    weaponUse: MELEE
+    setUUID: a58ab971-2952-4f5b-aa2f-2c783cdb8f51
+    attackSpeed: 0.0
+  0e2bf618-42aa-4312-85b5-c82b50ddade7:
+    name: Casque Berzerk
+    rarity: SET
+    type: IRON_HELMET
+    rClass: PALADIN
+    dropChance: 0.05
+    minDamages: 22
+    maxDamages: 25
+    level: 60
+    attack: false
+    setId: 9
+    weaponUse: MELEE
+    setUUID: a58ab971-2952-4f5b-aa2f-2c783cdb8f51
+    attackSpeed: 0.0
+  fd1b0da5-e515-4ef5-8f5f-76a0cf7f325f:
+    name: Bottes Berzerk
+    rarity: SET
+    type: IRON_BOOTS
+    rClass: PALADIN
+    dropChance: 0.05
+    minDamages: 22
+    maxDamages: 25
+    level: 60
+    attack: false
+    setId: 9
+    weaponUse: MELEE
+    setUUID: a58ab971-2952-4f5b-aa2f-2c783cdb8f51
+    attackSpeed: 0.0
+  e1b861f2-e248-4c06-a70f-417fd4a03ba9:
+    name: Jambières Invisible
+    rarity: SET
+    type: IRON_LEGGINGS
+    rClass: ASSASSIN
+    dropChance: 0.05
+    minDamages: 22
+    maxDamages: 25
+    level: 60
+    attack: false
+    setId: 8
+    weaponUse: MELEE
+    setUUID: cf7672f9-c046-4aac-aab2-00de0346959b
+    attackSpeed: 0.0
+  edd9104e-9104-43c1-a117-419b05a3b5ad:
+    name: Plastron Snipe
+    rarity: SET
+    type: IRON_CHESTPLATE
+    rClass: RANGER
+    dropChance: 0.05
+    minDamages: 28
+    maxDamages: 33
+    level: 60
+    attack: false
+    setId: 7
+    weaponUse: MELEE
+    setUUID: a4561565-79a7-4aaf-973e-23bc5cba7078
+    attackSpeed: 0.0
+  8c565534-c598-420a-b606-e5917ad8a80c:
+    name: Plastron Energie
+    rarity: SET
+    type: IRON_CHESTPLATE
+    rClass: MAGE
+    dropChance: 0.05
+    minDamages: 29
+    maxDamages: 35
+    level: 60
+    attack: false
+    setId: 6
+    weaponUse: MELEE
+    setUUID: 64a5e950-f24e-4434-8783-735aeb461bd9
+    attackSpeed: 0.0
+  4db9e506-d9e0-4e98-b15a-8d4ca2d1f6cb:
+    name: Bottes Snipe
+    rarity: SET
+    type: IRON_BOOTS
+    rClass: RANGER
+    dropChance: 0.05
+    minDamages: 18
+    maxDamages: 23
+    level: 60
+    attack: false
+    setId: 7
+    weaponUse: MELEE
+    setUUID: a4561565-79a7-4aaf-973e-23bc5cba7078
+    attackSpeed: 0.0
+  47990b20-77fb-4e05-8ec3-7c6ef76dc6ab:
+    name: Jambières Snipe
+    rarity: SET
+    type: IRON_LEGGINGS
+    rClass: RANGER
+    dropChance: 0.05
+    minDamages: 21
+    maxDamages: 25
+    level: 60
+    attack: false
+    setId: 7
+    weaponUse: MELEE
+    setUUID: a4561565-79a7-4aaf-973e-23bc5cba7078
+    attackSpeed: 0.0
+  f1db6d26-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Jambières Energie
+    rarity: SET
+    type: IRON_LEGGINGS
+    rClass: MAGE
+    dropChance: 0.05
+    minDamages: 22
+    maxDamages: 26
+    level: 60
+    attack: false
+    setId: 6
+    setUUID: 64a5e950-f24e-4434-8783-735aeb461bd9
+    weaponUse: MELEE
+    attackSpeed: 0.0
+  d86e4rct-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier en bois
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.055
+    minDamages: 1
+    maxDamages: 4
+    level: 3
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  d693q2ze-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Rond
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.05
+    minDamages: 4
+    maxDamages: 8
+    level: 6
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  96emq1vq-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Sauvage
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.045
+    minDamages: 7
+    maxDamages: 11
+    level: 10
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  x96z1amd-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Meropos
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.04
+    minDamages: 12
+    maxDamages: 18
+    level: 16
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  d56t23bc-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Aether
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.035
+    minDamages: 15
+    maxDamages: 21
+    level: 21
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  d56r1tcc-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Mistral
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.03
+    minDamages: 18
+    maxDamages: 23
+    level: 27
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  s56q32ze-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Naragon
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.025
+    minDamages: 20
+    maxDamages: 26
+    level: 33
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  8u96pmj1-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Vortex
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.02
+    minDamages: 25
+    maxDamages: 32
+    level: 40
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  c23x1bm8-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Image
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.018
+    minDamages: 27
+    maxDamages: 32
+    level: 42
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  d56q3s2f-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Brise
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.015
+    minDamages: 31
+    maxDamages: 36
+    level: 47
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  d45gm1c22-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Amour
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.011
+    minDamages: 33
+    maxDamages: 37
+    level: 51
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  a45qdm1y-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Triangle
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.008
+    minDamages: 36
+    maxDamages: 40
+    level: 56
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  d56r2t3c-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Miroir
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.006
+    minDamages: 39
+    maxDamages: 45
+    level: 63
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  s1d3ed26-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Envers
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.003
+    minDamages: 43
+    maxDamages: 49
+    level: 69
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  a1cx6d26-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Scintillant
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.001
+    minDamages: 47
+    maxDamages: 53
+    level: 74
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  t89u6d26-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Ambidextre
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.001
+    minDamages: 51
+    maxDamages: 61
+    level: 81
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  z56h6d26-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Hyppos
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.001
+    minDamages: 54
+    maxDamages: 67
+    level: 87
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  e5gf6d26-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Krohlm
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.001
+    minDamages: 59
+    maxDamages: 78
+    level: 93
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  d5hk6d26-281a-41d0-9a62-a7d2e1e19ffa:
+    name: Bouclier Ancestral
+    rarity: COMMON
+    type: SHIELD
+    rClass: VAGRANT
+    dropChance: 0.001
+    minDamages: 65
+    maxDamages: 87
+    level: 100
+    setId: -1
+    weaponUse: MELEE
+    attack: false
+    setUUID: '0000'
+    attackSpeed: 0.0
+  de4b2d05-a99f-447f-a3bb-e9b1959e1ba1:
+    name: Lames du Démon
+    rarity: LEGENDARY
+    type: SHEARS
+    rClass: VAGRANT
+    dropChance: 0.35
+    minDamages: 95
+    maxDamages: 108
+    level: 110
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.4
+    itemDamage: 0.0
+  e86be4d2-8c5e-4d9f-9c59-6aa2b3ad6e17:
+    name: Pelle Angélique
+    rarity: EPIC
+    type: WOODEN_SHOVEL
+    rClass: VAGRANT
+    dropChance: 0.1
+    minDamages: 70
+    maxDamages: 81
+    level: 95
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.1
+    itemDamage: 0.0
+  dadeab46-7b9b-4955-9477-6c6dd0cbf34b:
+    name: Grappin Céleste
+    rarity: RARE
+    type: FISHING_ROD
+    rClass: VAGRANT
+    dropChance: 0.15
+    minDamages: 67
+    maxDamages: 78
+    level: 80
+    attack: true
+    setUUID: '0000'
+    weaponUse: RANGE
+    attackSpeed: 0.65
+  82c86269-722f-45b9-be6f-00b4f729225b:
+    name: Branche de sapin
+    rarity: LEGENDARY
+    type: STICK
+    rClass: VAGRANT
+    dropChance: 0.6
+    minDamages: 3
+    maxDamages: 8
+    level: 4
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.0
+  e848f5e8-62d6-46d1-8f6d-4649f8572c8a:
+    name: Bâton Brillant
+    rarity: EPIC
+    type: BLAZE_ROD
+    rClass: VAGRANT
+    dropChance: 0.45
+    minDamages: 16
+    maxDamages: 22
+    level: 21
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.15
+  14fd02e7-3f3b-4bfe-8e08-90b519a10e5c:
+    name: Hache Persil
+    rarity: EPIC
+    type: GOLDEN_AXE
+    rClass: PALADIN
+    dropChance: 0.8
+    minDamages: 29
+    maxDamages: 37
+    level: 27
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.62
+    itemDamage: 0.0
+  78a86bb7-e9d2-4826-844d-a444e0c1e3ed:
+    name: Doloire Magnus
+    rarity: EPIC
+    type: GOLDEN_AXE
+    rClass: PALADIN
+    dropChance: 0.2
+    minDamages: 61
+    maxDamages: 105
+    level: 71
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.06
+    itemDamage: 0.0
+  4cd56b86-28ca-4024-a696-c8068050999f:
+    name: Hache Iparmentier
+    rarity: RARE
+    type: GOLDEN_AXE
+    rClass: PALADIN
+    dropChance: 0.75
+    minDamages: 37
+    maxDamages: 45
+    level: 48
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.83
+    itemDamage: 0.0
+  a2eac1ff-64f8-4156-9a89-992081551b8d:
+    name: Arc Profond
+    rarity: EPIC
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.0
+    minDamages: 27
+    maxDamages: 28
+    level: 28
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 0.8200000000000001
+    itemDamage: 0.35
+  0f37a291-da1a-4d57-aeb6-53c5ceeff47d:
+    name: Arc Achon
+    rarity: RARE
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.75
+    minDamages: 43
+    maxDamages: 45
+    level: 51
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.165
+    itemDamage: 0.55
+  1c655af0-3667-4be8-a87a-999b1d896a6b:
+    name: Arc Poli
+    rarity: EPIC
+    type: BOW
+    rClass: RANGER
+    dropChance: 0.2
+    minDamages: 57
+    maxDamages: 60
+    level: 72
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE_RANGE
+    attackSpeed: 1.48
+    itemDamage: 0.825
+  8669a8e9-763c-4cff-9124-8b29d79530de:
+    name: Bâton Droit
+    rarity: EPIC
+    type: GOLDEN_HOE
+    rClass: MAGE
+    dropChance: 0.8
+    minDamages: 18
+    maxDamages: 21
+    level: 25
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 0.7875000000000001
+    itemDamage: 0.0
+  af55391d-ae0f-420f-ae4e-8cf96cb01cea:
+    name: Bâton Tontata
+    rarity: RARE
+    type: GOLDEN_HOE
+    rClass: MAGE
+    dropChance: 0.75
+    minDamages: 34
+    maxDamages: 38
+    level: 50
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.025
+    itemDamage: 0.0
+  8ca422f4-e761-420f-b0b4-0b5d45df79c3:
+    name: Épée Courbe
+    rarity: EPIC
+    type: GOLDEN_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.8
+    minDamages: 21
+    maxDamages: 24
+    level: 27
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.9239999999999999
+    itemDamage: 0.0
+  141113c4-2076-4059-b87b-cd16df763ee1:
+    name: Épée Nalty
+    rarity: RARE
+    type: GOLDEN_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.75
+    minDamages: 37
+    maxDamages: 43
+    level: 52
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.224
+    itemDamage: 0.0
+  4c954f0e-aa00-4723-8085-01ec9ed8d079:
+    name: Sceptre Trelm
+    rarity: EPIC
+    type: GOLDEN_HOE
+    rClass: MAGE
+    dropChance: 0.2
+    minDamages: 47
+    maxDamages: 50
+    level: 73
+    attack: true
+    setUUID: '0000'
+    weaponUse: MAGIC
+    attackSpeed: 1.2435
+    itemDamage: 0.0
+  5cdd3c04-1e90-404c-997a-789ac5df7f7e:
+    name: Épée Monstre
+    rarity: EPIC
+    type: GOLDEN_SWORD
+    rClass: ASSASSIN
+    dropChance: 0.2
+    minDamages: 51
+    maxDamages: 56
+    level: 73
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 1.476
+    itemDamage: 0.0
+  1642afe4-8970-4484-8eba-7d1d3bb2ddb0:
+    name: Os Imetière
+    rarity: LEGENDARY
+    type: BONE
+    rClass: VAGRANT
+    dropChance: 0.0
+    minDamages: 27
+    maxDamages: 35
+    level: 28
+    attack: true
+    setUUID: '0000'
+    weaponUse: MELEE
+    attackSpeed: 0.7
+  a118674b-1156-4519-9389-9e62825b3ef1:
+    name: Casque de Garde
+    rarity: SET
+    type: GOLDEN_HELMET
+    rClass: VAGRANT
+    dropChance: 0.0
+    minDamages: 8
+    maxDamages: 13
+    level: 1
+    attack: false
+    setUUID: 606764bc-fb54-4395-836e-e6e38f3a52e4
+    weaponUse: MELEE
+    attackSpeed: 1.2
+  8b10ab88-2f8f-4bd6-b974-fcffe518c1b8:
+    name: Plastron de Garde
+    rarity: SET
+    type: GOLDEN_CHESTPLATE
+    rClass: VAGRANT
+    dropChance: 0.0
+    minDamages: 13
+    maxDamages: 16
+    level: 1
+    attack: false
+    setUUID: 606764bc-fb54-4395-836e-e6e38f3a52e4
+    weaponUse: MELEE
+    attackSpeed: 1.2
+  981504db-8d52-451d-84e3-b14f428cc125:
+    name: Jambières de Garde
+    rarity: SET
+    type: GOLDEN_LEGGINGS
+    rClass: VAGRANT
+    dropChance: 0.0
+    minDamages: 9
+    maxDamages: 12
+    level: 1
+    attack: false
+    setUUID: 606764bc-fb54-4395-836e-e6e38f3a52e4
+    weaponUse: MELEE
+    attackSpeed: 1.2
+  6561bae8-3c7f-43c7-ad53-e2b4bd1bce07:
+    name: Bottes de Garde
+    rarity: SET
+    type: GOLDEN_BOOTS
+    rClass: VAGRANT
+    dropChance: 0.0
+    minDamages: 8
+    maxDamages: 11
+    level: 1
+    attack: false
+    setUUID: 606764bc-fb54-4395-836e-e6e38f3a52e4
+    weaponUse: MELEE
+    attackSpeed: 1.2
+sets:
+  5f592f54-879c-478f-a602-40efa6d60423:
+    name: Pointe
+    weaponsUUIDs:
+    - 13c5f494-a782-4e12-940c-9260bb98e242
+    - b24eb74c-dbaf-4f36-a862-7778a1708e36
+    - 3794bc52-4d36-454a-8642-1add5a05a207
+    - e48bd0d6-7c2e-4bb4-9d66-bb3370d021ae
+    buffs:
+      '0':
+        type: RANGED_DAMAGE
+        level: 15
+      '1':
+        type: DEFENSE
+        level: 5
+      '2':
+        type: WALK_SPEED
+        level: 5
+      '3':
+        type: ABILITY_DAMAGE
+        level: 10
+  d15b9b87-a0b5-426a-af19-33a40fae8196:
+    name: Charge
+    weaponsUUIDs:
+    - 3be8a1bd-3a53-46f9-9bd0-d24c2cb43c0d
+    - c5eed8be-5292-47b6-8566-5f23ea504a32
+    - 91219a75-c7c3-4331-aa79-0e4791a651d5
+    - 72875192-4717-4cce-ad5a-cfa0ef1057b2
+    buffs:
+      '0':
+        type: MELEE_DAMAGE
+        level: 10
+      '1':
+        type: DEFENSE
+        level: 10
+      '2':
+        type: WALK_SPEED
+        level: 5
+      '3':
+        type: ABILITY_DAMAGE
+        level: 10
+  2f372063-fd26-4066-91b4-cf353579e32e:
+    name: Ombre
+    weaponsUUIDs:
+    - 1153ff32-cc30-48cc-b0c4-38305b053d25
+    - 4b9298a5-d353-48d4-a20e-f3eb18a7ee4e
+    - 61974b36-8e76-4a6e-ba53-5d9527da72a9
+    - 00ce111e-6b06-4a1e-a0a4-7d57e145b07d
+    buffs:
+      '0':
+        type: MELEE_DAMAGE
+        level: 15
+      '1':
+        type: DEFENSE
+        level: 5
+      '2':
+        type: WALK_SPEED
+        level: 10
+      '3':
+        type: ABILITY_DAMAGE
+        level: 5
+  95920998-e80b-487a-a58b-7da33665a2de:
+    name: Poudre
+    weaponsUUIDs:
+    - f8f94c7f-0076-447e-b271-e7613646d316
+    - 5f6b5b92-776d-4006-8222-71b41b1dd4fd
+    - d380afd2-520e-490e-9e22-072cecde7902
+    - 76a27dfc-cb9e-42e1-b997-1dde3fe61e47
+    buffs:
+      '0':
+        type: RANGED_DAMAGE
+        level: 10
+      '1':
+        type: DEFENSE
+        level: 5
+      '2':
+        type: WALK_SPEED
+        level: 5
+      '3':
+        type: ABILITY_DAMAGE
+        level: 15
+  64a5e950-f24e-4434-8783-735aeb461bd9:
+    buffs:
+      '0':
+        type: RANGED_DAMAGE
+        level: 5
+      '1':
+        type: WALK_SPEED
+        level: 10
+      '2':
+        type: MAX_ENERGY
+        level: 10
+      '3':
+        type: ENERGY_REGEN
+        level: 5
+      '4':
+        type: MAX_HEALTH
+        level: 5
+    name: Energie
+    weaponsUUIDs:
+    - f9611f52-d82d-4f5f-a349-881541944fb1
+    - bbec9c27-04d4-4313-acc5-8bfe6fc415dc
+    - 8c565534-c598-420a-b606-e5917ad8a80c
+    - f1db6d26-281a-41d0-9a62-a7d2e1e19ffa
+  a4561565-79a7-4aaf-973e-23bc5cba7078:
+    buffs:
+      '0':
+        type: DEFENSE
+        level: 10
+      '1':
+        type: MAX_HEALTH
+        level: 10
+      '2':
+        type: LIFT_COST
+        level: 5
+      '3':
+        type: MAX_ENERGY
+        level: 5
+      '4':
+        type: ABILITY_DAMAGE
+        level: 10
+    name: Snipe
+    weaponsUUIDs:
+    - 571be378-d3aa-427f-bedf-646df882fcc2
+    - edd9104e-9104-43c1-a117-419b05a3b5ad
+    - 4db9e506-d9e0-4e98-b15a-8d4ca2d1f6cb
+    - 47990b20-77fb-4e05-8ec3-7c6ef76dc6ab
+  cf7672f9-c046-4aac-aab2-00de0346959b:
+    name: Invisible
+    weaponsUUIDs:
+    - f76719b2-0ef9-47b7-897d-155e6812a015
+    - 5fed4e90-397a-4ed3-ab94-91edb082db51
+    - e1b861f2-e248-4c06-a70f-417fd4a03ba9
+    - c7b63a31-5503-432f-ad69-5ba24adbdbde
+    buffs:
+      '0':
+        type: DEFENSE
+        level: 10
+      '1':
+        type: MAX_HEALTH
+        level: 5
+      '2':
+        type: ENERGY_REGEN
+        level: 5
+      '3':
+        type: LIFT_COST
+        level: 10
+      '4':
+        type: ABILITY_DAMAGE
+        level: 5
+  a58ab971-2952-4f5b-aa2f-2c783cdb8f51:
+    name: Berzerk
+    weaponsUUIDs:
+    - f85d50b6-91e7-4bdc-8e62-f0809520a650
+    - dcd8b1e8-3c9e-45a0-a4b4-b7dfc0ad2861
+    - 0e2bf618-42aa-4312-85b5-c82b50ddade7
+    - fd1b0da5-e515-4ef5-8f5f-76a0cf7f325f
+    buffs:
+      '0':
+        type: DEFENSE
+        level: 5
+      '1':
+        type: WALK_SPEED
+        level: 10
+      '2':
+        type: MAX_HEALTH
+        level: 5
+      '3':
+        type: LIFT_COST
+        level: 5
+      '4':
+        type: ENERGY_REGEN
+        level: 15
+  606764bc-fb54-4395-836e-e6e38f3a52e4:
+    name: de Garde
+    weaponsUUIDs:
+    - a118674b-1156-4519-9389-9e62825b3ef1
+    - 981504db-8d52-451d-84e3-b14f428cc125
+    - 6561bae8-3c7f-43c7-ad53-e2b4bd1bce07
+    - 8b10ab88-2f8f-4bd6-b974-fcffe518c1b8
+    buffs:
+      '0':
+        type: DEFENSE
+        level: 20
+      '5':
+        type: WALK_SPEED
+        level: -15
+      '6':
+        type: ATTACK_SPEED
+        level: -10
+      '3':
+        type: MAX_HEALTH
+        level: 10

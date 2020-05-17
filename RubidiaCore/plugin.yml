@@ -1,0 +1,129 @@
+name: RubidiaCore
+author: Rubilmax
+website: http://r.milon.pro
+version: 2.0.1
+api-version: 1.15
+description: The Core plugin of Rubidia.
+main: me.pmilon.RubidiaCore.Core
+softdepend: [ProtocolLib, WorldGuard, WorldEdit, RubidiaPets, RubidiaGuilds, RubidiaQuests, RubidiaMonsters]
+commands:
+  skilltree:
+    description: Opens your Skill Tree.
+    aliases: [skt, skills, skill]
+  class:
+    description: Choose your class.
+  spawn:
+    description: Teleports you to spawn.
+  playmode:
+    description: Toggles your gamemode Player/Admin.
+    aliases: pm
+  topsign:
+    description: Create a Top Sign.
+  money:
+    description: Shows you account amount.
+    aliases: m
+  vip:
+    description: Sets a player VIP.
+  level:
+    description: Level manipulations.
+  pnj:
+    description: Creates a PNJ
+  setcity:
+    description: Set a City name and Location.
+  city:
+    description: Teleports you to a city.
+  scroll:
+    description: Gives you a Scroll.
+  howmanyplayers:
+    description: Counts how many player are registered on this server.
+    aliases: hmp
+  maintenance:
+    description: Enters in maintenance mode.
+  events:
+    description: Open Event Starting GUI.
+  tp:
+    description: Teleports you safely to the target.
+  prefs:
+    description: Open your settings
+  shop:
+    description: Opens your shop
+  help:
+    description: Ask help
+  beer:
+    description: Drink it!
+  shout:
+    description: Shouts a message to all players online.
+    aliases: s
+  whisper:
+    description: Whispers a message to a player online.
+    aliases: w
+  vanish:
+    description: vanishes you
+    aliases: v
+  answer:
+    description: Answer quickly to your last whisperer.
+    aliases: r
+  skp:
+    description: Give skillpoints to player.
+  skd:
+    description: Give distinction points to player.
+  tutorial:
+    description: Teleports you to tutorial.
+    aliases: tuto
+  vote:
+    description: Start a vote.
+    aliases: vt
+  nremove:
+    description: Removes the next entity damaged.
+  load:
+    description: Reload configs
+  weapons:
+    description: Opens weapons menu
+    aliases: wps
+  character:
+    description: Opens your character menu
+    aliases: crc
+  rankings:
+    description: Options for rankings
+    aliases: rk
+  mute:
+    description: Mutes a player
+    aliases: mt
+  invsee:
+    description: See a player inventory.
+  bienvenue:
+    description: Welcome a player
+    aliases: b
+  play:
+    description: Open your character selection menu
+  top:
+    description: Get informations about running server
+  item:
+    description: Modify item
+  glitch:
+    description: Gets you out of a place and teleports you to spawn.
+  statistics:
+    description: Get statistics about the server.
+    aliases: stats
+  reboot:
+    description: Restart server.
+  rubis:
+    description: Gives rubis to player.
+  profile:
+    description: Open your profile menu.
+    aliases: prof
+  boosters:
+    description: Open your boosters menu.
+    aliases: bst
+  marry:
+    description: Marry to another player.
+  couple:
+    description: Open your couple menu.
+    aliases: x
+  chat:
+    description: Change settings of your chat.
+  rplayers:
+    description: Get a list of every players.
+    aliases: rps
+  reset:
+    description: Reset Rubidia data.

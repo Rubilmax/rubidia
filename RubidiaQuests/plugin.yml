@@ -1,0 +1,33 @@
+name: RubidiaQuests
+author: Rubilmax
+version: 2.0.6
+api-version: 1.13
+description: The Quests plugin of Rubidias server.
+main: me.pmilon.RubidiaQuests.QuestsPlugin
+loadbefore: [RubidiaCore]
+softdepend: [Multiverse-Core, WorldGuard]
+commands:
+  pnj:
+    description: create a pnj
+  pnjtp:
+    description: teleports to a pnj
+  pnjclear:
+    description: clears pnjs
+  quest:
+    description: nothing
+  quests:
+    description: See your active quests
+    aliases: q
+  questitem:
+    description: Transform an item into a quest item
+    aliases: qitem
+  shop:
+    description: Open your shop and sell items!
+    aliases: shp
+  pass:
+    description: Accept a passer's request.
+  house:
+    description: Buy a house.
+  qproblems:
+    description: See a list of all quest problems.
+    aliases: qp

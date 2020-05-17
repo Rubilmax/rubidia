@@ -1,0 +1,7 @@
+name: RubidiaMusics
+author: pmilon
+version: 2.0
+api-version: 1.13
+description: The music manager plugin of Rubidias server.
+main: me.pmilon.RubidiaMusics.MusicsPlugin
+depend: [WorldGuard, RubidiaWG, RubidiaCore]

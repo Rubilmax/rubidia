@@ -1,0 +1,11 @@
+name: RubidiaRandomChests
+author: Rubilmax
+version: 2.0
+api-version: 1.13
+description: The Random Chests plugin of Rubidias server.
+main: me.pmilon.RubidiaRandomChests.RandomChestsPlugin
+softdepend: [RubidiaCore]
+commands:
+  chest:
+    description: Give a lucky chest to a player.
+    aliases: ct

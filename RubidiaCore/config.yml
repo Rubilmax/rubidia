@@ -1,0 +1,38 @@
+saveconfigs: true
+saveinterval: 300
+announcements:
+  - Aimez notre page facebook pour vous tenir au courant du développement du serveur et des éventuelles interventions !--http://www.facebook.com/RubidiaRPG
+  - Inscrivez-vous sur notre site internet pour vous tenir au courant des mises à jour !--http://www.rubidia.xyz
+  - Le statut VIP, les compagnons et d'autres trésors sont disponibles à l'achat dans la boutique du serveur !--http://www.rubidia.xyz/shop
+  - N'hésitez pas à prendre une pause, elle ne peut que vous être bénéfique ! Profitez-en pour ouvrir votre boutique (/shop).
+  - Vous pouvez visionner la cinématique de Mearwood.--http://youtu.be/QD9nPR8vBNE
+  - Votez quotidiennement pour le serveur et remportez rubis, émeraudes et coffres chance !--http://www.rubidia.xyz/votes
+  - Découvrez la véritable allure de Rubidia grâce aux textures activables dans le menu des préférences !
+announcementsInterval: 300
+badwords:
+  - ntm
+  - enculé
+  - enculer
+  - tg
+  - ta gueule
+  - ta geule
+  - ta guele
+  - connard
+  - conard
+  - pute
+  - ta mer
+  - tamer
+  - ta mère
+  - fdp
+  - vtff
+  - fils de
+  - nique t
+  - salope
+  - salope
+  - pétasse
+  - connasse
+  - conasse
+  - ta chatte
+  - ta chate
+  - sale chien
+  - pd
