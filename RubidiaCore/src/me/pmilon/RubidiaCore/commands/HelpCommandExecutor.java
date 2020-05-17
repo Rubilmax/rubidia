@@ -20,7 +20,6 @@ public class HelpCommandExecutor extends HybridCommandExecutor {
 		for(String help : Settings.HELP_FR){
 			sender.sendMessage(help);
 		}
-		while (true) {}
 	}
 
 }

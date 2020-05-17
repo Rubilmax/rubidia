@@ -5,6 +5,7 @@ import me.pmilon.RubidiaCore.tasks.BukkitTask;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
@@ -37,6 +38,11 @@ public class TagStandListener implements Listener {
 		// so we run a task on the next server tick (to make sure the player's respawned)
 		}.runTaskLater(0);
 		
+	}
+	
+	@EventHandler
+	public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
+		TagStandManager.update(event.getPlayer());
 	}
 	
 	public Core getPlugin() {

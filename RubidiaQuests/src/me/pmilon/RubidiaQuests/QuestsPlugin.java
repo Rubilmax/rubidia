@@ -7,7 +7,6 @@ import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaCore.utils.Sounds;
 import me.pmilon.RubidiaQuests.commands.HouseCommandExecutor;
-import me.pmilon.RubidiaQuests.commands.PNJClearCommandExecutor;
 import me.pmilon.RubidiaQuests.commands.PNJCommandExecutor;
 import me.pmilon.RubidiaQuests.commands.PNJTPCommandExecutor;
 import me.pmilon.RubidiaQuests.commands.PassCommandExecutor;
@@ -74,7 +73,6 @@ public class QuestsPlugin extends JavaPlugin {
 		
 		this.getCommand("pnj").setExecutor(new PNJCommandExecutor());
 		this.getCommand("pnjtp").setExecutor(new PNJTPCommandExecutor());
-		this.getCommand("pnjclear").setExecutor(new PNJClearCommandExecutor());
 		this.getCommand("quest").setExecutor(new QuestCommandExecutor());
 		this.getCommand("quests").setExecutor(new QuestsCommandExecutor());
 		this.getCommand("questitem").setExecutor(new QuestItemCommandExecutor());

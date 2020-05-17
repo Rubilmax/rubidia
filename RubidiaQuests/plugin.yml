@@ -11,8 +11,6 @@ commands:
     description: create a pnj
   pnjtp:
     description: teleports to a pnj
-  pnjclear:
-    description: clears pnjs
   quest:
     description: nothing
   quests:
