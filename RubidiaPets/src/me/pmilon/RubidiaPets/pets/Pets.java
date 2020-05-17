@@ -30,6 +30,14 @@ public class Pets {
 					Pearl perl = Pearl.fromString(pearl);
 					if(perl != null)pearls.add(perl);
 				}
+				
+				String catTypeName = Configs.getPetsConfig().getString("pets." + uuid + ".cat.type");
+				Cat.Type catType = Cat.Type.ALL_BLACK;
+				try {
+					catType = Cat.Type.valueOf(catTypeName);
+				} catch (Exception ex) {
+				}
+				
 				Pet pet = new Pet(uuid,
 						Configs.getPetsConfig().getString("pets." + uuid + ".name"),
 						Configs.getPetsConfig().getInt("pets." + uuid + ".level"),
@@ -49,7 +57,7 @@ public class Pets {
 						Configs.getPetsConfig().getInt("pets." + uuid + ".horse.domestication"),
 						(ItemStack) Configs.getPetsConfig().get("pets." + uuid + ".horse.armor"),
 						Rabbit.Type.valueOf(Configs.getPetsConfig().getString("pets." + uuid + ".rabbit.type")),
-						Cat.Type.valueOf(Configs.getPetsConfig().getString("pets." + uuid + ".cat.type")),
+						catType,
 						Configs.getPetsConfig().contains("pets." + uuid + ".parrot.type") ? Parrot.Variant.valueOf(Configs.getPetsConfig().getString("pets." + uuid + ".parrot.type")) : Parrot.Variant.BLUE);
 				pets.add(pet);
 				if(pet.getType() == null || pet.getType().getEntityClass() == null || !Creature.class.isAssignableFrom(pet.getType().getEntityClass())){
