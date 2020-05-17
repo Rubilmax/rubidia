@@ -2,7 +2,9 @@ package me.pmilon.RubidiaCore.packets;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -50,16 +52,6 @@ public abstract class AbstractPacket {
 	}
 	
 	/**
-	 * Send the current packet to surrounding receivers.
-	 * @param radius - the radius to send to packet to.
-	 * @throws RuntimeException If the packet cannot be sent.
-	 */
-	public void sendPacket(Player receiver, double radius) {
-		this.sendPacket(receiver.getNearbyEntities(radius, radius, radius));
-		this.sendPacket(receiver);
-	}
-	
-	/**
 	 * Send the current packet to receivers.
 	 * @param receivers - the packet receivers.
 	 * @throws RuntimeException If the packet cannot be sent.
@@ -70,6 +62,22 @@ public abstract class AbstractPacket {
 				this.sendPacket((Player) receiver);
 			}
 		}
+	}
+
+	/**
+	 * Send the current packet to everyone.
+	 * @throws RuntimeException If the packet cannot be sent.
+	 */
+	public void sendPacket(Location location) {
+		this.sendPacket(location.getWorld().getPlayers());
+	}
+
+	/**
+	 * Send the current packet to everyone.
+	 * @throws RuntimeException If the packet cannot be sent.
+	 */
+	public void sendPacket(Location location, double radius) {
+		this.sendPacket(location.getWorld().getPlayers().stream().filter((Player player) -> player.getLocation().distanceSquared(location) <= radius * radius).collect(Collectors.toList()));
 	}
 
 	/**

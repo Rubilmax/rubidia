@@ -42,7 +42,20 @@ public class TagStandListener implements Listener {
 	
 	@EventHandler
 	public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
-		TagStandManager.update(event.getPlayer());
+		new BukkitTask(Core.instance) {
+
+			@Override
+			public void run() {
+				TagStandManager.update(event.getPlayer());
+			}
+
+			@Override
+			public void onCancel() {
+			}
+		
+		// PlayerRespawnEvent is triggered just before player's respawn
+		// so we run a task on the next server tick (to make sure the player's respawned)
+		}.runTaskLater(0);
 	}
 	
 	public Core getPlugin() {

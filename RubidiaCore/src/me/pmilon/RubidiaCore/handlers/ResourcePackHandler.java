@@ -18,7 +18,7 @@ public class ResourcePackHandler implements Listener {
 		final Player player = event.getPlayer();
 		Status status = event.getStatus();
 		if(!player.isOp()){
-			if(status.equals(Status.FAILED_DOWNLOAD)){
+			/*if(status.equals(Status.FAILED_DOWNLOAD)){
 				new BukkitTask(Core.instance){
 
 					@Override
@@ -44,7 +44,7 @@ public class ResourcePackHandler implements Listener {
 					}
 					
 				}.runTaskLater(0);
-			}
+			}*/
 		}
 	}
 }

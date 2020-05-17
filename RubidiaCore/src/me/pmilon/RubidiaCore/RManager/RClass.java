@@ -5,7 +5,7 @@ import org.bukkit.Material;
 
 public enum RClass {
 	
-	VAGRANT(Material.WOODEN_SHOVEL, "Vagabond", "", "§7"),
+	VAGRANT(Material.WOODEN_SHOVEL, "Vagabond", "§7", "§7"),
 	PALADIN(Material.DIAMOND_CHESTPLATE, "Paladin", "§2", "§a"),
 	RANGER(Material.ARROW, "Ranger", "§9", "§b"),
 	MAGE(Material.STICK, "Mage", "§6", "§e"),

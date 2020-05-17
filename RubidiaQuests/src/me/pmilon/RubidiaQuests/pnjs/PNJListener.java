@@ -367,12 +367,18 @@ public class PNJListener implements Listener {
 
 	@EventHandler
 	private void onBlockBreak(BlockBreakEvent event){
+		Player player = event.getPlayer();
+		if (player != null) {
+			RPlayer rp = RPlayer.get(player);
+			if (rp.isOp()) return;
+		}
+
 		Block block = event.getBlock();
-		for(Entity entity : LocationUtils.getNearbyEntities(block.getLocation(), 3)){
+		for(Entity entity : LocationUtils.getNearbyEntities(block.getLocation(), 2.5)){
 			if(entity instanceof Villager){
 				if(PNJManager.isPNJ((Villager) entity)){
 					event.setCancelled(true);
-					break;
+					return;
 				}
 			}
 		}
@@ -380,6 +386,12 @@ public class PNJListener implements Listener {
 	
 	@EventHandler
 	private void onBlockPlace(BlockPlaceEvent event){
+		Player player = event.getPlayer();
+		if (player != null) {
+			RPlayer rp = RPlayer.get(player);
+			if (rp.isOp()) return;
+		}
+		
 		Block block = event.getBlock();
 		for(Entity entity : LocationUtils.getNearbyEntities(block.getLocation(), 3)){
 			if(entity instanceof Villager){

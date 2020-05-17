@@ -54,9 +54,11 @@ public class TagStand {
 	}
 	
 	public void show(Player player) {
-		for (int i = 0;i < this.displays.length;i++) {
-			FakeArmorStand stand = this.displays[i];
-			stand.spawn(getLocation(i), player);
+		if (this.getHolder().getLocation().getWorld().equals(player.getWorld())) {
+			for (int i = 0;i < this.displays.length;i++) {
+				FakeArmorStand stand = this.displays[i];
+				stand.spawn(getLocation(i), player);
+			}
 		}
 	}
 	public void hide(Player player) {

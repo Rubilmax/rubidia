@@ -58,7 +58,7 @@ public class FakeArmorStand {
 		return packet;
 	}
 	public FakeArmorStand move(Vector dp, Player receiver) {
-		this.getMovePacket(dp).sendPacket(receiver);
+		this.getMovePacket(dp).sendPacket(receiver.getLocation(), 64);
 		return this;
 	}
 	public FakeArmorStand move(Vector dp) {
@@ -80,11 +80,11 @@ public class FakeArmorStand {
 		return packet;
 	}
 	public FakeArmorStand teleport(Location location, Player receiver) {
-		this.getTeleportPacket(location).sendPacket(receiver);
+		this.getTeleportPacket(location).sendPacket(receiver.getLocation(), 64);
 		return this;
 	}
 	public FakeArmorStand teleport(Location location) {
-		this.getTeleportPacket(location).sendPacket();
+		this.getTeleportPacket(location).sendPacket(location, 64);
 		return this;
 	}
 
