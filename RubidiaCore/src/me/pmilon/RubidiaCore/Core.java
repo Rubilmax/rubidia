@@ -1933,7 +1933,7 @@ public class Core extends JavaPlugin implements Listener {
 			team.unregister();
 		}
 		
-		for (BukkitTask task : BukkitTask.tasks.values()) {
+		for (BukkitTask task : new ArrayList<BukkitTask>(BukkitTask.tasks.values())) {
 			task.cancel();
 		}
 

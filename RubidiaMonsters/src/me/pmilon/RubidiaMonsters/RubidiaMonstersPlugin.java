@@ -17,6 +17,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Entity;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RubidiaMonstersPlugin extends JavaPlugin {
@@ -91,7 +92,8 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 	
 	public void onDisable(){
 		for(UUID uniqueId : Monsters.entities.keySet()){
-			Bukkit.getEntity(uniqueId).remove();
+			Entity entity = Bukkit.getEntity(uniqueId);
+			if (entity != null) entity.remove();
 		}
 	}
 	
