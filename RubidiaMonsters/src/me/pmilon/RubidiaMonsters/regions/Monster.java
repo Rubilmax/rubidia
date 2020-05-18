@@ -124,14 +124,16 @@ public class Monster {
 	}
 	
 	public void spawnInRegion(Location location){
-		MonsterSpawnEvent event = new MonsterSpawnEvent(this, location);
-		Bukkit.getPluginManager().callEvent(event);
-		if(!event.isCancelled()){
-			Region region = Regions.get(event.getLocation());
+		Region region = Regions.get(location);
+		if (region != null) {
 			boolean enraged = RubidiaMonstersPlugin.random.nextInt(1000) < region.getRageProbability()*1000;
-			final Monster monster = event.getMonster().spawn(event.getLocation(), region.getBaseLevel(event.getLocation()), enraged);
-			monster.setRegisteredRegion(region);
-			monster.getRegisteredRegion().entities.add(monster);
+			MonsterSpawnEvent event = new MonsterSpawnEvent(this, region, location, enraged);
+			Bukkit.getPluginManager().callEvent(event);
+			if(!event.isCancelled()){
+				Monster monster = event.getMonster().spawn(event.getLocation(), region.getBaseLevel(event.getLocation()), event.isEnraged());
+				monster.setRegisteredRegion(event.getRegion());
+				event.getRegion().entities.add(monster);
+			}
 		}
 	}
 

@@ -1960,7 +1960,7 @@ public class Core extends JavaPlugin implements Listener {
 
 		for (World world : Bukkit.getWorlds()) {
 			for (Entity entity : world.getEntities()) {
-				if (entity instanceof LivingEntity && !(entity instanceof ArmorStand)) {
+				if (entity instanceof LivingEntity && !(entity instanceof ArmorStand) && !(entity instanceof Player)) {
 					entity.remove();
 				}
 			}

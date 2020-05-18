@@ -49,24 +49,22 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 					Region region = Regions.regions.get(RubidiaMonstersPlugin.random.nextInt(Regions.regions.size()));
 					if(region.getMonsters().size() > 0){
 						if(region.entities.size() < region.getMaxMonstersAmount()){
-							if(region.hasSpawnLocation()){
-								Monster monster = region.getMonsters().get(RubidiaMonstersPlugin.random.nextInt(region.getMonsters().size()));
-								Location location = region.getRandomSpawnLocation(monster);
-								
-								if(location != null) {
-									new BukkitTask(RubidiaMonstersPlugin.instance) {
+							Monster monster = region.getMonsters().get(RubidiaMonstersPlugin.random.nextInt(region.getMonsters().size()));
+							Location location = region.getRandomSpawnLocation(monster);
+							
+							if(location != null) {
+								new BukkitTask(RubidiaMonstersPlugin.instance) {
 
-										@Override
-										public void run() {
-											monster.spawnInRegion(location);
-										}
+									@Override
+									public void run() {
+										monster.spawnInRegion(location);
+									}
 
-										@Override
-										public void onCancel() {
-										}
-										
-									}.runTaskLater(0);
-								}
+									@Override
+									public void onCancel() {
+									}
+									
+								}.runTaskLater(0);
 							}
 						}
 					}

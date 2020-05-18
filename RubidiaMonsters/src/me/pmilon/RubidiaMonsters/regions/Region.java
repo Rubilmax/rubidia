@@ -281,41 +281,6 @@ public class Region {
 	public void setDungeonUUID(String dungeonUUID) {
 		this.dungeonUUID = dungeonUUID;
 	}
-	
-	@SuppressWarnings("deprecation")
-	public boolean hasSpawnLocation(){
-		for(Monster monster : this.getMonsters()){
-			for(double x = -this.getXRange()/2;x < this.getXRange()/2;x++){
-				for(double z = -this.getZRange()/2;z < this.getZRange()/2;z++){
-					for(double y = -this.getYRange()/2;y < this.getYRange()/2;y++){
-						Location location = this.getCenter().clone().add(x, y, z);
-						if(Claim.get(location) != null)continue;
-						if(monster != null){
-							if(monster.getType().equals(EntityType.SQUID) || monster.getType().equals(EntityType.GUARDIAN)){
-								if(!location.getBlock().getType().toString().contains("WATER")){
-									continue;
-								}
-							}else{
-								if(!location.getBlock().getType().isTransparent()
-										|| !location.clone().add(0,1,0).getBlock().getType().isTransparent()
-										|| !location.clone().subtract(0,1,0).getBlock().getType().isSolid()
-										|| location.clone().subtract(0,1,0).getBlock().getType().toString().contains("LEAVES")
-										|| location.clone().subtract(0,1,0).getBlock().getType().toString().contains("LOG")){
-									continue;
-								}
-							}
-						}
-						
-						if(!this.isSquare()){
-							Location relative = location.clone().subtract(this.getCenter());
-							if((Math.pow(relative.getX(), 2)/Math.pow(this.getXRange()/2, 2)) + (Math.pow(relative.getZ(), 2)/Math.pow(this.getZRange()/2, 2)) <= 1)return true;
-						}else return true;
-					}
-				}
-			}
-		}
-		return true;
-	}
 
 	public RegionType getType() {
 		return type;
