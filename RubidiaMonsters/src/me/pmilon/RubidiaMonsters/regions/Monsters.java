@@ -17,7 +17,7 @@ import me.pmilon.RubidiaMonsters.utils.Configs;
 public class Monsters {
 
 	public static List<Monster> monsters = new ArrayList<Monster>();
-	public static HashMap<LivingEntity, Monster> entities = new HashMap<LivingEntity, Monster>();
+	public static HashMap<UUID, Monster> entities = new HashMap<UUID, Monster>();
 	
 	@SuppressWarnings("unchecked")
 	public static void onEnable(boolean debug){
@@ -25,6 +25,7 @@ public class Monsters {
 		if(Configs.getMonstersConfig().contains("monsters")){
 			for(String mId : Configs.getMonstersConfig().getConfigurationSection("monsters").getKeys(false)){
 				String path = "monsters." + mId;
+				
 				List<Drop> drops = new ArrayList<Drop>();
 				if(Configs.getMonstersConfig().contains(path + ".drops")){
 					for(String dId : Configs.getMonstersConfig().getConfigurationSection(path + ".drops").getKeys(false)){
@@ -36,6 +37,7 @@ public class Monsters {
 						drops.add(drop);
 					}
 				}
+				
 				List<AbstractAttack> attacks = new ArrayList<AbstractAttack>();
 				if(Configs.getMonstersConfig().contains(path + ".attacks")){
 					for(String stype : Configs.getMonstersConfig().getConfigurationSection(path + ".attacks").getKeys(false)){
@@ -115,9 +117,10 @@ public class Monsters {
 	}
 	
 	public static Monster get(LivingEntity entity){
-		if(entities.containsKey(entity)){
-			return entities.get(entity);
+		if(Monsters.entities.containsKey(entity.getUniqueId())){
+			return Monsters.entities.get(entity.getUniqueId());
 		}
+		
 		return null;
 	}
 	

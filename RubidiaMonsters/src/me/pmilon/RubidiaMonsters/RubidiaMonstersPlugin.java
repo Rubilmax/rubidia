@@ -2,7 +2,9 @@ package me.pmilon.RubidiaMonsters;
 
 import java.io.File;
 import java.util.Random;
+import java.util.UUID;
 
+import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaMonsters.commands.KillallCommandExecutor;
 import me.pmilon.RubidiaMonsters.commands.RegionsCommandExecutor;
 import me.pmilon.RubidiaMonsters.regions.Monster;
@@ -15,7 +17,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RubidiaMonstersPlugin extends JavaPlugin {
@@ -39,22 +40,9 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 		this.getCommand("killall").setExecutor(new KillallCommandExecutor());
 		this.getCommand("regions").setExecutor(new RegionsCommandExecutor());
 		
-		/*Bukkit.getScheduler().runTaskTimer(this, new Runnable(){
-			public void run(){
-				for(World world : Bukkit.getWorlds()){
-					for(LivingEntity entity : Core.toLivingEntityList(world.getEntities())){
-						if(!(entity instanceof Player) && !(entity instanceof ArmorStand)){
-							boolean ok = entity instanceof Villager ? !QuestsPlugin.pnjManager.isPNJ((Villager) entity) : true;
-							if(!Pet.isPet(entity) && ok && !CustomEntities.isCustom(entity)){
-								if(!Monsters.entities.containsKey(entity))entity.remove();
-								else if(Monsters.get((LivingEntity)entity).getRegisteredRegion() == null)entity.remove();
-							}
-						}
-					}
-				}
-			}
-		}, 100, 600);*/
-		Bukkit.getScheduler().runTaskTimer(this, new Runnable(){
+		new BukkitTask(RubidiaMonstersPlugin.instance) {
+			
+			@Override
 			public void run(){
 				if(Regions.regions.size() > 0){
 					Region region = Regions.regions.get(RubidiaMonstersPlugin.random.nextInt(Regions.regions.size()));
@@ -62,21 +50,33 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 						if(region.entities.size() < region.getMaxMonstersAmount()){
 							if(region.hasSpawnLocation()){
 								Monster monster = region.getMonsters().get(RubidiaMonstersPlugin.random.nextInt(region.getMonsters().size()));
-								int i = 0;
-								Location location = null;
-								while(i < 100 && location == null) {
-									location = region.getRandomSpawnLocation(monster);
-									i++;
-								}
+								Location location = region.getRandomSpawnLocation(monster);
+								
 								if(location != null) {
-									monster.spawnInRegion(location);
+									new BukkitTask(RubidiaMonstersPlugin.instance) {
+
+										@Override
+										public void run() {
+											monster.spawnInRegion(location);
+										}
+
+										@Override
+										public void onCancel() {
+										}
+										
+									}.runTaskLater(0);
 								}
 							}
 						}
 					}
 				}
 			}
-		}, 0, 1);
+
+			@Override
+			public void onCancel() {
+			}
+			
+		}.runTaskTimerAsynchronously(0, 1);
 	}
 	
 	public static void onStart(){
@@ -90,8 +90,8 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 	}
 	
 	public void onDisable(){
-		for(LivingEntity entity : Monsters.entities.keySet()){
-			entity.remove();
+		for(UUID uniqueId : Monsters.entities.keySet()){
+			Bukkit.getEntity(uniqueId).remove();
 		}
 	}
 	

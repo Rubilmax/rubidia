@@ -131,26 +131,24 @@ public class RLevelListener implements Listener {
 						}
 					}
 				}
-				for(int i = 0;i < event.getArmorDrops().length;i++){
+				for (int i = 0;i < event.getArmorDrops().length;i++) {
 					ItemStack item = event.getArmorDrops()[i];
-					if(item != null){
-						if(!item.getType().equals(Material.AIR)){
+					if (item != null) {
+						if (!item.getType().equals(Material.AIR)) {
 							slots.add(37+i);
 						}
 					}
 				}
-				if(slots.size() > 0){
+				if (slots.size() > 0) {
 					ItemStack[] inventory = new ItemStack[event.getInventoryDrops().length];
 					ItemStack[] armor = new ItemStack[event.getArmorDrops().length];
-					List<Integer> nums = new ArrayList<Integer>();
-					int slot = slots.get(RandomUtils.random.nextInt(slots.size()));
-					for(int i = 0;i < slots.size()*.34;i++){
-						while(nums.contains(slot)){
-							slot = slots.get(RandomUtils.random.nextInt(slots.size()));
-						}
-						nums.add(slot);
+					for (int i = 0; i < slots.size() * .34; i++){
+						int index = RandomUtils.random.nextInt(slots.size());
+						int slot = slots.get(index);
+						slots.remove(index);
+						
 						ItemStack item;
-						if(slot < 37)item = event.getInventoryDrops()[slot];
+						if(slot < 37) item = event.getInventoryDrops()[slot];
 						else item = event.getArmorDrops()[40-slot];
 						if(item != null){
 							if(item.hasItemMeta()){

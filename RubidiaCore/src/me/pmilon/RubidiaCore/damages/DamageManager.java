@@ -215,7 +215,7 @@ public class DamageManager {
 			rpp.setLastCombat(System.currentTimeMillis());
 		}
 		
-		Monster monster = Monsters.entities.get(damager);
+		Monster monster = Monsters.get(damager);
 		if(critical || monster != null){
 			if(RandomUtils.random.nextInt(100) < 20+(rp != null ? rp.getCriticalStrikeChanceFactor()*100 : -10)){
 				damages *= rp != null ? rp.getCriticalStrikeDamagesFactor() : 2.0;
@@ -313,7 +313,7 @@ public class DamageManager {
 		double factor = 1.0;
 		Player player = damager instanceof Player ? (Player)damager : null;
 		RPlayer rp = player != null ? RPlayer.get(player) : null;
-		Monster monster = Monsters.entities.get(damager);
+		Monster monster = Monsters.get(damager);
 		boolean handAttack = false;
 		if(monster == null || monster.getDamagesFactor() == 0){
 			if(!Pet.isPet(damager)){

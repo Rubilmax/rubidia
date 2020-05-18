@@ -2,8 +2,11 @@ package me.pmilon.RubidiaCore.ritems.weapons;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -280,12 +283,7 @@ public class Weapons {
 			rarities = Weapons.filterAvailableRarities(available, rarities);
 			if(rarities.length > 0){
 				Rarity rarity = Rarity.random(rarities);
-				List<Weapon> weapons = Arrays.asList(available.toArray(new Weapon[available.size()]));
-				Weapon weapon = weapons.get(RandomUtils.random.nextInt(available.size()));
-				while(!weapon.getRarity().equals(rarity)){
-					weapon = weapons.get(RandomUtils.random.nextInt(available.size()));
-				}
-				return weapon;
+				return Weapons.random(available.stream().collect(Collectors.toList()), rarity);
 			}
 		}
 		return null;
@@ -298,14 +296,19 @@ public class Weapons {
 			rarities = Weapons.filterAvailableRarities(available, rarities);
 			if(rarities.length > 0){
 				Rarity rarity = Rarity.random(rarities);
-				List<Weapon> weapons = Arrays.asList(available.toArray(new Weapon[available.size()]));
-				Weapon weapon = weapons.get(RandomUtils.random.nextInt(available.size()));
-				while(!weapon.getRarity().equals(rarity)){
-					weapon = weapons.get(RandomUtils.random.nextInt(available.size()));
-				}
-				return weapon;
+				return Weapons.random(available.stream().collect(Collectors.toList()), rarity);
 			}
 		}
+		return null;
+	}
+	
+	public static Weapon random(List<Weapon> weapons, Rarity rarity) {
+		Collections.shuffle(weapons);
+		
+		for (Weapon weapon : weapons) {
+			if (weapon.getRarity().equals(rarity)) return weapon;
+		}
+		
 		return null;
 	}
 	

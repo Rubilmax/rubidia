@@ -174,7 +174,7 @@ public class Objective {
 									LivingEntity living = (LivingEntity) entity;
 									if(living.isLeashed()){
 										if(living.getLeashHolder().equals(rplayer.getPlayer())){
-											Monster monster = Monsters.entities.get(living);
+											Monster monster = Monsters.get(living);
 											if(monster != null){
 												if(this.getMonsterUUID().equals(monster.getUUID()) && monster.getTamer() != null){
 													if(monster.getTamer().equals(rplayer.getPlayer())){
@@ -245,7 +245,7 @@ public class Objective {
 					LivingEntity living = (LivingEntity) entity;
 					if(living.isLeashed()){
 						if(living.getLeashHolder().equals(rplayer.getPlayer())){
-							Monster monster = Monsters.entities.get(living);
+							Monster monster = Monsters.get(living);
 							if(monster != null){
 								if(monster.getUUID().equals(monster.getUUID()) && monster.getTamer() != null){
 									if(monster.getTamer().equals(rplayer.getPlayer())){

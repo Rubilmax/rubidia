@@ -24,7 +24,6 @@ import me.pmilon.RubidiaQuests.utils.Utils;
 import net.minecraft.server.v1_15_R1.EntityVillager;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_15_R1.entity.CraftVillager;
@@ -44,7 +43,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
 public class PNJListener implements Listener {
@@ -403,7 +401,7 @@ public class PNJListener implements Listener {
 		}
 	}
 	
-	@EventHandler
+	/*@EventHandler
 	public void onChunkUnload(ChunkUnloadEvent event){
 		final Chunk chunk = event.getChunk();
 		for(Entity entity : chunk.getEntities()){
@@ -419,5 +417,5 @@ public class PNJListener implements Listener {
 				}
 			}
 		}
-	}
+	}*/
 }

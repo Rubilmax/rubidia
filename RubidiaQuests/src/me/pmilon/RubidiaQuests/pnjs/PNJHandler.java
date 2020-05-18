@@ -406,7 +406,7 @@ public abstract class PNJHandler {
 												LivingEntity living = (LivingEntity) entity;
 												if(living.isLeashed()){
 													if(living.getLeashHolder().equals(rp.getPlayer())){
-														Monster monster = Monsters.entities.get(living);
+														Monster monster = Monsters.get(living);
 														if(monster != null){
 															if(monster.getUUID().equals(monster.getUUID()) && monster.getTamer() != null){
 																if(monster.getTamer().equals(rp.getPlayer())){

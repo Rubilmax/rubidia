@@ -91,7 +91,7 @@ public class TagStand {
 			public void onCancel() {
 			}
 			
-		}.runTaskTimer(0,0);
+		}.runTaskTimerAsynchronously(0,0);
 		
 		return display;
 	}

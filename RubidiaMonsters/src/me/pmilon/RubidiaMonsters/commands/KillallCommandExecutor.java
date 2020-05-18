@@ -14,10 +14,10 @@ public class KillallCommandExecutor extends HybridAdminCommandExecutor {
 	@Override
 	public void onAdminCommand(CommandSender sender, String[] args) {
 		List<Monster> monsters = new ArrayList<Monster>();
-		for(Monster monster : Monsters.entities.values()){
-			if(monster.getTamer() == null)monsters.add(monster);
+		for(Monster monster : Monsters.entities.values()) {
+			if(monster.getTamer() == null) monsters.add(monster);
 		}
-		for(Monster monster : monsters){
+		for(Monster monster : monsters) {
 			monster.kill(true);
 		}
 		sender.sendMessage("§eAll monsters have been removed!");

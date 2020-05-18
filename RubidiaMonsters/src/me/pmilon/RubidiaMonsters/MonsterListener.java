@@ -2,11 +2,9 @@ package me.pmilon.RubidiaMonsters;
 
 import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.events.RubidiaEntityDamageEvent;
-import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaMonsters.regions.Monster;
 import me.pmilon.RubidiaMonsters.regions.Monsters;
 
-import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Creature;
@@ -19,7 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityUnleashEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
@@ -68,28 +65,18 @@ public class MonsterListener implements Listener {
 		}
 	}
 	
-	@EventHandler
+	/*@EventHandler
 	public void onChunkUnload(ChunkUnloadEvent event){
 		final Chunk chunk = event.getChunk();
 		for(Entity entity : chunk.getEntities()){
 			if(entity instanceof LivingEntity){
 				Monster monster = Monsters.get((LivingEntity)entity);
 				if(monster != null){
-					//event.setCancelled(true);
-					new BukkitTask(this.getPlugin()){
-						public void run(){
-							chunk.load();
-						}
-
-						@Override
-						public void onCancel() {
-						}
-					}.runTaskLater(1);
-					return;
+					monster.kill(true);
 				}
 			}
 		}
-	}
+	}*/
 
 	@EventHandler
 	public void onInteract(PlayerInteractEntityEvent event){
@@ -99,7 +86,7 @@ public class MonsterListener implements Listener {
 				Entity ent = event.getRightClicked();
 				if(ent instanceof LivingEntity){
 					LivingEntity entity = (LivingEntity)ent;
-					Monster monster = Monsters.entities.get(entity);
+					Monster monster = Monsters.get(entity);
 					if(monster != null){
 						if(monster.getTamer() == null){
 							ItemStack item = player.getEquipment().getItemInMainHand();
@@ -124,7 +111,7 @@ public class MonsterListener implements Listener {
 		Entity ent = event.getEntity();
 		if(ent instanceof LivingEntity){
 			LivingEntity entity = (LivingEntity)ent;
-			Monster monster = Monsters.entities.get(entity);
+			Monster monster = Monsters.get(entity);
 			if(monster != null){
 				monster.setTamer(null);
 			}

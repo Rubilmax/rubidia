@@ -216,7 +216,7 @@ public class Monster {
 		entity.setCustomName((this.getTamer() != null ? "§2" : "§6") + "[N." + level + "] " + (this.isEnraged() ? "§c" : (this.getTamer() != null ? "§a" : "§e")) + this.getName());
 		entity.setCustomNameVisible(true);
 		Monster monster = this.newInstance(level, entity, null);
-		Monsters.entities.put(entity, monster);
+		Monsters.entities.put(entity.getUniqueId(), monster);
 		return monster;
 	}
 
@@ -258,10 +258,10 @@ public class Monster {
 	
 	public void kill(boolean removeEntity){
 		if(this.getEntity() != null){
-			if(removeEntity)this.getEntity().remove();
+			if(removeEntity) this.getEntity().remove();
 			else{
 				final Player killer = this.getEntity().getKiller();
-				if(killer != null){
+				if(killer != null) {
 					MonsterKillEvent event = new MonsterKillEvent(this, killer);
 					Bukkit.getPluginManager().callEvent(event);
 					HashMap<Player, Double> players = new HashMap<Player, Double>();
@@ -334,8 +334,9 @@ public class Monster {
 				}
 			}
 			
-			if(Monsters.entities.containsKey(this.getEntity()))Monsters.entities.remove(this.getEntity());
-			if(this.getRegisteredRegion() != null)this.getRegisteredRegion().entities.remove(this);
+			java.util.UUID uniqueId = this.getEntity().getUniqueId();
+			if(Monsters.entities.containsKey(uniqueId)) Monsters.entities.remove(uniqueId);
+			if(this.getRegisteredRegion() != null) this.getRegisteredRegion().entities.remove(this);
 		}
 	}
 	

@@ -341,7 +341,7 @@ public class Quest extends RequiredHolder {
 							for(LivingEntity entity : Core.toLivingEntityList(rp.getPlayer().getNearbyEntities(8, 8, 8))){
 								if(entity.isLeashed()){
 									if(entity.getLeashHolder().equals(rp.getPlayer())){
-										Monster monster = Monsters.entities.get(entity);
+										Monster monster = Monsters.get(entity);
 										if(monster != null){
 											if(monster.getUUID().equals(monster.getUUID()) && monster.getTamer() != null){
 												if(monster.getTamer().equals(rp.getPlayer())){

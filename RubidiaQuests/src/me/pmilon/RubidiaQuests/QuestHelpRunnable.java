@@ -60,7 +60,7 @@ public class QuestHelpRunnable extends BukkitTask {
 												LivingEntity living = (LivingEntity) entity;
 												if(living.isLeashed()){
 													if(living.getLeashHolder().equals(rp.getPlayer())){
-														Monster m = Monsters.entities.get(living);
+														Monster m = Monsters.get(living);
 														if(m != null){
 															if(m.getUUID().equals(monster.getUUID()) && m.getTamer() != null){
 																if(m.getTamer().equals(rp.getPlayer())){

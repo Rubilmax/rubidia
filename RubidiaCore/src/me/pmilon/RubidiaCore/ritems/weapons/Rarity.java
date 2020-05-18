@@ -1,5 +1,8 @@
 package me.pmilon.RubidiaCore.ritems.weapons;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.pmilon.RubidiaCore.utils.RandomUtils;
 
 public enum Rarity {
@@ -39,13 +42,18 @@ public enum Rarity {
 	}
 	
 	public static Rarity random(Rarity... rarities){
-		int id = RandomUtils.random.nextInt(1000);
-		Rarity rarity = rarities[RandomUtils.random.nextInt(rarities.length)];
-		while(rarity == null || id > rarity.getFactor()*1000){
-			id = RandomUtils.random.nextInt(1000);
-			rarity = rarities[RandomUtils.random.nextInt(rarities.length)];
+		List<String> multipleRarities = new ArrayList<String>();
+		for (Rarity rarity : rarities) {
+			for (int i = 0;i < (int) rarity.getFactor() * 1000; i++) {
+				multipleRarities.add(rarity.toString());
+			}
 		}
-		return rarity;
+		
+		if (multipleRarities.size() > 0) {
+			String selectedRarity = multipleRarities.get(RandomUtils.random.nextInt(multipleRarities.size()));
+			return Rarity.valueOf(selectedRarity);
+		}
+		return Rarity.COMMON;
 	}
 	
 	/*public static Rarity fromName(String name){

@@ -138,36 +138,51 @@ public class Region {
 	}
 	
 	public Location getRandomSpawnLocation(Monster monster){
-		double x = RubidiaMonstersPlugin.random.nextDouble()*(this.getXRange()/2)*(RubidiaMonstersPlugin.random.nextBoolean() ? -1 : 1);
-		double y = RubidiaMonstersPlugin.random.nextDouble()*this.getYRange();
-		double yMin = this.getCenter().getY() + Math.min(0, this.getYRange());
-		double z = RubidiaMonstersPlugin.random.nextDouble()*(this.getZRange()/2)*(RubidiaMonstersPlugin.random.nextBoolean() ? -1 : 1);
-		Location location = LocationUtils.getCenter(this.getCenter().clone().add(x, y, z));
-		if(Claim.get(location) != null)return this.getRandomSpawnLocation(monster);
-		location.getChunk().load();
-		if(!this.isSquare()){
-			while(!this.isIn(location)){
-				location.setZ(this.getCenter().getZ() + RubidiaMonstersPlugin.random.nextDouble()*(this.getZRange()/2)*(RubidiaMonstersPlugin.random.nextBoolean() ? -1 : 1));
+		for (int i = 0; i < 100; i++) {
+			double x; double z;
+			if (this.isSquare()) {
+				x = RubidiaMonstersPlugin.random.nextDouble() - .5;
+				z = RubidiaMonstersPlugin.random.nextDouble() - .5;
+			} else {
+				double rho = RubidiaMonstersPlugin.random.nextDouble();
+				double phi = RubidiaMonstersPlugin.random.nextDouble() * 2 * Math.PI;
+				x = Math.sqrt(rho) * Math.cos(phi);
+				z = Math.sqrt(rho) * Math.sin(phi);
 			}
+			
+			x *= this.getXRange() / 2;
+			z *= this.getZRange() / 2;
+			double y = RubidiaMonstersPlugin.random.nextDouble() * (RubidiaMonstersPlugin.random.nextBoolean() ? -1 : 1) * this.getYRange() / 2;
+			
+			Location location = LocationUtils.getCenter(this.getCenter().clone().add(x, y, z));
+			if(Claim.get(location) != null) continue;
+
+			double yMin = this.getCenter().getY() - Math.max(0, this.getYRange() / 2);
+			if (monster.getType().equals(EntityType.SQUID) || monster.getType().equals(EntityType.GUARDIAN)) {
+				while(!location.getBlock().getType().toString().contains("WATER")
+						&& location.getY() >= yMin){
+					location.setY(location.getY() - 1);
+				}
+			} else {
+				while ((location.getBlock().getType().isSolid()
+						|| location.clone().add(0,1,0).getBlock().getType().isSolid()
+						|| !location.clone().subtract(0,1,0).getBlock().getType().isSolid()
+						|| location.clone().subtract(0,1,0).getBlock().getType().toString().contains("LEAVES")
+						|| location.clone().subtract(0,1,0).getBlock().getType().toString().contains("LOG"))
+						&& location.getY() >= yMin) {
+					location.setY(location.getY() - 1);
+				}
+			}
+			
+			if(location.getY() < yMin) continue;
+			
+			//location.getChunk().load();
+			if(location.getBlock().getType().toString().contains("SNOW")) return location.add(0,1,0);
+			
+			return location;
 		}
-		if(monster.getType().equals(EntityType.SQUID) || monster.getType().equals(EntityType.GUARDIAN)){
-			while(!location.getBlock().getType().toString().contains("WATER")
-					&& location.getY() >= yMin){
-				location.setY(location.getY()-1);
-			}
-		}else{
-			while((location.getBlock().getType().isSolid()
-					|| location.clone().add(0,1,0).getBlock().getType().isSolid()
-					|| !location.clone().subtract(0,1,0).getBlock().getType().isSolid()
-					|| location.clone().subtract(0,1,0).getBlock().getType().toString().contains("LEAVES")
-					|| location.clone().subtract(0,1,0).getBlock().getType().toString().contains("LOG"))
-					&& location.getY() >= yMin){
-				location.setY(location.getY()-1);
-			}
-		}
-		if(location.getY() < yMin)return null;
-		if(location.getBlock().getType().toString().contains("SNOW"))return location.add(0,1,0);
-		return location;
+		
+		return null;
 	}
 
 	public boolean isSquare() {
