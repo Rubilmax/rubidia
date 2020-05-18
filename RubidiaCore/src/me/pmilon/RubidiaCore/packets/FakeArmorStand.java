@@ -40,7 +40,6 @@ public class FakeArmorStand {
 		return this;
 	}
 	public FakeArmorStand spawn(Location location, Player receiver) {
-		this.destroy(); // to remove armorstand to any former observer
 		this.getSpawnPacket(location).sendPacket(receiver);
 		this.update(receiver);
 		return this;

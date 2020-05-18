@@ -11,7 +11,6 @@ import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.events.RXPSource;
 import me.pmilon.RubidiaCore.events.RXPSourceType;
 import me.pmilon.RubidiaCore.packets.FakeArmorStand;
-import me.pmilon.RubidiaCore.tags.TagStand;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaCore.utils.Utils;
 import me.pmilon.RubidiaCore.ritems.weapons.Rarity;
@@ -305,26 +304,28 @@ public class Monster {
 						}
 					}
 					
-					new BukkitTask(RubidiaMonstersPlugin.getInstance()){
+					new BukkitTask(RubidiaMonstersPlugin.getInstance()) {
+						
+						@Override
 						public void run(){
-							final TagStand tag = new TagStand(getEntity(), names, true);
-							tag.display();
+							Location targetLoc = getEntity().getLocation().clone().add(0, .4, 0);
 							
-							FakeArmorStand stand = tag.getDisplays()[0];
-							if(stand != null){
-								Location targetLoc = killer.getLocation().add(0, 1.25, 0);
-								stand.teleport(targetLoc);
-							}
-							
-							new BukkitTask(RubidiaMonstersPlugin.getInstance()){
-								public void run(){
-									tag.remove();
-								}
+							for (String name : names) {
+								FakeArmorStand stand = new FakeArmorStand(getEntity().getWorld(), name, true).spawn(targetLoc.add(0, .3, 0));
+								
+								new BukkitTask(RubidiaMonstersPlugin.getInstance()) {
+									
+									@Override
+									public void run(){
+										stand.destroy();
+									}
 
-								@Override
-								public void onCancel() {
-								}
-							}.runTaskLater(60);
+									@Override
+									public void onCancel() {
+									}
+									
+								}.runTaskLater(60);
+							}
 						}
 
 						@Override

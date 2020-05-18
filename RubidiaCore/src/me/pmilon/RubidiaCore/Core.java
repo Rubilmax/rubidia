@@ -1517,7 +1517,6 @@ public class Core extends JavaPlugin implements Listener {
 		restarting = true;
 	}
 
-	@SuppressWarnings("deprecation")
 	public void onEnable() {
 		console = Bukkit.getConsoleSender();
 
@@ -1866,7 +1865,7 @@ public class Core extends JavaPlugin implements Listener {
 
 		}.runTaskTimer(annoucementsInterval, annoucementsInterval);
 		
-		ProtocolLibrary.getProtocolManager().addPacketListener(new PacketAdapter(this, PacketType.Status.Server.OUT_SERVER_INFO) {
+		ProtocolLibrary.getProtocolManager().addPacketListener(new PacketAdapter(this, PacketType.Status.Server.SERVER_INFO) {
 			@Override
 			public void onPacketSending(PacketEvent e) {
 				if (Core.isInMaintenance()) {
@@ -1932,6 +1931,10 @@ public class Core extends JavaPlugin implements Listener {
 
 		for (Team team : Bukkit.getServer().getScoreboardManager().getMainScoreboard().getTeams()) {
 			team.unregister();
+		}
+		
+		for (BukkitTask task : BukkitTask.tasks.values()) {
+			task.cancel();
 		}
 
 		console.sendMessage("§a   Saving RPlayers...");
