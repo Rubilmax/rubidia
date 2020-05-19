@@ -343,7 +343,7 @@ public class Core extends JavaPlugin implements Listener {
 						}
 
 						rp.sendMessage("§eInstallation de §6§lRubidiaPack§e (v" + ResourcePackHandler.RESOURCE_PACK_VERSION + ")...");
-						//rp.getPlayer().setResourcePack("http://r.milon.pro/downloads/RubidiaPack" + ResourcePackHandler.RESOURCE_PACK_VERSION + ".zip");
+						rp.getPlayer().setResourcePack("http://r.milon.pro/downloads/RubidiaPack" + ResourcePackHandler.RESOURCE_PACK_VERSION + ".zip");
 						if (!rp.isProfileUpdated()) rp.sendMessage("§dMettez à jour votre profil de joueur : §l/profile");
 
 						if (!rp.isVip() && rp.getLastLoadedSPlayerId() == 3) {

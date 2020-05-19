@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.pmilon.RubidiaCore.Core;
-import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 import me.pmilon.RubidiaMonsters.attacks.AbstractAttack;
 import me.pmilon.RubidiaMonsters.regions.Drop;
@@ -79,9 +79,9 @@ public class MonstersUI extends ListMenuUIHandler<Monster> {
 		if(is != null){
 			int slot = e.getRawSlot();
 			Monster monster = this.get(slot);
-			if(e.isRightClick()){
+			if(e.isRightClick()) {
 				Core.uiManager.requestUI(new MonsterEditionMenu(this.getHolder(), this.getRegion(), monster));
-			}else{
+			} else if (monster != null) {
 				this.getRegion().getMonsters().add(monster);
 				Core.uiManager.requestUI(new RegionMonstersEditMenu(this.getHolder(), this.getRegion()));
 			}

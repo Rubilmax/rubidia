@@ -1,5 +1,5 @@
 name: RubidiaWG
 version: 2.0
-api-version: 1.15
+api-version: 1.13
 main: me.pmilon.RubidiaWG.RubidiaWGPlugin
 depend: [WorldGuard, RubidiaCore, RubidiaPets]

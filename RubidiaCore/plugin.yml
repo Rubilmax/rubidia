@@ -2,7 +2,7 @@ name: RubidiaCore
 author: Rubilmax
 website: http://r.milon.pro
 version: 2.0.1
-api-version: 1.15
+api-version: 1.13
 description: The Core plugin of Rubidia.
 main: me.pmilon.RubidiaCore.Core
 softdepend: [ProtocolLib, WorldGuard, WorldEdit, RubidiaPets, RubidiaGuilds, RubidiaQuests, RubidiaMonsters]

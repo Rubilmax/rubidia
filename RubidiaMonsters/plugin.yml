@@ -1,7 +1,7 @@
 name: RubidiaMonsters
 author: pmilon
 version: 2.0
-api-version: 1.15
+api-version: 1.13
 description: The mob management system of Rubidia server.
 main: me.pmilon.RubidiaMonsters.RubidiaMonstersPlugin
 softdepend: [RubidiaQuests]
