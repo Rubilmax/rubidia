@@ -6,10 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/spigot.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaCore.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaGuilds.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaPets.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaQuests.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/spigot.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaCore.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaGuilds.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaPets.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaQuests.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -6,15 +6,15 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/ProtocolLib.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/WorldEdit.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/WorldGuard.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/spigot.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaGuilds.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaManager.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaMonsters.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaPets.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaQuests.jar"/>
-	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/server/plugins/RubidiaWG.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/ProtocolLib.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/WorldEdit.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/WorldGuard.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/spigot.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaGuilds.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaManager.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaMonsters.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaPets.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaQuests.jar"/>
+	<classpathentry kind="lib" path="D:/Projets/Rubidia/test/dev/plugins/RubidiaWG.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
