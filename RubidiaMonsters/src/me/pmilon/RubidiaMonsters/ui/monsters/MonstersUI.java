@@ -79,11 +79,13 @@ public class MonstersUI extends ListMenuUIHandler<Monster> {
 		if(is != null){
 			int slot = e.getRawSlot();
 			Monster monster = this.get(slot);
-			if(e.isRightClick()) {
-				Core.uiManager.requestUI(new MonsterEditionMenu(this.getHolder(), this.getRegion(), monster));
-			} else if (monster != null) {
-				this.getRegion().getMonsters().add(monster);
-				Core.uiManager.requestUI(new RegionMonstersEditMenu(this.getHolder(), this.getRegion()));
+			if (monster != null) {
+				if(e.isRightClick()) {
+					Core.uiManager.requestUI(new MonsterEditionMenu(this.getHolder(), this.getRegion(), monster));
+				} else {
+					this.getRegion().getMonsters().add(monster);
+					Core.uiManager.requestUI(new RegionMonstersEditMenu(this.getHolder(), this.getRegion()));
+				}
 			}
 		}
 	}
