@@ -2,7 +2,7 @@ package me.pmilon.RubidiaMonsters.pathfinders;
 
 import org.bukkit.entity.LivingEntity;
 
-import net.minecraft.server.v1_15_R1.*;
+import net.minecraft.server.v1_13_R2.*;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class PathfinderGoalMeleeAttack extends PathfinderGoal {
@@ -44,7 +44,7 @@ public class PathfinderGoalMeleeAttack extends PathfinderGoal {
         } else if (this.g != null && !this.g.isAssignableFrom(entityliving.getClass())) {
             return false;
         } else {
-        	this.f = this.b.getNavigation().a(entityliving, 1);
+        	this.f = this.b.getNavigation().a(entityliving);
             return this.f != null;
         }
     }
@@ -59,14 +59,14 @@ public class PathfinderGoalMeleeAttack extends PathfinderGoal {
 
         if(entityliving != null){
             this.b.getControllerLook().a(entityliving, 30.0F, 30.0F);
-            double d0 = this.b.g(entityliving.locX(), entityliving.locY(), entityliving.locZ());
-            double d1 = (double) (this.b.getWidth() + entityliving.getWidth() * 2.0F);
+            double d0 = this.b.d(entityliving.locX, entityliving.locY, entityliving.locZ);
+            double d1 = (double) (this.b.width + entityliving.width * 2.0F);
 
             --this.h;
-            if (this.e && this.h <= 0 && (this.i == 0.0D && this.j == 0.0D && this.k == 0.0D || entityliving.g(this.i, this.j, this.k) >= 1.0D || this.b.getRandom().nextFloat() < 0.05F)) {
-                this.i = entityliving.locX();
-                this.j = entityliving.getWidth();
-                this.k = entityliving.locZ();
+            if (this.e && this.h <= 0 && (this.i == 0.0D && this.j == 0.0D && this.k == 0.0D || entityliving.d(this.i, this.j, this.k) >= 1.0D || this.b.getRandom().nextFloat() < 0.05F)) {
+                this.i = entityliving.locX;
+                this.j = entityliving.width;
+                this.k = entityliving.locZ;
                 this.h = 4 + this.b.getRandom().nextInt(7);
                 if (d0 > 1024.0D) {
                     this.h += 10;

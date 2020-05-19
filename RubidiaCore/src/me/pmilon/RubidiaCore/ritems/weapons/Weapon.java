@@ -12,9 +12,9 @@ import me.pmilon.RubidiaCore.ritems.general.RItem;
 import me.pmilon.RubidiaCore.ritems.weapons.Piercing.PiercingType;
 import me.pmilon.RubidiaCore.utils.Utils;
 import net.md_5.bungee.api.ChatColor;
-import net.minecraft.server.v1_15_R1.NBTTagCompound;
-import net.minecraft.server.v1_15_R1.NBTTagList;
-import net.minecraft.server.v1_15_R1.NBTTagString;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagList;
+import net.minecraft.server.v1_13_R2.NBTTagString;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -350,7 +350,7 @@ public class Weapon {
 		        
 		        //we restrict usage of weapons
 		        NBTTagList canDestroy = new NBTTagList();
-		        canDestroy.add(NBTTagString.a("minecraft:air"));
+		        canDestroy.add(new NBTTagString("minecraft:air"));
 				item = ItemStacks.setMetadata(item, "CanDestroy", canDestroy);
 			}
 		}

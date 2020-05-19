@@ -15,15 +15,14 @@ import me.pmilon.RubidiaPets.pathfindergoals.PathfinderGoalAttack;
 import me.pmilon.RubidiaPets.utils.Configs;
 import me.pmilon.RubidiaPets.utils.LevelUtils;
 import me.pmilon.RubidiaPets.utils.Settings;
-import net.minecraft.server.v1_15_R1.*;
+import net.minecraft.server.v1_13_R2.*;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftCreature;
 import org.bukkit.entity.Ageable;
-import org.bukkit.entity.Cat;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -65,7 +64,7 @@ public class Pet {
 	private int domestication;
 	private ItemStack armor;
 	private Rabbit.Type rabbitType;
-	private Cat.Type catType;
+	private Ocelot.Type catType;
 	private Parrot.Variant parrotType;
 	
 	private TagStand stand;
@@ -74,7 +73,7 @@ public class Pet {
 	private boolean move = true;
 	private BukkitTask task;
 	private boolean canBeFood = true;
-	public Pet(String UUID, String name, int level, double exp, double health, int distinctionPoints, int ardor, int patience, int acuity, EntityType type, int age, boolean saddle, List<Pearl> activePearls, boolean active, DyeColor collarColor, Color color, Style style, int domestication, ItemStack armor, Rabbit.Type rabbitType, Cat.Type catType, Parrot.Variant parrotType){
+	public Pet(String UUID, String name, int level, double exp, double health, int distinctionPoints, int ardor, int patience, int acuity, EntityType type, int age, boolean saddle, List<Pearl> activePearls, boolean active, DyeColor collarColor, Color color, Style style, int domestication, ItemStack armor, Rabbit.Type rabbitType, Ocelot.Type catType, Parrot.Variant parrotType){
 		this.uuid = UUID;
 		this.name = name;
 		this.level = level;
@@ -236,8 +235,8 @@ public class Pet {
         	((Snowman) pet).setDerp(this.isSaddle());
 	    }else if(pet instanceof Rabbit){
         	((Rabbit) pet).setRabbitType(this.getRabbitType());
-	    }else if(pet instanceof Cat){
-        	((Cat) pet).setCatType(this.getCatType());
+	    }else if(pet instanceof Ocelot){
+        	((Ocelot) pet).setCatType(this.getCatType());
 	    }else if(pet instanceof Parrot){
         	((Parrot) pet).setVariant(this.getParrotType());
 	    }
@@ -261,7 +260,7 @@ public class Pet {
 	        }else if(pet instanceof Rabbit){
 	        	this.setRabbitType(((Rabbit) pet).getRabbitType());
 	        }else if(pet instanceof Ocelot){
-	        	this.setCatType(((Cat) pet).getCatType());
+	        	this.setCatType(((Ocelot) pet).getCatType());
 	        }else if(pet instanceof Parrot){
 	        	this.setParrotType(((Parrot) pet).getVariant());
 	        }else if(pet instanceof Snowman){
@@ -335,11 +334,11 @@ public class Pet {
 		this.rabbitType = rabbitType;
 	}
 
-	public Cat.Type getCatType() {
+	public Ocelot.Type getCatType() {
 		return catType;
 	}
 
-	public void setCatType(Cat.Type catType) {
+	public void setCatType(Ocelot.Type catType) {
 		this.catType = catType;
 	}
 

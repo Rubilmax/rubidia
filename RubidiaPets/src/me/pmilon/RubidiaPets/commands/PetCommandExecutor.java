@@ -16,7 +16,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Cat;
+import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Rabbit;
 import org.bukkit.entity.Horse.Color;
@@ -61,7 +61,7 @@ public class PetCommandExecutor implements CommandExecutor {
 								rp.getPets().remove(rppet);
 								sender.sendMessage("§4" + name + " §cdoes no longer exist... Sad choice :'(");
 							}else{
-								Pet pet = new Pet(UUID.randomUUID().toString(), name, 0, 0.0, 20.0, 0, 0, 0, 0, type, 0, false, new ArrayList<Pearl>(), false, DyeColor.BLACK, Color.BLACK, Style.BLACK_DOTS, 0, new ItemStack(Material.AIR,1), Rabbit.Type.BLACK, Cat.Type.BLACK, Parrot.Variant.BLUE);
+								Pet pet = new Pet(UUID.randomUUID().toString(), name, 0, 0.0, 20.0, 0, 0, 0, 0, type, 0, false, new ArrayList<Pearl>(), false, DyeColor.BLACK, Color.BLACK, Style.BLACK_DOTS, 0, new ItemStack(Material.AIR,1), Rabbit.Type.BLACK, Ocelot.Type.BLACK_CAT, Parrot.Variant.BLUE);
 								Pets.pets.add(pet);
 								rp.getPets().add(pet);
 								sender.sendMessage("§4§l" + rp.getName() + " §ahas been given §4" + name + " §a!");

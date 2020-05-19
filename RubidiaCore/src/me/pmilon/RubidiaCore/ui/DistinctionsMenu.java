@@ -5,7 +5,7 @@ import java.util.Arrays;
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.books.BookUtils;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaCore.utils.Settings;
 import me.pmilon.RubidiaCore.utils.Utils;
 
@@ -116,7 +116,7 @@ public class DistinctionsMenu extends UIHandler {
 		return item;
 	}
 	private ItemStack getStrength(){
-		ItemStack item = new ItemStack(Material.RED_DYE, rp.getStrength() > 0 ? (rp.getStrength() > 64 ? 64 : rp.getStrength()) : 1);
+		ItemStack item = new ItemStack(Material.ROSE_RED, rp.getStrength() > 0 ? (rp.getStrength() > 64 ? 64 : rp.getStrength()) : 1);
 		ItemMeta meta = item.getItemMeta();
 		String color = rp.getStrength() > 0 ? "§2" : "§4";
 		meta.setDisplayName(color + "§l" + rp.getStrength() + color + " " + ("point") + (rp.getStrength() > 1 ? "s" : "") + (" de force"));

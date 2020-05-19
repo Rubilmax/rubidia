@@ -7,11 +7,11 @@ import org.bukkit.DyeColor;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Cat;
 import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Rabbit;
 import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.Horse.Style;
+import org.bukkit.entity.Ocelot;
 import org.bukkit.inventory.ItemStack;
 
 import me.pmilon.RubidiaPets.PetsPlugin;
@@ -32,9 +32,9 @@ public class Pets {
 				}
 				
 				String catTypeName = Configs.getPetsConfig().getString("pets." + uuid + ".cat.type");
-				Cat.Type catType = Cat.Type.ALL_BLACK;
+				Ocelot.Type catType = Ocelot.Type.BLACK_CAT;
 				try {
-					catType = Cat.Type.valueOf(catTypeName);
+					catType = Ocelot.Type.valueOf(catTypeName);
 				} catch (Exception ex) {
 				}
 				

@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 import me.pmilon.RubidiaCore.RManager.Gender;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -120,7 +120,7 @@ public class ProfileUI extends UIHandler {
 		return item;
 	}
 	public ItemStack getData(){
-		ItemStack item = new ItemStack(rp.isPublicData() ? Material.LIME_DYE : Material.RED_DYE, 1);
+		ItemStack item = new ItemStack(rp.isPublicData() ? Material.LIME_DYE : Material.ROSE_RED, 1);
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName("§6§l" + ("Confidentialité : ") + (rp.isPublicData() ? "§a" + ("publique") : "§c" + ("privée")));
 		meta.setLore(Arrays.asList("§7" + ("Basculez la confidentialité de votre profil."), "§7" + ("Privée : aucun joueur ne peut accéder à ces données"), "§7" + ("Publique : tous les joueurs peuvent accéder à ces données (/rplayers)")));

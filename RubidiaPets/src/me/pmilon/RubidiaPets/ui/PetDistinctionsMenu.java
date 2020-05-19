@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 import me.pmilon.RubidiaPets.pets.Pet;
 import me.pmilon.RubidiaPets.utils.Settings;
@@ -123,7 +123,7 @@ public class PetDistinctionsMenu extends UIHandler {
 		return item;
 	}
 	private ItemStack getPatience(){
-		ItemStack item = new ItemStack(Material.GREEN_DYE, this.getPet().getPatience() > 0 ? (this.getPet().getPatience() > 64 ? 64 : this.getPet().getPatience()) : 1);
+		ItemStack item = new ItemStack(Material.CACTUS_GREEN, this.getPet().getPatience() > 0 ? (this.getPet().getPatience() > 64 ? 64 : this.getPet().getPatience()) : 1);
 		ItemMeta meta = item.getItemMeta();
 		String color = this.getPet().getPatience() > 0 ? "§2" : "§4";
 		meta.setDisplayName(color + "§l" + this.getPet().getPatience() + color + " " + ("point") + (this.getPet().getPatience() > 1 ? "s" : "") + (" de patience"));

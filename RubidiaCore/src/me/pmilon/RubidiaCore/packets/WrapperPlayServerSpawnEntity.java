@@ -20,14 +20,8 @@ package me.pmilon.RubidiaCore.packets;
 
 import java.util.UUID;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_15_R1.block.data.CraftBlockData;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.util.Vector;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
@@ -35,8 +29,6 @@ import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.injector.PacketConstructor;
 import com.comphenix.protocol.reflect.IntEnum;
-
-import net.minecraft.server.v1_15_R1.Block;
 
 public class WrapperPlayServerSpawnEntity extends AbstractPacket {
 	public static final PacketType TYPE = PacketType.Play.Server.SPAWN_ENTITY;
@@ -315,28 +307,14 @@ public class WrapperPlayServerSpawnEntity extends AbstractPacket {
 	public void setYaw(float value) {
 		handle.getIntegers().write(5, (int) (value * 256.0F / 360.0F));
 	}
-	
-	public void setLocation(Location location) {
-		this.setX(location.getX());
-		this.setY(location.getY());
-		this.setZ(location.getZ());
-		this.setPitch(location.getPitch());
-		this.setYaw(location.getYaw());
-	}
-	
-	public void setOptionalSpeed(Vector vector) {
-		this.setOptionalSpeedX(vector.getX());
-		this.setOptionalSpeedY(vector.getY());
-		this.setOptionalSpeedZ(vector.getZ());
-	}
 
 	/**
 	 * Retrieve the type of object. See {@link ObjectTypes}
 	 * 
 	 * @return The current Type
 	 */
-	public EntityType getType() {
-		return handle.getEntityTypeModifier().read(0);
+	public int getType() {
+		return handle.getIntegers().read(6);
 	}
 
 	/**
@@ -344,8 +322,8 @@ public class WrapperPlayServerSpawnEntity extends AbstractPacket {
 	 * 
 	 * @param value - new value.
 	 */
-	public void setType(EntityType value) {
-		handle.getEntityTypeModifier().write(0, value);
+	public void setType(int value) {
+		handle.getIntegers().write(6, value);
 	}
 
 	/**
@@ -383,7 +361,7 @@ public class WrapperPlayServerSpawnEntity extends AbstractPacket {
 	 * @return The current object Data
 	 */
 	public int getObjectData() {
-		return handle.getIntegers().read(6);
+		return handle.getIntegers().read(7);
 	}
 
 	/**
@@ -395,14 +373,6 @@ public class WrapperPlayServerSpawnEntity extends AbstractPacket {
 	 * @param value - new object data.
 	 */
 	public void setObjectData(int value) {
-		handle.getIntegers().write(6, value);
-	}
-	
-	public void setBlockType(Material material) {
-		this.setObjectData(Block.getCombinedId(((CraftBlockData) material.createBlockData()).getState()));
-	}
-	
-	public void setBlockData(BlockData data) {
-		this.setObjectData(Block.getCombinedId(((CraftBlockData) data).getState()));
+		handle.getIntegers().write(7, value);
 	}
 }

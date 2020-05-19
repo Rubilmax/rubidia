@@ -7,7 +7,7 @@ import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.duels.RDuel;
 import me.pmilon.RubidiaCore.handlers.TradingHandler;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaCore.utils.Settings;
 import me.pmilon.RubidiaGuilds.guilds.GMember;
 import me.pmilon.RubidiaGuilds.guilds.Permission;
@@ -226,7 +226,7 @@ public class PlayerMenu extends UIHandler {
 		return invite;
 	}
 	private ItemStack getMarry(){
-		ItemStack item = new ItemStack(Material.RED_DYE, 1);
+		ItemStack item = new ItemStack(Material.ROSE_RED, 1);
 		ItemMeta meta = item.getItemMeta();
 		if(rp.getCouple() != null && this.showFiancer){
 			meta.setDisplayName("§4§l" + ("Divorcer"));

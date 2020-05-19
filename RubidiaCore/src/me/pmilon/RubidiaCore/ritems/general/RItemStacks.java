@@ -39,7 +39,7 @@ public class RItemStacks {
 		orichalcum.setItemMeta(META);
 		ORICHALCUM = new RItemStack(orichalcum, 1022);
 		
-		ItemStack str = new ItemStack(Material.RED_DYE, 1);
+		ItemStack str = new ItemStack(Material.ROSE_RED, 1);
 		META.setDisplayName("§fJoyau de §cforce");
 		str.setItemMeta(META);
 		POWDER_STRENGTH = new RItemStack(str, 4234);

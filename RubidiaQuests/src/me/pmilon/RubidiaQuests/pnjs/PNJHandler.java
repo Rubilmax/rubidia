@@ -21,13 +21,13 @@ import me.pmilon.RubidiaQuests.quests.ObjectiveType;
 import me.pmilon.RubidiaQuests.quests.Quest;
 import me.pmilon.RubidiaQuests.ui.PNJSettings;
 import me.pmilon.RubidiaQuests.utils.Configs;
-import net.minecraft.server.v1_15_R1.*;
+import net.minecraft.server.v1_13_R2.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -60,14 +60,14 @@ public abstract class PNJHandler {
 	public HashMap<Player, Villager> pnjTemp = new HashMap<Player, Villager>();
 	
 	public enum PNJType {
-		SHOP(Profession.FISHERMAN),
+		SHOP(Profession.FARMER),
 		INHABITANT(Profession.FARMER),
-		QUEST(Profession.CARTOGRAPHER),
-		PASTOR(Profession.CLERIC),
-		SMITH(Profession.WEAPONSMITH),
+		QUEST(Profession.BUTCHER),
+		PASTOR(Profession.PRIEST),
+		SMITH(Profession.BLACKSMITH),
 		BANK(Profession.LIBRARIAN),
 		PASSER(Profession.NITWIT),
-		HOST(Profession.SHEPHERD);
+		HOST(Profession.LIBRARIAN);
 		
 		private final Profession value;
 		private PNJType(Profession prof){
@@ -81,8 +81,8 @@ public abstract class PNJHandler {
 	
 	public void resetPathfinders(Villager pnj, boolean fake){
 		EntityVillager villager = (EntityVillager) ((CraftEntity)pnj).getHandle();
-		villager.goalSelector = new PathfinderGoalSelector(villager.getWorld().getMethodProfiler());
-		villager.targetSelector = new PathfinderGoalSelector(villager.getWorld().getMethodProfiler());
+		villager.goalSelector = new PathfinderGoalSelector(villager.world.methodProfiler);
+		villager.targetSelector = new PathfinderGoalSelector(villager.world.methodProfiler);
 		villager.goalSelector.a(0, new PathfinderGoalFloat(villager));
 		villager.goalSelector.a(1, new PathfinderGoalLookAtTradingPlayer(villager));
 		//villager.goalSelector.a(8, new PathfinderGoalPlay(villager, 0.32D));

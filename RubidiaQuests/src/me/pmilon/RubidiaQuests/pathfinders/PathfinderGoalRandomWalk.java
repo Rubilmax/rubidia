@@ -6,7 +6,7 @@ import org.bukkit.Location;
 
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaQuests.pnjs.PNJHandler;
-import net.minecraft.server.v1_15_R1.*;
+import net.minecraft.server.v1_13_R2.*;
 
 public class PathfinderGoalRandomWalk extends PathfinderGoal {
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 import net.md_5.bungee.api.ChatColor;
 
-import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 import me.pmilon.RubidiaCore.RManager.Mastery;

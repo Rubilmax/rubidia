@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import me.pmilon.RubidiaCore.Core;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaPets.pets.Pet;
 import net.md_5.bungee.api.ChatColor;
 
@@ -14,12 +14,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
-import org.bukkit.entity.Cat;
+import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.Horse.Style;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Pig;
 import org.bukkit.entity.Player;
@@ -77,22 +76,26 @@ public class PetUI extends UIHandler{
         	if(this.getPet().canMove()){
                 if ((this.getEntity() instanceof Wolf)) {
                     ((Wolf) this.getEntity()).setSitting(true);
-                } else if ((this.getEntity() instanceof Cat)) {
-                    ((Cat) this.getEntity()).setSitting(true);
+                } else if ((this.getEntity() instanceof Ocelot)) {
+                    ((Ocelot) this.getEntity()).setSitting(true);
                 }
         	}else{
                 if((this.getEntity() instanceof Wolf)) {
                     ((Wolf) this.getEntity()).setSitting(false);
-                }else if ((this.getEntity() instanceof Cat)) {
-                    ((Cat) this.getEntity()).setSitting(false);
+                }else if ((this.getEntity() instanceof Ocelot)) {
+                    ((Ocelot) this.getEntity()).setSitting(false);
                 }
         	}
             this.getPet().setMove(!this.getPet().canMove());
             this.getMenu().setItem(this.SLOT_TOGGLE_STAY, this.getToggleStay());
         }else if(slot == SLOT_TOGGLE_TYPE){
     		  if(this.getEntity() instanceof Ocelot){
-    			  Cat cat = (Cat)this.getEntity();
-    			  if(cat.getCatType().equals(Cat.Type.BLACK))cat.setCatType(Cat.Type.SIAMESE);
+    			  Ocelot cat = (Ocelot)this.getEntity();
+    			  if(cat.getCatType().equals(Ocelot.Type.BLACK_CAT))cat.setCatType(Ocelot.Type.RED_CAT);
+    			  else if (cat.getCatType().equals(Ocelot.Type.RED_CAT))cat.setCatType(Ocelot.Type.SIAMESE_CAT);
+    			  else if (cat.getCatType().equals(Ocelot.Type.SIAMESE_CAT))cat.setCatType(Ocelot.Type.WILD_OCELOT);
+    			  else if (cat.getCatType().equals(Ocelot.Type.WILD_OCELOT))cat.setCatType(Ocelot.Type.BLACK_CAT);
+    			  /*if(cat.getCatType().equals(Cat.Type.BLACK))cat.setCatType(Cat.Type.SIAMESE);
     			  else if (cat.getCatType().equals(Cat.Type.SIAMESE))cat.setCatType(Cat.Type.ALL_BLACK);
     			  else if (cat.getCatType().equals(Cat.Type.ALL_BLACK))cat.setCatType(Cat.Type.TABBY);
     			  else if (cat.getCatType().equals(Cat.Type.TABBY))cat.setCatType(Cat.Type.BRITISH_SHORTHAIR);
@@ -102,7 +105,7 @@ public class PetUI extends UIHandler{
     			  else if (cat.getCatType().equals(Cat.Type.PERSIAN))cat.setCatType(Cat.Type.RAGDOLL);
     			  else if (cat.getCatType().equals(Cat.Type.RAGDOLL))cat.setCatType(Cat.Type.RED);
     			  else if (cat.getCatType().equals(Cat.Type.RED))cat.setCatType(Cat.Type.WHITE);
-    			  else if (cat.getCatType().equals(Cat.Type.WHITE))cat.setCatType(Cat.Type.BLACK);
+    			  else if (cat.getCatType().equals(Cat.Type.WHITE))cat.setCatType(Cat.Type.BLACK);*/
     		  }else if(this.getEntity() instanceof Horse){
     			  Horse o = (Horse)this.getEntity();
     			  List<Style> styles = Arrays.asList(Horse.Style.values());

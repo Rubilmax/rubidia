@@ -65,7 +65,7 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
-import net.minecraft.server.v1_15_R1.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -79,7 +79,7 @@ import org.bukkit.FireworkEffect.Type;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.attribute.AttributeModifier.Operation;
-import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
@@ -678,11 +678,11 @@ public class RPlayer {
 		for(int i = 0;i < partsm.length;i++){
 			if(partsm[i].contains("%item")){
 				if(!inHand.getType().equals(Material.AIR)){
-				    net.minecraft.server.v1_15_R1.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(inHand);
+				    net.minecraft.server.v1_13_R2.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(inHand);
 					BaseComponent[] hoverItem;
 					HoverEvent hoverEvent;
 					if(inHand.hasItemMeta()){
-					    net.minecraft.server.v1_15_R1.NBTTagCompound compound = new NBTTagCompound();
+					    net.minecraft.server.v1_13_R2.NBTTagCompound compound = new NBTTagCompound();
 					    if(nmsItemStack.hasTag())compound = nmsItemStack.save(compound);
 					    hoverItem = new BaseComponent[]{new TextComponent(compound.toString())};
 					    hoverEvent = new HoverEvent(HoverEvent.Action.SHOW_ITEM, hoverItem);

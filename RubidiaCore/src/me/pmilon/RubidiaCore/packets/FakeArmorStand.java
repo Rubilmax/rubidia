@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_13_R2.CraftWorld;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -12,7 +12,7 @@ import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.comphenix.protocol.wrappers.WrappedDataWatcher;
 import com.comphenix.protocol.wrappers.WrappedDataWatcher.WrappedDataWatcherObject;
 
-import net.minecraft.server.v1_15_R1.EntityArmorStand;
+import net.minecraft.server.v1_13_R2.EntityArmorStand;
 
 public class FakeArmorStand {
 	

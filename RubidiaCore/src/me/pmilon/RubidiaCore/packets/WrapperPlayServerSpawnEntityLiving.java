@@ -29,6 +29,7 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.injector.PacketConstructor;
+import com.comphenix.protocol.wrappers.WrappedDataWatcher;
 
 public class WrapperPlayServerSpawnEntityLiving extends AbstractPacket {
 	public static final PacketType TYPE =
@@ -290,5 +291,25 @@ public class WrapperPlayServerSpawnEntityLiving extends AbstractPacket {
 	 */
 	public void setVelocityZ(double value) {
 		handle.getIntegers().write(4, (int) (value * 8000.0D));
+	}
+
+	/**
+	 * Retrieve the data watcher.
+	 * <p>
+	 * Content varies by mob, see Entities.
+	 * 
+	 * @return The current Metadata
+	 */
+	public WrappedDataWatcher getMetadata() {
+		return handle.getDataWatcherModifier().read(0);
+	}
+
+	/**
+	 * Set the data watcher.
+	 * 
+	 * @param value - new value.
+	 */
+	public void setMetadata(WrappedDataWatcher value) {
+		handle.getDataWatcherModifier().write(0, value);
 	}
 }

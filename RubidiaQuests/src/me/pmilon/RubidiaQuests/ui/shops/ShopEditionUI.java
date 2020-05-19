@@ -18,7 +18,7 @@ import me.pmilon.RubidiaCore.chat.ChatType;
 import me.pmilon.RubidiaCore.chat.RChatMessage;
 import me.pmilon.RubidiaCore.RManager.RClass;
 import me.pmilon.RubidiaCore.tags.TagStand;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaQuests.QuestsPlugin;
 import me.pmilon.RubidiaQuests.shops.PlayerShop;
 import me.pmilon.RubidiaQuests.shops.Shop;
@@ -182,7 +182,7 @@ public class ShopEditionUI extends UIHandler{
 		return RENAME;
 	}
 	public ItemStack getTitle(){
-		ItemStack RENAME = new ItemStack(Material.OAK_SIGN, 1);
+		ItemStack RENAME = new ItemStack(Material.SIGN, 1);
 		ItemMeta mRENAME = RENAME.getItemMeta();
 		mRENAME.setDisplayName(("§6§lRenommer la boutique"));
 		mRENAME.setLore(Arrays.asList(("§7Donnez un nom accrochant à votre boutique !"), "", "§r" + ((PlayerShop) this.getShop()).getTitle()));

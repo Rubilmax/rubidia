@@ -11,11 +11,11 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
-import net.minecraft.server.v1_15_R1.IChatBaseComponent;
-import net.minecraft.server.v1_15_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_13_R2.IChatBaseComponent;
+import net.minecraft.server.v1_13_R2.IChatBaseComponent.ChatSerializer;
 
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftMetaBook;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftMetaBook;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
@@ -105,7 +105,7 @@ public class BookUtils {
 		ItemStack held = player.getInventory().getItemInMainHand();
 		player.getInventory().setItemInMainHand(book);
 		WrapperPlayServerCustomPayload packet = new WrapperPlayServerCustomPayload();
-		packet.setChannel(MinecraftKey.fromHandle(net.minecraft.server.v1_15_R1.MinecraftKey.a("minecraft:book_open")));
+		packet.setChannel(MinecraftKey.fromHandle(net.minecraft.server.v1_13_R2.MinecraftKey.a("minecraft:book_open")));
 		final ByteBuf buffer = Unpooled.buffer(256);
 		buffer.setByte(0, 0);
 		buffer.writerIndex(1);

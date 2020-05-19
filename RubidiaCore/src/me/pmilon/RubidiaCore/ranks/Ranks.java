@@ -92,7 +92,7 @@ public class Ranks {
 			if(location != null){
 				Block block = location.getBlock();
 				for(BlockFace fc : new BlockFace[]{BlockFace.NORTH, BlockFace.EAST,BlockFace.SOUTH,BlockFace.WEST}){
-					if(block.getRelative(fc).getType().equals(Material.OAK_WALL_SIGN)){
+					if(block.getRelative(fc).getType().equals(Material.WALL_SIGN)){
 						Sign sign = (Sign)block.getRelative(fc).getState();
 						sign.setLine(0, "§2§m---§2> §8#" + (i + 1) + "§2 <§m---");
 						sign.setLine(1, "§7§l" + names.get(i));
