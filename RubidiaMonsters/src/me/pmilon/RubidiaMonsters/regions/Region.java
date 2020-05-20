@@ -179,7 +179,10 @@ public class Region {
 			//location.getChunk().load();
 			if(location.getBlock().getType().toString().contains("SNOW")) return location.add(0,1,0);
 			
-			return location;
+			if (location.clone().add(0, 1, 0).getBlock().getType().toString().contains("WATER")
+					|| location.clone().add(0, 1, 0).getBlock().getType().toString().contains("LAVA")) continue;
+			
+			return location.add(0, .3, 0);
 		}
 		
 		return null;

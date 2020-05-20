@@ -68,7 +68,7 @@ public class TagStand {
 	}
 	
 	public Location getLocation(int index) {
-		double deviation = index * .3;
+		double deviation = index * .25 + (this.getHolder().isCustomNameVisible() ? .25 : 0);
 		double standHeight = 1.975;
 		double height = this.getHolder().getHeight() - standHeight + deviation;
 		return this.getHolder().getLocation().clone().add(0, height, 0);

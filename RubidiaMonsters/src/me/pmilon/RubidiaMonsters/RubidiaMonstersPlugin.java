@@ -2,7 +2,6 @@ package me.pmilon.RubidiaMonsters;
 
 import java.io.File;
 import java.util.Random;
-import java.util.UUID;
 
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaMonsters.commands.KillallCommandExecutor;
@@ -15,6 +14,7 @@ import me.pmilon.RubidiaMonsters.utils.Configs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
@@ -89,9 +89,14 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 	}
 	
 	public void onDisable(){
-		for(UUID uniqueId : Monsters.entities.keySet()){
-			Entity entity = Bukkit.getEntity(uniqueId);
-			if (entity != null) entity.remove();
+		// Bukkit.getEntity doesn't work well
+		for (World world : Bukkit.getWorlds()) {
+			for (Entity entity : world.getEntities()) {
+				Monster monster = Monsters.get(entity);
+				if (monster != null) {
+					entity.remove();
+				}
+			}
 		}
 	}
 	

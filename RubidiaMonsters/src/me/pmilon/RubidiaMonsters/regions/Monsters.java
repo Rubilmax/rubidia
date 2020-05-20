@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 
 import me.pmilon.RubidiaCore.utils.Utils;
 import me.pmilon.RubidiaMonsters.RubidiaMonstersPlugin;
@@ -116,7 +116,7 @@ public class Monsters {
 		return null;
 	}
 	
-	public static Monster get(LivingEntity entity){
+	public static Monster get(Entity entity){
 		if(Monsters.entities.containsKey(entity.getUniqueId())){
 			return Monsters.entities.get(entity.getUniqueId());
 		}

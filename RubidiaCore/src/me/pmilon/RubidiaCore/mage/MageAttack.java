@@ -29,7 +29,6 @@ public class MageAttack extends BukkitTask {
     
     public MageAttack(Player player, ItemStack item, boolean critical) {
         super(Core.instance);
-        this.player = player;
         this.rp = RPlayer.get(player);
         this.item = item;
         this.critical = critical;
@@ -61,34 +60,34 @@ public class MageAttack extends BukkitTask {
             if(location.getBlock().getType().isSolid()) {
             	break;
             }
-
-            boolean damaged = false;
-            for(LivingEntity en : DamageManager.toDamageableEntityList(LocationUtils.getNearbyEntities(location, .8))) {
-            	if(en.getLocation().distanceSquared(location) <= 1
-            			|| en.getLocation().add(0,1,0).distanceSquared(location) <= 1) {
-                	double damages = DamageManager.getDamages(player, en, item, RDamageCause.MAGIC, critical, false);
-            		if(DamageManager.damage(en, player, damages, RDamageCause.MAGIC)) {
-                		for(Enchantment enchant : item.getEnchantments().keySet()){
-                			int level = item.getEnchantmentLevel(enchant);
-                			if(enchant.equals(Enchantment.FIRE_ASPECT)){
-                				en.setFireTicks(40*level);
-                			}else if(enchant.equals(Enchantment.KNOCKBACK)){
-                				en.setVelocity(en.getLocation().toVector().subtract(player.getLocation().toVector()).normalize().multiply(level*.75));
-                			}
-                		}
-                		damaged = true;
-            		}
-            	}
-            	
-                if(damaged)break;
-            }
             
-            if(damaged)break;
+            if(this.damage(location)) break;
         }
 	}
 
 	@Override
 	public void onCancel() {
+	}
+	
+	public boolean damage(Location location) {
+		for(LivingEntity en : DamageManager.toDamageableEntityList(LocationUtils.getNearbyEntities(location, .8))) {
+        	if(en.getLocation().distanceSquared(location) <= 1
+        			|| en.getLocation().add(0,1,0).distanceSquared(location) <= 1) {
+            	double damages = DamageManager.getDamages(player, en, item, RDamageCause.MAGIC, critical, false);
+        		if(DamageManager.damage(en, player, damages, RDamageCause.MAGIC)) {
+            		for(Enchantment enchant : item.getEnchantments().keySet()){
+            			int level = item.getEnchantmentLevel(enchant);
+            			if(enchant.equals(Enchantment.FIRE_ASPECT)){
+            				en.setFireTicks(40*level);
+            			}else if(enchant.equals(Enchantment.KNOCKBACK)){
+            				en.setVelocity(en.getLocation().toVector().subtract(player.getLocation().toVector()).normalize().multiply(level*.75));
+            			}
+            		}
+            		return true;
+        		}
+        	}
+        }
+		return false;
 	}
 }
 

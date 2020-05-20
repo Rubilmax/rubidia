@@ -337,6 +337,8 @@ public class WeaponsListener implements Listener {
 					if(e.getCause().equals(DamageCause.ENTITY_ATTACK)){
 						if(e.getDamage() > 0){
 							e.setCancelled(true);
+							boolean critical = !entity1.isOnGround();
+							
 							ItemStack item = entity1.getEquipment().getItemInMainHand();
 							if(item != null){
 								RItem rItem = new RItem(item);
@@ -351,13 +353,36 @@ public class WeaponsListener implements Listener {
 													RPlayerUseWeaponEvent event = new RPlayerUseWeaponEvent(rp, weapon);
 													Bukkit.getPluginManager().callEvent(event);
 													if(event.isCancelled())return;
+													
+													weapon = event.getWeapon();
+													final RPlayer newRp = event.getRPlayer();
+													if(weapon.getWeaponUse().equals(WeaponUse.MAGIC)) {														
+														if(newRp.canAttackMagic){
+															newRp.canAttackMagic = false;
+													        new MageAttack(player, item, critical).run();
+															new BukkitTask(Core.instance) {
+																
+																@Override
+																public void run(){
+																	newRp.canAttackMagic = true;
+																}
+
+																@Override
+																public void onCancel() {
+																}
+																
+															}.runTaskLater(3);
+														}
+														
+														return;
+													}
 												}
 											}
 										}
 									}
 								}
 							}
-							double damages = DamageManager.getDamages(entity1, damaged, item, RDamageCause.MELEE, !entity1.isOnGround(), false);
+							double damages = DamageManager.getDamages(entity1, damaged, item, RDamageCause.MELEE, critical, false);
 							DamageManager.damageEvent(e, damages, RDamageCause.MELEE, !entity1.isOnGround());
 						}
 					}

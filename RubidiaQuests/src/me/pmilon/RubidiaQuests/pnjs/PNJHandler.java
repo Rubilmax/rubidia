@@ -167,7 +167,7 @@ public abstract class PNJHandler {
 	}
 
 	public void requestTag(){
-		this.tag = new TagStand(this.getEntity(), new String[]{this.getTitlePrefix() + this.getTitle(), this.getNamePrefix() + this.getName()}, this.isFix());
+		this.tag = new TagStand(this.getEntity(), new String[]{this.getTitlePrefix() + this.getTitle()}, this.isFix());
 		this.getTag().display();
 	}
 	
@@ -198,7 +198,8 @@ public abstract class PNJHandler {
 		this.pnj.setAge(this.getAge());
 		this.pnj.setAgeLock(true);
 		this.pnj.setCanPickupItems(false);
-		this.pnj.setCustomNameVisible(false);
+		this.pnj.setCustomName(this.getNamePrefix() + this.getName());
+		this.pnj.setCustomNameVisible(true);
 		this.pnj.setFallDistance(-1);
 		this.pnj.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(666.0);
 		this.pnj.setRemoveWhenFarAway(false);
@@ -345,7 +346,8 @@ public abstract class PNJHandler {
 		villager.setAge(this.getAge());
 		villager.setAgeLock(true);
 		villager.setCanPickupItems(false);
-		villager.setCustomNameVisible(false);
+		villager.setCustomName(this.getNamePrefix() + this.getName());
+		villager.setCustomNameVisible(true);
 		villager.setFallDistance(-1);
 		villager.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(666.0);
 		villager.setRemoveWhenFarAway(false);
