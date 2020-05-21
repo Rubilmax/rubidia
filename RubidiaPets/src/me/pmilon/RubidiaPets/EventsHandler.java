@@ -12,8 +12,6 @@ import me.pmilon.RubidiaPets.ui.PetUI;
 import me.pmilon.RubidiaPets.utils.Settings;
 
 import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -28,6 +26,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -41,6 +40,19 @@ public class EventsHandler implements Listener {
 		if(targetter != null && target != null){
 			if(Pet.isPet(targetter))e.setCancelled(true);
 			else if(Pet.isPet(target))e.setCancelled(true);
+		}
+	}
+	
+	@EventHandler
+	public static void onPlayerJoin(PlayerJoinEvent event){
+		Player player = event.getPlayer();
+		if (player != null) {
+			RPlayer rp = RPlayer.get(player);
+			for(Pet pet : rp.getPets()){
+				if(pet.isActive()){
+					pet.spawn(rp.getPlayer());
+				}
+			}
 		}
 	}
 
@@ -88,14 +100,7 @@ public class EventsHandler implements Listener {
 												
 											}.runTaskLater(4);
 											pet.addExp(1.06,true);
-											if(pet.getHealth()+Settings.HEALTH_PER_FOOD > pet.getMaxHealth()){
-												pet.setHealth(pet.getMaxHealth());
-												pet.getEntity().setHealth(pet.getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()-.01);
-											}else{
-												pet.setHealth(pet.getHealth()+Settings.HEALTH_PER_FOOD);
-												pet.getEntity().setHealth(pet.getEntity().getHealth()+Settings.HEALTH_PER_FOOD);
-											}
-											pet.getEntity().getWorld().spawnParticle(Particle.HEART, pet.getEntity().getLocation(), 9, .4, 1, .4);
+											pet.heal(Settings.HEALTH_PER_FOOD);
 											item.setAmount(item.getAmount()-1);
 											if(item.getAmount() < 1)e.getPlayer().getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 										}

@@ -2,7 +2,6 @@ package me.pmilon.RubidiaPets.pets;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 import me.pmilon.RubidiaCore.handlers.TeleportHandler;
@@ -11,7 +10,6 @@ import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaCore.utils.RandomUtils;
 import me.pmilon.RubidiaMonsters.pathfinders.PathfinderGoalMeleeAttack;
 import me.pmilon.RubidiaPets.PetsPlugin;
-import me.pmilon.RubidiaPets.pathfindergoals.PathfinderGoalAttack;
 import me.pmilon.RubidiaPets.utils.Configs;
 import me.pmilon.RubidiaPets.utils.LevelUtils;
 import me.pmilon.RubidiaPets.utils.Settings;
@@ -20,6 +18,7 @@ import net.minecraft.server.v1_13_R2.*;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.craftbukkit.v1_13_R2.entity.CraftCreature;
 import org.bukkit.entity.Ageable;
@@ -193,13 +192,16 @@ public class Pet {
 		Creature pet = (Creature) owner.getWorld().spawnEntity(owner.getLocation().add(new Vector(RandomUtils.random.nextDouble(),0,RandomUtils.random.nextDouble()).normalize().multiply(2.5)), this.getType());
 		EntityCreature creature = ((CraftCreature)pet).getHandle();
 		
-		((LinkedHashSet<?>) getPrivateField("b", PathfinderGoalSelector.class, creature.targetSelector)).clear();
+		creature.targetSelector = new PathfinderGoalSelector(creature.world.methodProfiler);
+		creature.goalSelector = new PathfinderGoalSelector(creature.world.methodProfiler);
+		
+		/*((LinkedHashSet<?>) getPrivateField("b", PathfinderGoalSelector.class, creature.targetSelector)).clear();
 		((LinkedHashSet<?>) getPrivateField("c", PathfinderGoalSelector.class, creature.targetSelector)).clear();
 		((LinkedHashSet<?>) getPrivateField("b", PathfinderGoalSelector.class, creature.goalSelector)).clear();
-		((LinkedHashSet<?>) getPrivateField("c", PathfinderGoalSelector.class, creature.goalSelector)).clear();
+		((LinkedHashSet<?>) getPrivateField("c", PathfinderGoalSelector.class, creature.goalSelector)).clear();*/
 		creature.goalSelector.a(0, new PathfinderGoalFloat(creature));
 		creature.goalSelector.a(2, new PathfinderGoalMeleeAttack(creature, 1.44D, false));
-		creature.goalSelector.a(3, new PathfinderGoalAttack(creature, this));
+		//creature.goalSelector.a(3, new PathfinderGoalAttack(creature, this));
 		creature.goalSelector.a(5, new PathfinderGoalMoveTowardsRestriction(creature, 1.0D));
 		creature.goalSelector.a(8, new PathfinderGoalLookAtPlayer(creature, EntityHuman.class, 8.0F));
 		creature.goalSelector.a(8, new PathfinderGoalRandomLookaround(creature));
@@ -223,6 +225,8 @@ public class Pet {
 	    }
 	    if(pet instanceof Wolf){
 	    	((Wolf) pet).setCollarColor(this.getCollarColor());
+	    }else if(pet instanceof Sheep){
+	    	((Sheep) pet).setColor(this.getCollarColor());
 	    }else if(pet instanceof Horse){
 	    	((Horse) pet).setColor(this.getColor());
 	    	((Horse) pet).setStyle(this.getStyle());
@@ -350,6 +354,7 @@ public class Pet {
 		this.level = level;
 	}
 	
+	// called 1/sec by RubidiaCore
 	public void update(Player owner){
 		if(owner != null && this.getEntity() != null){
 			if(this.getHealth() <= 1.0){
@@ -357,6 +362,7 @@ public class Pet {
 				location.setPitch(35.0F);
 				this.getEntity().teleport(location);
 			}
+			
 			if(this.getEntity().getTarget() == null || this.getEntity().getTarget().isDead() || !this.getEntity().getTarget().isValid()){
 				if(this.getEntity().isValid() && !this.getEntity().isDead()){
 					Location location = this.getOwner().getLocation().add(new Vector(RandomUtils.random.nextDouble(), 0, RandomUtils.random.nextDouble()).normalize().multiply(RandomUtils.random.nextInt(3)*RandomUtils.random.nextDouble()+1.9));
@@ -365,6 +371,7 @@ public class Pet {
 						if(this.canMove()){
 							if(distance > Math.pow(3.9, 2)){
 								if(distance < Math.pow(20, 2)){
+									System.out.println("navigation");
 									((CraftCreature)this.getEntity()).getHandle().getNavigation().a(location.getX(), location.getY(), location.getZ(), this.getHealth() > 1.0 ? (distance < 121 ? 1.57 : 1.98) : 1.18);
 								}else TeleportHandler.teleport(this.getEntity(), location);
 							}
@@ -373,6 +380,7 @@ public class Pet {
 				}
 				this.getEntity().setTarget(null);
 			}
+			
 			this.addPearlsEffects(owner);
 			for(Pearl pearl : new ArrayList<Pearl>(this.getActivePearls())){
 				if(System.currentTimeMillis() > pearl.getStartTime()+pearl.getDuration()){
@@ -523,7 +531,8 @@ public class Pet {
 	}
 	
 	public void updateHealth(){
-		this.setHealth(this.getEntity().getHealth());
+		double health = Math.round(this.getEntity().getHealth() * 10) / 10.;
+		this.setHealth(health);
 		this.getStand().setLayers(new String[]{getName(), "§7[" + getLevel() + "] " + getHealthDisplay()}, true);
 		if(this.getEntity().getHealth() <= 1.0)this.getEntity().setTarget(null);
 	}
@@ -542,5 +551,32 @@ public class Pet {
 
 	public void setParrotType(Parrot.Variant parrotType) {
 		this.parrotType = parrotType;
+	}
+	
+	public void heal(double healthPoints) {
+		double oldHealth = this.getHealth();
+		double newHealth = Math.min(this.getMaxHealth(), this.getHealth() + healthPoints);
+		this.setHealth(newHealth);
+		
+		if (this.getEntity() != null) {
+			double newEntityHealth = Math.min(this.getHealth(), this.getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()-.0001);
+			this.getEntity().setHealth(newEntityHealth);
+			if (oldHealth < newHealth) this.getEntity().getWorld().spawnParticle(Particle.HEART, this.getEntity().getLocation(), (int) (newHealth - oldHealth), .4, 1, .4);
+			
+			final Pet pet = this;
+			// synchronous health update
+			new BukkitTask(PetsPlugin.instance){
+				
+				@Override
+				public void run() {
+					pet.updateHealth();
+				}
+
+				@Override
+				public void onCancel() {
+				}
+				
+			}.runTaskLater(0);
+		}
 	}
 }

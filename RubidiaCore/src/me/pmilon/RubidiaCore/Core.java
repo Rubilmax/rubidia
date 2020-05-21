@@ -301,12 +301,10 @@ public class Core extends JavaPlugin implements Listener {
 
 		new BukkitTask(this) {
 			public void run() {
-				PetsPlugin.onPlayerJoin(rp);
 				for (RPlayer rpo : RPlayer.getOnlines()) {
 					if (rpo.knows(rp)) {
 						if (rpo.getNotifOnFriendJoin()) {
-							rpo.getPlayer().playSound(rpo.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1,
-									10F);
+							rpo.getPlayer().playSound(rpo.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 10F);
 							rpo.sendMessage("§e" + s + " §avient de se connecter !");
 						}
 					}
@@ -409,7 +407,7 @@ public class Core extends JavaPlugin implements Listener {
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerDeath(PlayerDeathEvent e) {
-		final Player p = e.getEntity();
+		Player p = e.getEntity();
 		RPlayer rp = RPlayer.get(p);
 		e.setKeepLevel(true);
 		e.setKeepInventory(true);
@@ -417,18 +415,16 @@ public class Core extends JavaPlugin implements Listener {
 		e.getDrops().clear();
 
 		RPlayer killer = null;
-		if (p.getKiller() != null)
-			killer = RPlayer.get(p.getKiller());
-		RPlayerDeathEvent event = new RPlayerDeathEvent(e, rp, killer, new ArrayList<ItemStack>(),
-				p.getInventory().getContents(), p.getInventory().getArmorContents());
+		if (p.getKiller() != null) killer = RPlayer.get(p.getKiller());
+		RPlayerDeathEvent event = new RPlayerDeathEvent(e, rp, killer, new ArrayList<ItemStack>(), p.getInventory().getContents(), p.getInventory().getArmorContents());
 		Bukkit.getPluginManager().callEvent(event);
 		if (!event.isCancelled()) {
 			rp = event.getRPlayer();
-			if (Smiley.isSmileying(p))
-				rp.smileyTask.run();
+			p = event.getRPlayer().getPlayer();
+			if (Smiley.isSmileying(p)) rp.smileyTask.run();
 			if (!rp.isInDuel()) {
 				if (!event.isKeepInventory()) {
-					ItemStack[] contents = event.getRPlayer().getPlayer().getInventory().getContents();
+					ItemStack[] contents = p.getInventory().getContents();
 					for (int i = 0; i < contents.length; i++) {
 						if (i == 8 || i == 17 && event.getRPlayer().getRClass().equals(RClass.RANGER))
 							continue;
@@ -441,7 +437,8 @@ public class Core extends JavaPlugin implements Listener {
 							}
 						}
 					}
-					event.getRPlayer().getPlayer().getInventory().setContents(contents);
+					p.getInventory().setContents(contents);
+					
 					ItemStack[] contents1 = p.getInventory().getArmorContents();
 					for (int i = 0; i < contents1.length; i++) {
 						if (contents1[i] != null) {
@@ -453,22 +450,20 @@ public class Core extends JavaPlugin implements Listener {
 							}
 						}
 					}
-					event.getRPlayer().getPlayer().getInventory().setArmorContents(contents1);
+					p.getInventory().setArmorContents(contents1);
+					
 					for (ItemStack item : event.getDrops()) {
 						if (!item.getType().equals(Material.AIR)) {
-							event.getRPlayer().getPlayer().getWorld()
-									.dropItemNaturally(event.getRPlayer().getPlayer().getLocation(), item);
+							p.getWorld().dropItemNaturally(p.getLocation(), item);
 						}
 					}
 				}
-				if (event.getKiller() != null)
-					event.getKiller().setKills(event.getKiller().getKills() + 1);
+				if (event.getKiller() != null) event.getKiller().setKills(event.getKiller().getKills() + 1);
 			}
 
 			rp.setLastCombat(System.currentTimeMillis() - 4444 * 1000);
 		} else {
-			event.getRPlayer().getPlayer().setHealth(
-					event.getRPlayer().getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() - .001);
+			p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() - .001);
 		}
 
 		event.getSuperEvent().setDeathMessage("");// to avoid custom chat bugs >> see RChatListener

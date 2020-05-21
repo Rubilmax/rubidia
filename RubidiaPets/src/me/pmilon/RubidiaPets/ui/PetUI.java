@@ -35,12 +35,13 @@ public class PetUI extends UIHandler{
 	
   private final Pet pet;
   private final LivingEntity entity;
+  private int SLOT_NAME = 0;
   private int SLOT_TOGGLE_STAY = 2;
   private int SLOT_TOGGLE_TYPE = 3;
   private int SLOT_TOGGLE_AGE = 4;
   private int SLOT_DISTINCTIONS = 6;
-  private int SLOT_PEARLS = 8;
-  private int SLOT_NAME = 0;
+  private int SLOT_PEARLS = 7;
+  private int SLOT_STATE = 8;
   
   private int LIST_ID_NAME = 1;
 	
@@ -168,6 +169,17 @@ public class PetUI extends UIHandler{
         	  Core.uiManager.requestUI(new PearlsUI(this.getHolder(), this.getPet()));
           }else if(slot == SLOT_DISTINCTIONS){
         	  Core.uiManager.requestUI(new PetDistinctionsMenu(this.getHolder(), this.getPet()));
+          }else if(slot == SLOT_STATE){
+				if(this.getPet().isActive()){
+					this.getPet().despawn();
+					this.getPet().setActive(false);
+					rp.sendMessage("§cVous avez rangé §4" + pet.getName() + "§c.");
+				}else{
+					this.getPet().spawn(this.getHolder());
+					this.getPet().setActive(true);
+					rp.sendMessage("§aVous avez fait sortir §2" + pet.getName() + "§a.");
+				}
+				this.menu.setItem(slot, this.getToggleState());
           }
 	}
 	
@@ -193,14 +205,15 @@ public class PetUI extends UIHandler{
 	    if(this.getEntity() instanceof Ageable)getMenu().setItem(SLOT_TOGGLE_AGE, this.getToggleAge());
 	    getMenu().setItem(SLOT_DISTINCTIONS, this.getDistinctions());
 	    getMenu().setItem(SLOT_PEARLS, this.getPearls());
+	    getMenu().setItem(SLOT_STATE, this.getToggleState());
 		return this.getHolder().openInventory(getMenu()) != null;
 	}
 
 	private ItemStack getName(){
 		  ItemStack name = new ItemStack(Material.MAP);
 		    ItemMeta im = name.getItemMeta();
-		    im.setDisplayName(("§e§lRENOMMER"));
-		    im.setLore(Arrays.asList("§7" + ("Donnez-lui un nom à sa hauteur"), "§7" + ("en utilisant les codes couleurs minecraft !")));
+		    im.setDisplayName("§6§lRenommer");
+		    im.setLore(Arrays.asList("§eDonnez-lui un nom à sa hauteur", "§een utilisant les codes couleurs minecraft !"));
 		    name.setItemMeta(im);
 		    return name;
 	}
@@ -208,26 +221,26 @@ public class PetUI extends UIHandler{
 		  ItemStack togsta = new ItemStack(Material.LEVER);
 		    ItemMeta im2 = togsta.getItemMeta();
 		    if(this.getPet().canMove())im2.setDisplayName(("§e§lIMMOBILISER"));
-		    else im2.setDisplayName(("§e§lMOBILISER"));
-		    im2.setLore(Arrays.asList("§7" + ("Un compagnon immobilisé sera téléporté"), "§7" + ("lorsque vous serez à 50 blocs de lui.")));
+		    else im2.setDisplayName("§6§lMobiliser");
+		    im2.setLore(Arrays.asList("§eUn compagnon immobilisé sera téléporté", "§elorsque vous serez à 50 blocs de lui."));
 		    togsta.setItemMeta(im2);
 		    return togsta;
 	}
 	private ItemStack getToggleType(){
-		ItemStack togtyp = new ItemStack(Material.APPLE);
+		ItemStack togtyp = new ItemStack(Material.CREEPER_HEAD);
 	    ItemMeta im4 = togtyp.getItemMeta();
-	    im4.setDisplayName(("§e§lAPPARENCE"));
-	    im4.setLore(Arrays.asList("§7" + ("Essayez toutes les apparences"), "§7" + ("possibles pour ce type de compagnon.")));
+	    im4.setDisplayName("§6§lApparence");
+	    im4.setLore(Arrays.asList("§eEssayez toutes les apparences", "§epossibles pour ce type de compagnon."));
 	    togtyp.setItemMeta(im4);
 	    return togtyp;
 	}
 	private ItemStack getToggleAge(){
-		ItemStack togage = new ItemStack(Material.MILK_BUCKET);
+		ItemStack togage = new ItemStack(Material.EGG);
 	    ItemMeta im5 = togage.getItemMeta();
 	    if(this.getEntity() instanceof Ageable){
 	    	if(((Ageable)this.getEntity()).isAdult()){
-	    		im5.setDisplayName(("§e§lRAJEUNIR"));
-	    	}else im5.setDisplayName(("§e§lVIEILLIR"));
+	    		im5.setDisplayName(("§6§lRajeunir"));
+	    	}else im5.setDisplayName(("§6§lViellir"));
 	    }
 	    togage.setItemMeta(im5);
 	    return togage;
@@ -235,16 +248,25 @@ public class PetUI extends UIHandler{
 	private ItemStack getDistinctions(){
 		ItemStack pearls = new ItemStack(Material.BOOK, 1);
 		ItemMeta pearlsm = pearls.getItemMeta();
-		pearlsm.setDisplayName("§a§lDISTINCTIONS");
+		pearlsm.setDisplayName("§a§lDinstinctions");
+		pearlsm.setLore(Arrays.asList("§eAméliorez les distinctions de votre compagnon", "§epour en faire votre meilleur équipié !"));
 		pearls.setItemMeta(pearlsm);
 		return pearls;
 	}
 	private ItemStack getPearls(){
 		ItemStack pearls = new ItemStack(Material.ENDER_EYE, 1);
 		ItemMeta pearlsm = pearls.getItemMeta();
-		pearlsm.setDisplayName("§a§l" + ("PERLES"));
+		pearlsm.setDisplayName("§a§lPerle");
+		pearlsm.setLore(Arrays.asList("§eActivez vos perles de compagnons ici", "§epour profiter de leurs bonus !"));
 		pearls.setItemMeta(pearlsm);
 		return me.pmilon.RubidiaCore.utils.Utils.setGlowingWithoutAttributes(pearls);
+	}
+	private ItemStack getToggleState(){
+		ItemStack back = new ItemStack(Material.BROWN_SHULKER_BOX, 1);
+		ItemMeta backm = back.getItemMeta();
+		backm.setDisplayName(this.getPet().isActive() ? "§c§lRanger" : "§a§lSortir");
+		back.setItemMeta(backm);
+		return me.pmilon.RubidiaCore.utils.Utils.setGlowingWithoutAttributes(back);
 	}
 
 	public LivingEntity getEntity() {

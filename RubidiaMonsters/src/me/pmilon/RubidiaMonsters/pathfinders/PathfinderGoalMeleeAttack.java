@@ -38,8 +38,10 @@ public class PathfinderGoalMeleeAttack extends PathfinderGoal {
         if (entityliving == null) {
             return false;
         } else if (!entityliving.isAlive()) {
+        	this.b.setGoalTarget(null);
             return false;
         } else if (!this.b.getEntitySenses().a(entityliving)) {
+        	this.b.setGoalTarget(null);
             return false;
         } else if (this.g != null && !this.g.isAssignableFrom(entityliving.getClass())) {
             return false;

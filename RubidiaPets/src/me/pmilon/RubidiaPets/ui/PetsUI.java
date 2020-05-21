@@ -11,7 +11,8 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
+import me.pmilon.RubidiaCore.Core;
+import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 import me.pmilon.RubidiaPets.pets.Pearl;
 import me.pmilon.RubidiaPets.pets.Pet;
@@ -29,7 +30,7 @@ public class PetsUI extends ListMenuUIHandler<Pet> {
 		ItemStack infos = new ItemStack(Material.BOOK, 1);
 		ItemMeta meta = infos.getItemMeta();
 		meta.setDisplayName("§7Informations");
-		meta.setLore(Arrays.asList("§8" + ("Cliquez sur un compagnon à faire sortir ou à ranger.")));
+		meta.setLore(Arrays.asList("§8Clic gauche sur un compagnon pour le faire sortir ou le ranger.", "§8Clic droit pour ouvrir le menu du compagnon."));
 		infos.setItemMeta(meta);
 		return infos;
 	}
@@ -41,11 +42,11 @@ public class PetsUI extends ListMenuUIHandler<Pet> {
 		meta.setDisplayName("§f" + pet.getName());
 		List<String> lore = new ArrayList<String>();
 		lore.addAll(Arrays.asList("§f§m----------------------------",
-				"§8" + ("Niveau") + " §7" + pet.getLevel(),
-				"§8" + ("Expérience :") + " §7" + Utils.round(pet.getExp(),2) + "/" + Utils.round(LevelUtils.getPLevelTotalExp(pet.getLevel()),2) + "XP  (" + Utils.round((pet.getExp()/LevelUtils.getPLevelTotalExp(pet.getLevel())*100), 2) + "%)",
-				"§8" + ("Attaque :") + " §7" + Utils.round(pet.getDamages(),2),
-				"§8" + ("Vie :") + " §7" + Utils.round(pet.getHealth(),2) + "/" + Utils.round(pet.getMaxHealth(),2),
-				"§8" + ("Vitesse d'attaque :") + " §7" + Utils.round(pet.getAttackSpeed(),2)));
+				"§8Niveau §7" + pet.getLevel(),
+				"§8Expérience : §7" + Utils.round(pet.getExp(),2) + "/" + Utils.round(LevelUtils.getPLevelTotalExp(pet.getLevel()),2) + "XP  (" + Utils.round((pet.getExp()/LevelUtils.getPLevelTotalExp(pet.getLevel())*100), 2) + "%)",
+				"§8Attaque : §7" + Utils.round(pet.getDamages(),2),
+				"§8Vie : §7" + Utils.round(pet.getHealth(),2) + "/" + Utils.round(pet.getMaxHealth(),2),
+				"§8Vitesse d'attaque : §7" + Utils.round(pet.getAttackSpeed(),2)));
 		if(!pet.getActivePearls().isEmpty()){
 			lore.addAll(Arrays.asList("§f§m----------------------------","",
 					"§8" + ("Perles actives")));
@@ -68,16 +69,20 @@ public class PetsUI extends ListMenuUIHandler<Pet> {
 		int slot = e.getRawSlot();
 		Pet pet = this.get(slot);
 		if(pet != null){
-			if(pet.isActive()){
-				pet.despawn();
-				pet.setActive(false);
-				rp.sendMessage("§cVous avez rangé §4" + pet.getName() + "§c.");
-			}else{
-				pet.spawn(this.getHolder());
-				pet.setActive(true);
-				rp.sendMessage("§aVous avez fait sortir §2" + pet.getName() + "§a.");
+			if (e.isLeftClick()) {
+				if(pet.isActive()){
+					pet.despawn();
+					pet.setActive(false);
+					rp.sendMessage("§cVous avez rangé §4" + pet.getName() + "§c.");
+				}else{
+					pet.spawn(this.getHolder());
+					pet.setActive(true);
+					rp.sendMessage("§aVous avez fait sortir §2" + pet.getName() + "§a.");
+				}
+				this.menu.setItem(slot, this.getItem(pet));
+			} else if (e.isRightClick()) {
+				Core.uiManager.requestUI(new PetUI(this.getHolder(), pet));
 			}
-			this.menu.setItem(slot, this.getItem(pet));
 		}
 	}
 

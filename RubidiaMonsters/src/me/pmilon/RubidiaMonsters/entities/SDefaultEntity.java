@@ -9,6 +9,7 @@ public class SDefaultEntity {
 	
 	public static void setAttackPathfinders(Monster monster, EntityInsentient entity) {
 		entity.targetSelector = new PathfinderGoalSelector(entity.world.methodProfiler);
+		entity.goalSelector = new PathfinderGoalSelector(entity.world.methodProfiler);
         
 		if(entity instanceof EntityCreature){
 			EntityCreature creature = (EntityCreature)entity;
