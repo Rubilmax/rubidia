@@ -106,36 +106,38 @@ public class SkillTree extends UIHandler {
 				int amount = 1;
 				if(e.isShiftClick())amount = 5;
 				RAbility ability = this.slots.get(slot);
-				if(ability.getSettings().getLevelMax() < rp.getAbilityLevel(ability)+amount){
-					amount = ability.getSettings().getLevelMax()-rp.getAbilityLevel(ability);
-				}
-				if(amount == 0){
-					rp.sendMessage("§cVous avez déjà atteint le niveau maximal pour cette compétence.");
-					this.getHolder().playSound(this.getHolder().getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 1);
-				}else{
-					if(rp.isAtLeast(ability.getMastery())){
-						if(rp.getSkillPoints() >= amount){
-							if(e.isShiftClick()){
-								this.doMegaUpSound();
-							}else{
-								this.doUpSound();
+				if (ability != null) {
+					if(ability.getSettings().getLevelMax() < rp.getAbilityLevel(ability)+amount){
+						amount = ability.getSettings().getLevelMax()-rp.getAbilityLevel(ability);
+					}
+					if(amount == 0){
+						rp.sendMessage("§cVous avez déjà atteint le niveau maximal pour cette compétence.");
+						this.getHolder().playSound(this.getHolder().getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 1);
+					}else{
+						if(rp.isAtLeast(ability.getMastery())){
+							if(rp.getSkillPoints() >= amount){
+								if(e.isShiftClick()){
+									this.doMegaUpSound();
+								}else{
+									this.doUpSound();
+								}
+								rp.setAbilityLevel(ability, rp.getAbilityLevel(ability)+amount);
+								rp.setSkillPoints(rp.getSkillPoints()-amount);
+								leveledUp = RAbility.getAvailable(rp);
+								getMenu().setItem(slot, this.getAbility(ability));
+								getMenu().setItem(this.SLOT_SKP, this.getSkp());
+								if(rp.getSkillPoints() < 1){
+									Core.uiManager.requestUI(new SkillTree(this.getHolder()));
+								}
+								if(ability.getSettings().getLevelMax() == rp.getAbilityLevel(ability)) {
+									rp.sendMessage("§aVous avez atteint le niveau maximal pour cette compétence.");
+								}
+							} else {
+								this.getHolder().playSound(this.getHolder().getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 1);
+								rp.sendMessage("§cVous n'avez pas assez de points de compétences !");
 							}
-							rp.setAbilityLevel(ability, rp.getAbilityLevel(ability)+amount);
-							rp.setSkillPoints(rp.getSkillPoints()-amount);
-							leveledUp = RAbility.getAvailable(rp);
-							getMenu().setItem(slot, this.getAbility(ability));
-							getMenu().setItem(this.SLOT_SKP, this.getSkp());
-							if(rp.getSkillPoints() < 1){
-								Core.uiManager.requestUI(new SkillTree(this.getHolder()));
-							}
-							if(ability.getSettings().getLevelMax() == rp.getAbilityLevel(ability)) {
-								rp.sendMessage("§aVous avez atteint le niveau maximal pour cette compétence.");
-							}
-						} else {
-							this.getHolder().playSound(this.getHolder().getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 1);
-							rp.sendMessage("§cVous n'avez pas assez de points de compétences !");
-						}
-					} else rp.sendMessage("§cCette compétence est bloquée ! Débloquez-la au niveau " + ability.getMastery().getLevel() + " en devenant " + ability.getMastery().getName().toLowerCase() + ".");
+						} else rp.sendMessage("§cCette compétence est bloquée ! Débloquez-la au niveau " + ability.getMastery().getLevel() + " en devenant " + ability.getMastery().getName().toLowerCase() + ".");
+					}
 				}
 			} else rp.sendMessage("§cVous êtes vagabond ! Ces compétences ne sont qu'en présentation.");
 		}

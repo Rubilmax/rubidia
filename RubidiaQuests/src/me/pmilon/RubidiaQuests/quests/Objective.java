@@ -412,8 +412,7 @@ public class Objective {
 		if(this.getType().equals(ObjectiveType.GET)){
 			return this.getItemStack().getAmount() + " " + this.getInfoName() + " à " + this.getName();
 		}else if(this.getType().equals(ObjectiveType.LEASH)){
-			if(this.getMonster() == null)this.setMonsterUUID(Monsters.monsters.get(0).getUUID());
-			String name = this.getMonster().getName().toLowerCase();
+			String name = this.getMonster() == null ? "???" : this.getMonster().getName().toLowerCase();
 			return this.getAmount() + " " + name + (this.getAmount() > 1 && !name.endsWith("s") && !name.endsWith("x") ? "s" : "") + " à " + this.getName();
 		}else if(this.getType().equals(ObjectiveType.FOLLOW)){
 			return this.getName() + " " + this.getInfoName();
@@ -422,8 +421,7 @@ public class Objective {
 		}else if(this.getType().equals(ObjectiveType.DISCOVER)){
 			return this.getInfoName();
 		}else if(this.getType().equals(ObjectiveType.KILL)){
-			if(this.getMonster() == null)this.setMonsterUUID(Monsters.monsters.get(0).getUUID());
-			String name = this.getMonster().getName().toLowerCase();
+			String name = this.getMonster() == null ? "???" : this.getMonster().getName().toLowerCase();
 			return this.getAmount() + " " + name + (this.getAmount() > 1 && !name.endsWith("s") && !name.endsWith("x") ? "s" : "");
 		}else if(this.getType().equals(ObjectiveType.TALK)){
 			return this.getName();

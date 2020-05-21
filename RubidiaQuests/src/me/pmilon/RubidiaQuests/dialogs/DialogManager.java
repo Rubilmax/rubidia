@@ -17,7 +17,7 @@ public class DialogManager {
 		if(!isInDialog(p)){
 			dialogs.put(p, dialog);
 			p.setGravity(false);
-			if(p.isOnGround())p.teleport(p.getLocation().add(0,.3,0));
+			if(p.isOnGround())p.teleport(p.getLocation().add(0,.05,0));
 		}
 	}
 	

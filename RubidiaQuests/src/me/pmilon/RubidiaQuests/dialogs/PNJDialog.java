@@ -132,7 +132,7 @@ public class PNJDialog {
 				}
 				if(isBlind()){
 					if(!getPlayer().hasPotionEffect(PotionEffectType.BLINDNESS)){
-						getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 99999999, 444, true, false));
+						getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 99999999, 0, true, false));
 					}
 				}else if(getPlayer().hasPotionEffect(PotionEffectType.BLINDNESS)){
 					getPlayer().removePotionEffect(PotionEffectType.BLINDNESS);
