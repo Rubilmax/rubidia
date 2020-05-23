@@ -150,8 +150,6 @@ public class WeaponsListener implements Listener {
 									}
 									
 									if(weapon.getWeaponUse().equals(WeaponUse.MAGIC)) {
-										event.setCancelled(true);
-										
 										if(rp.canAttackMagic){
 											rp.canAttackMagic = false;
 									        new MageAttack(player, is, critical).run();
@@ -169,6 +167,10 @@ public class WeaponsListener implements Listener {
 											}.runTaskLater(3);
 										}
 									}
+								}
+								
+								if(weapon.getWeaponUse().equals(WeaponUse.MAGIC)) {
+									event.setCancelled(true); // to prevent hoes item damage
 								}
 								
 								if(weapon.getWeaponUse().equals(WeaponUse.RANGE)) {
@@ -405,15 +407,8 @@ public class WeaponsListener implements Listener {
 					int nextNearestDamage = (int) Math.ceil(item.getType().getMaxDurability()*(damageStep*currentStep + damageShift));
 					int damage = nextNearestDamage - realDamage;
 					event.setDamage(damage);
-					return;
-				} else {
-					event.setCancelled(true);
-					return;
-				}
-			} else {
-				event.setDamage((int) Math.ceil(item.getType().getMaxDurability()*damageShift));
-				return;
-			}
+				} else event.setCancelled(true);
+			} else event.setDamage((int) Math.ceil(item.getType().getMaxDurability()*damageShift));
 		}
 	}
 	

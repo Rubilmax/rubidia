@@ -1640,41 +1640,48 @@ public enum RAbility {
 				
 	}),
 	MAGE_7(new Ability("Téléportation", Arrays.asList("Le mage courbe l'epace-temps pour", "se téléporter là où il regarde"),
-			RClass.MAGE, 7, false, "DDD,SP", "Portée", "blocs", 0, false) {
+			RClass.MAGE, 7, false, "DDD,SP", "Portée", " blocs", 0, false) {
 		
 		@Override
 		public void run(final RPlayer rp, Event event) {
-			this.takeVigor(rp);
 			final Player player = rp.getPlayer();
 			int range = (int) this.getDamages(rp);
-			float yaw = player.getEyeLocation().getYaw();
-			float pitch = player.getEyeLocation().getPitch();
-			double x = player.getTargetBlock(null, range).getX();
-			double y = player.getTargetBlock(null, range).getY();
-			double z = player.getTargetBlock(null, range).getZ();
-			player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 75, .5, .5, .5, .001);
-			TeleportHandler.teleport(player, new Location(player.getWorld(), x, y+1, z, yaw, pitch));
-			player.setFallDistance(-100);
-			player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
-			player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 75, .5, .5, .5, .001);
-		    new BukkitTask(Core.instance){
+			Block targetBlock = LocationUtils.getTargetBlock(player, range);
+			if (targetBlock.getType().isSolid()) {
+				this.takeVigor(rp);
+				
+				double x = targetBlock.getX();
+				double y = targetBlock.getY();
+				double z = targetBlock.getZ();
+				float yaw = player.getEyeLocation().getYaw();
+				float pitch = player.getEyeLocation().getPitch();
+				player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 75, .5, .5, .5, .001);
+				TeleportHandler.teleport(player, new Location(player.getWorld(), x, y+1, z, yaw, pitch));
+				player.setFallDistance(-100);
+				player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+				player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 75, .5, .5, .5, .001);
+			    new BukkitTask(Core.instance){
 
-				@Override
-				public void run() {
-		        	if(player.isDead())this.cancel();
-		        	else{
-		                if (((LivingEntity)player).isOnGround()){
-		    				player.setFallDistance((float) 0.0);
-							this.cancel();
-			            }
-		        	}
-				}
+					@Override
+					public void run() {
+			        	if(player.isDead())this.cancel();
+			        	else{
+			                if (((LivingEntity)player).isOnGround()){
+			    				player.setFallDistance((float) 0.0);
+								this.cancel();
+				            }
+			        	}
+					}
 
-				@Override
-				public void onCancel() {
-				}
-		    	
-		    }.runTaskTimer(0, 0);
+					@Override
+					public void onCancel() {
+					}
+			    	
+			    }.runTaskTimer(0, 0);
+			}else{
+				rp.sendMessage("§cLe bloc que vous visez n'est pas atteignable !");
+				player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 1);
+			}
 			rp.setActiveAbility(RAbility.MAGE_7, false);
 		}
 

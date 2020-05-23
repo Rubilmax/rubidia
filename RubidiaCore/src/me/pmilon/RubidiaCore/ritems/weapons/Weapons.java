@@ -637,5 +637,17 @@ public class Weapons {
 			
 		}.runTaskLater(0);
 	}
+	
+	public static boolean isRousable(ItemStack item) {
+		if(item.hasItemMeta()) {
+			ItemMeta meta = item.getItemMeta();
+			if(meta.hasLore()) {
+				if(meta.getLore().contains(Crafts.ROUSABLE_LORE)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 }

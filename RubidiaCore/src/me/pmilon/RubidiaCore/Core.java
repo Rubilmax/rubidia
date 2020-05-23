@@ -1734,8 +1734,7 @@ public class Core extends JavaPlugin implements Listener {
 							speedFactor += RAbility.ASSASSIN_3.getDamages(rp) * .01 - 1;
 						}
 
-						if (Weapons.checkEquipment(rp)) {// handle equipment removal and returns whether the player is
-															// wearing elytras or not
+						if (Weapons.checkEquipment(rp)) {// handle equipment removal and returns whether the player is wearing elytras or not
 							player.setAllowFlight(!player.isGliding());
 						} else if ((player.getGameMode().equals(GameMode.SURVIVAL)
 								|| player.getGameMode().equals(GameMode.ADVENTURE))

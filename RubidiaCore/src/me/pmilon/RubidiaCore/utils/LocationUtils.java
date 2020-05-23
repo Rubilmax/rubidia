@@ -1,11 +1,14 @@
 package me.pmilon.RubidiaCore.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import me.pmilon.RubidiaCore.damages.DamageManager;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -14,6 +17,7 @@ import org.bukkit.util.Vector;
 public class LocationUtils {
 
 	public static final double MOVE_DISTANCE_MIN_SQUARED = .001;
+	public static final List<Material> SOLID_MATERIALS = Arrays.asList(Material.values()).stream().filter((Material material) -> material.isSolid()).collect(Collectors.toList());
 	
 	@SuppressWarnings("deprecation")
 	public static Location getSafeLocation(Location location){
@@ -127,5 +131,17 @@ public class LocationUtils {
 		int y = location.getBlockY();
 		int z = location.getBlockZ();
 		return ((x >= bottom.getBlockX()) && (x <= top.getBlockX()) && (y >= bottom.getBlockY()) && (y <= top.getBlockY()) && (z >= bottom.getBlockZ()) && (z <= top.getBlockZ()));
+	}
+	
+	public static Block getTargetBlock(LivingEntity entity, double range) {
+		// native Bukkit getTargetBlock crashes server
+		Vector direction = entity.getEyeLocation().getDirection().normalize();
+		Block block = entity.getEyeLocation().getBlock();
+		double length = 1.;
+		while (SOLID_MATERIALS.contains(block.getType()) && length <= range) {
+			block = entity.getEyeLocation().add(direction.clone().multiply(length)).getBlock();
+			length += 0.25;
+		}
+		return block;
 	}
 }

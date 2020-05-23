@@ -13,7 +13,6 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.pmilon.RubidiaCore.crafts.Crafts;
 import me.pmilon.RubidiaCore.ritems.general.RItem;
 import me.pmilon.RubidiaCore.ritems.weapons.Rarity;
 import me.pmilon.RubidiaCore.ritems.weapons.Weapon;
@@ -54,26 +53,22 @@ public class ArousalUI extends UIHandler {
 						ItemStack item = this.menu.getItem(i);
 						if(item != null) {
 							if(Weapons.COMMON_WEAPON_TYPES.contains(item.getType())) {
-								if(item.hasItemMeta()) {
-									if(item.getItemMeta().hasLore()) {
-										if(item.getItemMeta().getLore().contains(Crafts.ROUSABLE_LORE)) {
-											RItem rItem = new RItem(item);
-											if(!rItem.isWeapon()) {
-												Weapon weapon = Weapons.random(rp, 0, rp.getRLevel(), item.getType());
-												if(weapon == null) {
-													weapon = Weapons.random(0, rp.getRLevel(), item.getType());
-													if(weapon == null) {
-														weapon = Weapons.random(item.getType(), Rarity.COMMON);
-													}
-												}
-												
-												this.getHolder().getInventory().addItem(weapon.getNewItemStack(rp));
-												rp.sendMessage("§aLe forgeron a éveillé " + weapon.getDisplayName() + " §a!");
-												this.getHolder().getWorld().playSound(this.getHolder().getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
-												this.getHolder().getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, this.getHolder().getLocation().add(0,.8,0), 40, .5, .8, .5, 0);
-												continue;
+								if(Weapons.isRousable(item)) {
+									RItem rItem = new RItem(item);
+									if(!rItem.isWeapon()) {
+										Weapon weapon = Weapons.random(rp, 0, rp.getRLevel(), item.getType());
+										if(weapon == null) {
+											weapon = Weapons.random(0, rp.getRLevel(), item.getType());
+											if(weapon == null) {
+												weapon = Weapons.random(item.getType(), Rarity.COMMON);
 											}
 										}
+										
+										this.getHolder().getInventory().addItem(weapon.getNewItemStack(rp));
+										rp.sendMessage("§aLe forgeron a éveillé " + weapon.getDisplayName() + " §a!");
+										this.getHolder().getWorld().playSound(this.getHolder().getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
+										this.getHolder().getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE, this.getHolder().getLocation().add(0,.8,0), 40, .5, .8, .5, 0);
+										continue;
 									}
 								}
 							}

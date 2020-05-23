@@ -143,7 +143,7 @@ public class DistinctionsMenu extends UIHandler {
 		return item;
 	}
 	private ItemStack getAgility(){
-		ItemStack item = new ItemStack(Material.DANDELION, rp.getAgility() > 0 ? (rp.getAgility() > 64 ? 64 : rp.getAgility()) : 1);
+		ItemStack item = new ItemStack(Material.DANDELION_YELLOW, rp.getAgility() > 0 ? (rp.getAgility() > 64 ? 64 : rp.getAgility()) : 1);
 		ItemMeta meta = item.getItemMeta();
 		String color = rp.getAgility() > 0 ? "§2" : "§4";
 		meta.setDisplayName(color + "§l" + rp.getAgility() + color + " " + ("point") + (rp.getEndurance() > 1 ? "s" : "") + (" d'agilité"));

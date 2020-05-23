@@ -19,6 +19,7 @@ import org.bukkit.block.Skull;
 
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.RManager.RPlayer;
+import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaCore.utils.Configs;
 import me.pmilon.RubidiaGuilds.GuildsPlugin;
 import me.pmilon.RubidiaGuilds.guilds.Guild;
@@ -87,28 +88,39 @@ public class Ranks {
 	}
 	
 	public static void updateRanks(List<String> names, List<String> scores, List<String> uuids, String rankType) {
-		for(int i = 0;i < names.size();i++){
-			Location location = (Location) Configs.getDatabase().get("rankings." + rankType + "." + i + ".location");
-			if(location != null){
-				Block block = location.getBlock();
-				for(BlockFace fc : new BlockFace[]{BlockFace.NORTH, BlockFace.EAST,BlockFace.SOUTH,BlockFace.WEST}){
-					if(block.getRelative(fc).getType().equals(Material.WALL_SIGN)){
-						Sign sign = (Sign)block.getRelative(fc).getState();
-						sign.setLine(0, "§2§m---§2> §8#" + (i + 1) + "§2 <§m---");
-						sign.setLine(1, "§7§l" + names.get(i));
-						sign.setLine(2, "§3N. §9§l" + scores.get(i));
-						sign.setLine(3, "§2§m----------");
-						sign.update(true);
-						Block blockUp = block.getRelative(BlockFace.UP);
-						if(blockUp.getType().equals(Material.PLAYER_HEAD) || blockUp.getType().equals(Material.PLAYER_WALL_HEAD)){
-							Skull skull = (Skull)blockUp.getState();
-							skull.setOwningPlayer(Bukkit.getOfflinePlayer(UUID.fromString(uuids.get(i))));
-							skull.update(true);
+		new BukkitTask(Core.instance) {
+
+			@Override
+			public void run() {
+				for(int i = 0;i < names.size();i++){
+					Location location = (Location) Configs.getDatabase().get("rankings." + rankType + "." + i + ".location");
+					if(location != null){
+						Block block = location.getBlock();
+						for(BlockFace fc : new BlockFace[]{BlockFace.NORTH, BlockFace.EAST,BlockFace.SOUTH,BlockFace.WEST}){
+							if(block.getRelative(fc).getType().equals(Material.WALL_SIGN)){
+								Sign sign = (Sign)block.getRelative(fc).getState();
+								sign.setLine(0, "§2§m---§2> §8#" + (i + 1) + "§2 <§m---");
+								sign.setLine(1, "§7§l" + names.get(i));
+								sign.setLine(2, "§3N. §9§l" + scores.get(i));
+								sign.setLine(3, "§2§m----------");
+								sign.update(true);
+								Block blockUp = block.getRelative(BlockFace.UP);
+								if(blockUp.getType().equals(Material.PLAYER_HEAD) || blockUp.getType().equals(Material.PLAYER_WALL_HEAD)){
+									Skull skull = (Skull)blockUp.getState();
+									skull.setOwningPlayer(Bukkit.getOfflinePlayer(UUID.fromString(uuids.get(i))));
+									skull.update(true);
+								}
+							}
 						}
 					}
 				}
 			}
-		}
+
+			@Override
+			public void onCancel() {
+			}
+			
+		}.runTaskLater(0); // to run task synchronously
 	}
 	
 }

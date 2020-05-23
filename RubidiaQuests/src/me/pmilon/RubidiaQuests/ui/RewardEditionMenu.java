@@ -100,9 +100,12 @@ public class RewardEditionMenu extends UIHandler {
 		else if(slot == this.SLOT_CMD)this.close(true, this.LIST_ID_CMD);
 		else if(slot == this.SLOT_ITEM)this.close(true, this.LIST_ID_ITEM);
 		else if(slot == this.SLOT_MASTERY){
-			if(this.getReward().getMastery().equals(Mastery.ADVENTURER))this.getReward().setMastery(Mastery.MASTER);
+			if(this.getReward().getMastery().equals(Mastery.HERO))this.getReward().setMastery(Mastery.ADVENTURER);
+			else if(this.getReward().getMastery().equals(Mastery.ADVENTURER))this.getReward().setMastery(Mastery.ASPIRANT);
+			else if(this.getReward().getMastery().equals(Mastery.ASPIRANT))this.getReward().setMastery(Mastery.SPECIALIST);
+			else if(this.getReward().getMastery().equals(Mastery.SPECIALIST))this.getReward().setMastery(Mastery.EXPERT);
+			else if(this.getReward().getMastery().equals(Mastery.EXPERT))this.getReward().setMastery(Mastery.MASTER);
 			else if(this.getReward().getMastery().equals(Mastery.MASTER))this.getReward().setMastery(Mastery.HERO);
-			else if(this.getReward().getMastery().equals(Mastery.HERO))this.getReward().setMastery(Mastery.ADVENTURER);
 			this.menu.setItem(this.SLOT_MASTERY, this.getMastery());
 		}else if(slot == this.SLOT_QUEST){
 			Core.uiManager.requestUI(new QuestListRewardChoose(this.getHolder(), this.getQuest(), this.getPnj(), this.getReward()));

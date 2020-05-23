@@ -49,7 +49,7 @@ public class RItemStacks {
 		end.setItemMeta(META);
 		POWDER_ENDURANCE = new RItemStack(end, 4234);
 		
-		ItemStack agi = new ItemStack(Material.DANDELION, 1);
+		ItemStack agi = new ItemStack(Material.DANDELION_YELLOW, 1);
 		META.setDisplayName("§fJoyau d'§eagilité");
 		agi.setItemMeta(META);
 		POWDER_AGILITY = new RItemStack(agi, 4234);

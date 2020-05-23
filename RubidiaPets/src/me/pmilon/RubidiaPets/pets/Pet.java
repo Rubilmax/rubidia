@@ -371,7 +371,6 @@ public class Pet {
 						if(this.canMove()){
 							if(distance > Math.pow(3.9, 2)){
 								if(distance < Math.pow(20, 2)){
-									System.out.println("navigation");
 									((CraftCreature)this.getEntity()).getHandle().getNavigation().a(location.getX(), location.getY(), location.getZ(), this.getHealth() > 1.0 ? (distance < 121 ? 1.57 : 1.98) : 1.18);
 								}else TeleportHandler.teleport(this.getEntity(), location);
 							}
