@@ -19,7 +19,8 @@ import me.pmilon.RubidiaGuilds.guilds.Guild;
 
 public class Raid {
 
-	private final int MAX_DISTANCE = 20;
+	private static final int MAX_DISTANCE = 20;
+	private static final Long RAID_TIME = 3*60*1000L;
 	
 	private String uuid;
 	private Claim claim;
@@ -29,7 +30,6 @@ public class Raid {
 	private double points = 0;
 	private int maxPoints;
 	
-	private final Long time = 3*60*1000L;
 	private Long elapsedTime = 0L;
 	private final List<RPlayer> rplayers = new ArrayList<RPlayer>();
 	private final List<GMember> gmembers = new ArrayList<GMember>();
@@ -79,7 +79,7 @@ public class Raid {
 		this.center = center;
 		this.offensive = offensive;
 		this.defensive = defensive;
-		this.maxPoints = offensive != null ? (int) Math.round(offensive.getMembers().size()*.84*((double)this.time/1000L)) : 0;
+		this.maxPoints = offensive != null ? (int) Math.round(offensive.getMembers().size()*.64*((double) RAID_TIME / 1000L)) : 0;
 	}
 	
 	public static List<Raid> getOffensiveRaids(Guild offensive){
@@ -140,9 +140,9 @@ public class Raid {
 				if(member.getGuild().equals(this.getOffensive())){
 					if(member.getPlayer().getWorld().equals(this.getCenter().getWorld())){
 						if(member.getPlayer().getLocation().distanceSquared(this.getCenter()) <= Math.pow(MAX_DISTANCE, 2)){
-							rp.sendTitle(("§6Offensive lancée"), ("§ePhase de préparation - 20 secondes"), 0, 80, 40);
-						}else rp.sendTitle(("§6Offensive lancée"), ("§eVous serez téléporté dans 20 secondes"), 0, 80, 40);
-					}else rp.sendTitle(("§6Offensive lancée"), ("§eVous serez téléporté dans 20 secondes"), 0, 80, 40);
+							rp.sendTitle("§6Offensive lancée", "§ePhase de préparation - 20 secondes", 0, 80, 40);
+						}else rp.sendTitle("§6Offensive lancée", "§eVous serez téléporté dans 20 secondes", 0, 80, 40);
+					}else rp.sendTitle("§6Offensive lancée", "§eVous serez téléporté dans 20 secondes", 0, 80, 40);
 				}else{
 					rp.sendTitle(("§4§lOffensive ennemie"), "§c[§l" + this.getClaim().getName() + "§c] " + this.getCenter().getBlockX() + "/" + this.getCenter().getBlockZ(), 0, 80, 40);
 					new BukkitTask(GuildsPlugin.instance){
@@ -183,7 +183,7 @@ public class Raid {
 			public void onCancel() {
 				if(!stopped){
 					for(RPlayer rp : getRPlayers()){
-						rp.sendTitle(("§eTout le monde est prêt !"), "§6§l" + getOffensive().getName() + "  §e!§6§l  " + getDefensive().getName(), 0, 30, 10);
+						rp.sendTitle("§eTout le monde est prêt !", "§6§l" + getOffensive().getName() + "  §e!§6§l  " + getDefensive().getName(), 0, 30, 10);
 					}
 					new BukkitTask(GuildsPlugin.instance){
 						int index = 3;
@@ -245,9 +245,9 @@ public class Raid {
 					setPoints(getPoints()-getDefendersInside().size());
 					
 					String title = "";
-					if(elapsedTime%(60.0*1000L) == 0)title = "§e>  §6" + ((time - elapsedTime)/(60*1000L)) + "§e min  <";
+					if(elapsedTime%(60.0*1000L) == 0)title = "§e>  §6" + ((RAID_TIME - elapsedTime)/(60*1000L)) + "§e min  <";
 					for(RPlayer rp : getRPlayers()){
-						if(elapsedTime >= time)title = "§4" + ("Temps écoulé !");
+						if(elapsedTime >= RAID_TIME)title = "§4" + ("Temps écoulé !");
 						if(titles.get(rp) != null){
 							RaidTitle tle = titles.get(rp);
 							title = tle.getTitle();
@@ -258,7 +258,7 @@ public class Raid {
 						}else titles.put(rp, new RaidTitle(title,2));
 						rp.sendTitle(title, getSubtitle(), 0, 20, 0);
 					}
-					if(getPoints()/getMaxPoints() >= 1 || elapsedTime >= time)this.cancel();
+					if(getPoints()/getMaxPoints() >= 1 || elapsedTime >= RAID_TIME)this.cancel();
 					elapsedTime+=1000;
 				}else this.cancel();
 			}
@@ -277,18 +277,18 @@ public class Raid {
 						if(rp.isOnline())rp.getPlayer().sendMessage("");
 						if(member.getGuild().equals(getOffensive())){
 							if(ratio >= 1){
-								rp.sendTitle("§6" + ("Offensive gagnée !"), "§e" + ("Ce territoire appartient désormais à votre guilde !"), 0, 80, 40);
+								rp.sendTitle("§6Offensive gagnée !", "§eCe territoire appartient désormais à votre guilde !", 0, 80, 40);
 								rp.sendMessage("§eCe territoire ne peut être réclamé par une guilde pendant 2 heures.");
 							}else{
-								rp.sendTitle("§4" + ("Offensive perdue !"), "§c" + ("Vous n'avez pas généré assez de puissance !"), 0, 80, 40);
+								rp.sendTitle("§4Offensive perdue !", "§cVous n'avez pas généré assez de puissance !", 0, 80, 40);
 							}
 							rp.sendMessage("§eVotre guilde ne pourra attaquer le territoire de la guilde §6§l" + getDefensive().getName() + "§e pendant 6 heures.");
 						}else{
 							if(ratio >= 1){
-								rp.sendTitle("§4" + ("Territoire perdu !"), "§c" + ("Ce territoire appartient désormais à la guilde " + getOffensive().getName() + " !"), 0, 80, 40);
+								rp.sendTitle("§4Territoire perdu !", "§cCe territoire appartient désormais à la guilde " + getOffensive().getName() + " !", 0, 80, 40);
 								rp.sendMessage("§eVotre guilde ne pourra réclamer ce territoire pendant 2 heures.");
 							}else{
-								rp.sendTitle("§6" + ("Offensive défendue !"), "§e" + ("Territoire conservé !"), 0, 80, 40);
+								rp.sendTitle("§6Offensive défendue !", "§eTerritoire conservé !", 0, 80, 40);
 							}
 							rp.sendMessage("§eVotre guilde ne pourra plus être attaquée par la guilde §6§l" + getOffensive().getName() + "§e pendant 6 heures.");
 						}
@@ -325,7 +325,7 @@ public class Raid {
 			else subtitle += "§c|";
 		}
 		subtitle += (ratio >= 1 ? "§4" : "§8") + "]    §8(§7" + Math.round(ratio*100) + "§8%) - ";
-		long tTime = time-elapsedTime;
+		long tTime = RAID_TIME-elapsedTime;
 		long minutes = TimeUnit.MILLISECONDS.toMinutes(tTime);
 		tTime -= TimeUnit.MINUTES.toMillis(minutes);
 		long seconds = TimeUnit.MILLISECONDS.toSeconds(tTime);

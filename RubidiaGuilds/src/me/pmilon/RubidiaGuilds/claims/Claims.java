@@ -61,7 +61,7 @@ public class Claims{
 															tTime -= TimeUnit.HOURS.toMillis(hrs);
 															long min = TimeUnit.MILLISECONDS.toMinutes(tTime);
 															tTime -= TimeUnit.MINUTES.toMillis(min);
-															String sFrTime = String.format("§4%02d §cheures & §4%02d §cminutes.", hrs, min);
+															String sFrTime = String.format("§4%02d §cheures et §4%02d §cminutes.", hrs, min);
 															rp.sendMessage("§cVotre guilde ne peut attaquer le territoire de la guilde §6§l" + claimed.getName() + "§e pendant "+sFrTime);
 															return;
 														}
@@ -75,7 +75,7 @@ public class Claims{
 															tTime -= TimeUnit.HOURS.toMillis(hrs);
 															long min = TimeUnit.MILLISECONDS.toMinutes(tTime);
 															tTime -= TimeUnit.MINUTES.toMillis(min);
-															String sFrTime = String.format("§4%02d §cheures & §4%02d §cminutes.", hrs, min);
+															String sFrTime = String.format("§4%02d §cheures et §4%02d §cminutes.", hrs, min);
 															rp.sendMessage("§cCe territoire ne peut être réclamé par une guilde pendant "+sFrTime);
 															return;
 														}

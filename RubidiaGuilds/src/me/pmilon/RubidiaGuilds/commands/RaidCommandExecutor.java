@@ -33,11 +33,9 @@ public class RaidCommandExecutor extends PlayerCommandExecutor {
 				TeleportHandler.startTeleportation(rp, center, new RTeleportCause(RTeleportType.RAID_CENTER,null,null,null));
 			}else{
 				if(member.getPermission(Permission.CLAIM)){
-					if(args.length > 0){
-						String name = null;
-						if(args.length > 0)name = ChatColor.translateAlternateColorCodes('&', args[0]);
-						Claims.manageClaim(name, guild, player.getLocation(), member);
-					}else rp.sendMessage("§cUtilisez /raid [NomDuTerritoire]");
+					String name = "";
+					if(args.length > 0) name = ChatColor.translateAlternateColorCodes('&', args[0]);
+					Claims.manageClaim(name, guild, player.getLocation(), member);
 				}else rp.sendMessage("§cVous n'avez pas la permission de gérer le territoire de votre guilde !");
 			}
 		}else rp.sendMessage("§cVous n'appartenez à aucune guilde !");

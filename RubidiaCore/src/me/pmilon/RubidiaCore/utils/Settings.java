@@ -14,6 +14,9 @@ public class Settings {
 	
 	public static final int LEVEL_JOB = 10;
 	public static final int LEVEL_MAX = 150;
+	
+	public static final double DEFAULT_CRITICAL_STRIKE_CHANCE = 0.15;
+	public static final double DEFAULT_BLOCK_CHANCE = 0.13;
 
 	public static final double STRENGTH_FACTOR_MELEE_DAMAGES_ON_MELEE = .004;
 	public static final double STRENGTH_FACTOR_MELEE_RANGE_DAMAGES_ON_MELEE = .0025;

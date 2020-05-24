@@ -828,27 +828,30 @@ public class RPlayer {
 	
 	
 	public double getAverageMeleeDamages(ItemStack item){
-		return Utils.round(DamageManager.getDamages(this.getPlayer(), null, item, RDamageCause.MELEE, false, true),3);
+		return Utils.round(DamageManager.getBaseDamages(this.getPlayer(), null, item, RDamageCause.MELEE, true),3);
 	}
 	
 	public double getAverageCriticalMeleeDamages(ItemStack item){
-		return Utils.round(DamageManager.getDamages(this.getPlayer(), null, item, RDamageCause.MELEE, true, true),3);
+		double damages = DamageManager.getBaseDamages(this.getPlayer(), null, item, RDamageCause.MELEE, true);
+		return Utils.round(DamageManager.applyDamageModifiers(damages, this.getPlayer(), null, RDamageCause.MELEE, true),3);
 	}
 	
 	public double getAverageRangedDamages(ItemStack item){
-		return Utils.round(DamageManager.getDamages(this.getPlayer(), null, item, RDamageCause.RANGE, false, true),3);
+		return Utils.round(DamageManager.getBaseDamages(this.getPlayer(), null, item, RDamageCause.RANGE, true),3);
 	}
 	
 	public double getAverageCriticalRangedDamages(ItemStack item){
-		return Utils.round(DamageManager.getDamages(this.getPlayer(), null, item, RDamageCause.RANGE, true, true),3);
+		double damages = DamageManager.getBaseDamages(this.getPlayer(), null, item, RDamageCause.RANGE, true);
+		return Utils.round(DamageManager.applyDamageModifiers(damages, this.getPlayer(), null, RDamageCause.RANGE, true),3);
 	}
 	
 	public double getAverageMagicDamages(ItemStack item){
-		return Utils.round(DamageManager.getDamages(this.getPlayer(), null, item, RDamageCause.MAGIC, false, true),3);
+		return Utils.round(DamageManager.getBaseDamages(this.getPlayer(), null, item, RDamageCause.MAGIC, true),3);
 	}
 	
 	public double getAverageCriticalMagicDamages(ItemStack item){
-		return Utils.round(DamageManager.getDamages(this.getPlayer(), null, item, RDamageCause.MAGIC, true, true),3);
+		double damages = DamageManager.getBaseDamages(this.getPlayer(), null, item, RDamageCause.MAGIC, true);
+		return Utils.round(DamageManager.applyDamageModifiers(damages, this.getPlayer(), null, RDamageCause.MAGIC, true),3);
 	}
 	
 	public double getAverageDefense(){

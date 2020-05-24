@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
@@ -50,7 +49,6 @@ import me.pmilon.RubidiaCore.utils.Settings;
 public class WeaponsListener implements Listener {
 	
 	private static HashMap<Projectile, ItemStack> projectiles = new HashMap<Projectile, ItemStack>();
-	private static HashMap<Projectile, Boolean> critical = new HashMap<Projectile, Boolean>();
 	private static HashMap<Projectile, Double> attackFactors = new HashMap<Projectile, Double>();
 
 	@EventHandler
@@ -121,7 +119,6 @@ public class WeaponsListener implements Listener {
 					attackFactors.put(projectile, rp.getNextAttackFactor());
 				}
 			}
-			critical.put(projectile, !damager.isOnGround());
 		}
 		projectiles.put(projectile, item);
 	}
@@ -140,7 +137,6 @@ public class WeaponsListener implements Listener {
 						String usage = weapon.canUse(rp);
 						if(weapon.isAttack()){
 							if(usage.isEmpty()){
-								final boolean critical = !player.isOnGround();
 								if(event.getAction().toString().contains("LEFT_CLICK")) {
 									RPlayerUseWeaponEvent evt = new RPlayerUseWeaponEvent(rp, weapon);
 									Bukkit.getPluginManager().callEvent(evt);
@@ -152,7 +148,7 @@ public class WeaponsListener implements Listener {
 									if(weapon.getWeaponUse().equals(WeaponUse.MAGIC)) {
 										if(rp.canAttackMagic){
 											rp.canAttackMagic = false;
-									        new MageAttack(player, is, critical).run();
+									        new MageAttack(player, is).run();
 											new BukkitTask(Core.instance) {
 												
 												@Override
@@ -191,28 +187,23 @@ public class WeaponsListener implements Listener {
 												@Override
 												public void run() {
 													if(arrow.isOnGround()){
-														this.cancel();
-													}else{
-														if(critical){
-															arrow.getLocation().getWorld().spawnParticle(Particle.CRIT_MAGIC, arrow.getLocation(), 1, 0, 0, 0);
-														}
+														new BukkitTask(Core.instance){
+
+															@Override
+															public void run() {
+																arrow.remove();
+															}
+
+															@Override
+															public void onCancel() {
+															}
+															
+														}.runTaskLater(100);
 													}
 												}
 
 												@Override
 												public void onCancel() {
-													new BukkitTask(Core.instance){
-
-														@Override
-														public void run() {
-															arrow.remove();
-														}
-
-														@Override
-														public void onCancel() {
-														}
-														
-													}.runTaskLater(100);
 												}
 												
 											}.runTaskTimer(0, 0);
@@ -309,7 +300,6 @@ public class WeaponsListener implements Listener {
 			Entity entity = e.getEntity();
 
 			if(entity instanceof LivingEntity){
-				LivingEntity damaged = (LivingEntity)entity;
 				if(damager instanceof Projectile){
 					Projectile projectile = (Projectile) damager;
 					ProjectileSource source = projectile.getShooter();
@@ -328,9 +318,7 @@ public class WeaponsListener implements Listener {
 										attackFactors.remove(projectile);
 									}
 								}
-								double damages = DamageManager.getDamages(launcher, damaged, item, RDamageCause.RANGE, critical.containsKey(projectile), false);
-								DamageManager.damageEvent(e, damages, RDamageCause.RANGE, critical.containsKey(projectile) ? critical.get(projectile) : false);
-								critical.remove(projectile);
+								DamageManager.damageEvent(e, item, RDamageCause.RANGE);
 							}
 						}
 					}
@@ -339,7 +327,6 @@ public class WeaponsListener implements Listener {
 					if(e.getCause().equals(DamageCause.ENTITY_ATTACK)){
 						if(e.getDamage() > 0){
 							e.setCancelled(true);
-							boolean critical = !entity1.isOnGround();
 							
 							ItemStack item = entity1.getEquipment().getItemInMainHand();
 							if(item != null){
@@ -361,7 +348,7 @@ public class WeaponsListener implements Listener {
 													if(weapon.getWeaponUse().equals(WeaponUse.MAGIC)) {														
 														if(newRp.canAttackMagic){
 															newRp.canAttackMagic = false;
-													        new MageAttack(player, item, critical).run();
+													        new MageAttack(player, item).run();
 															new BukkitTask(Core.instance) {
 																
 																@Override
@@ -384,8 +371,7 @@ public class WeaponsListener implements Listener {
 									}
 								}
 							}
-							double damages = DamageManager.getDamages(entity1, damaged, item, RDamageCause.MELEE, critical, false);
-							DamageManager.damageEvent(e, damages, RDamageCause.MELEE, !entity1.isOnGround());
+							DamageManager.damageEvent(e, item, RDamageCause.MELEE);
 						}
 					}
 				}

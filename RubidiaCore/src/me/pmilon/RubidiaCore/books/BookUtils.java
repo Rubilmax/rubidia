@@ -50,7 +50,7 @@ public class BookUtils {
 		hover22.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(("§7Dégâts moyen avec l'arme en main\n§7Détails au survol : Mêlée, distance, magie et dégâts critiques"))}));
 		tPage2.addExtra(hover22);
 		tPage2.addExtra(" §8");
-		TextComponent hover23 = new TextComponent(String.valueOf(Utils.round(DamageManager.getDamages(player, null, oldItem, RDamageCause.MELEE, false, true),3)));
+		TextComponent hover23 = new TextComponent(String.valueOf(Utils.round(DamageManager.getBaseDamages(player, null, oldItem, RDamageCause.MELEE, true),3)));
 		hover23.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent("§8" + ("Critique :") + " §7" + rp.getAverageCriticalMagicDamages(oldItem))}));
 		tPage2.addExtra(hover23);
 		tPage2.addExtra("\n ");

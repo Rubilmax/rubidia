@@ -62,11 +62,11 @@ public class LocationUtils {
     
     public static List<Entity> getNearbyEntities(Location l, double radius){
         int chunkRadius = (int) Math.ceil(radius < 1 ? 0 : (radius < 16 ? 1 : (radius + 1)/16));
+    	double d = Math.pow(radius, 2);
         List<Entity> radiusEntities = new ArrayList<Entity>();
             for (int chX = 0 -chunkRadius; chX <= chunkRadius; chX ++){
                 for (int chZ = 0 -chunkRadius; chZ <= chunkRadius; chZ++){
                     for (Entity entity : new Location(l.getWorld(), l.getX()+(chX*16), l.getY(), l.getZ()+(chZ*16)).getChunk().getEntities()){
-                    	double d = Math.pow(radius, 2);
                     	if (entity.getLocation().distanceSquared(l) <= d
                     			|| entity.getLocation().add(0, entity.getHeight(), 0).distanceSquared(l)  <= d) {
                     		radiusEntities.add(entity);

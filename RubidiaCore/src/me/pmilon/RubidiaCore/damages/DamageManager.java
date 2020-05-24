@@ -153,29 +153,7 @@ public class DamageManager {
 			return false;
 		}
 
-		RPlayer rp = null;
-		if(damager instanceof Player){
-			Player player = (Player)damager;
-			rp = RPlayer.get(player);
-			if(cause.equals(RDamageCause.ABILITY)){
-				damages *= rp.getAbilityDamagesFactor();
-			}
-			rp.setLastCombat(System.currentTimeMillis());
-		}
-		if(damaged instanceof Player){
-			Player pplayer = (Player)damaged;
-			RPlayer rpp = RPlayer.get(pplayer);
-			if(cause.equals(RDamageCause.ABILITY)){
-				damages *= 1-rpp.getAbilityDefenseFactor();
-			}
-			rpp.setLastCombat(System.currentTimeMillis());
-		}
-		
-		if(!cause.equals(RDamageCause.ABILITY)){
-			damages *= 10.0/getDamageResistance(cause, damaged, false);
-		}
-		
-		if(damages < .5)damages = .5;
+		damages = DamageManager.applyDamageModifiers(damages, damager, damaged, cause, false);
 
 		RubidiaEntityDamageEvent e = new RubidiaEntityDamageEvent(damaged, damager, null, damages, cause);
 		Bukkit.getPluginManager().callEvent(e);
@@ -187,8 +165,15 @@ public class DamageManager {
 		
 		return false;
 	}
+	
+	public static boolean damage(LivingEntity damaged, LivingEntity damager, ItemStack item, RDamageCause cause){
+		return DamageManager.damage(damaged, damager, DamageManager.getBaseDamages(damager, damaged, item, cause, false), cause);
+	}
 
-	public static void damageEvent(EntityDamageByEntityEvent event, double damages, RDamageCause cause, boolean critical){
+	/*
+	 * Used with an EntityDamageByEntityEvent only
+	 */
+	public static void damageEvent(EntityDamageByEntityEvent event, ItemStack item, RDamageCause cause){
 		LivingEntity damaged = (LivingEntity) event.getEntity();
 		Projectile projectile = event.getDamager() instanceof Projectile ? (Projectile)event.getDamager() : null;
 		LivingEntity damager = (LivingEntity) (projectile != null ? projectile.getShooter() : event.getDamager());
@@ -197,37 +182,8 @@ public class DamageManager {
 			return;
 		}
 		
-		RPlayer rp = null;
-		if(damager instanceof Player){
-			Player player = (Player)damager;
-			rp = RPlayer.get(player);
-			if(cause.equals(RDamageCause.ABILITY)){
-				damages *= rp.getAbilityDamagesFactor();
-			}
-			rp.setLastCombat(System.currentTimeMillis());
-		}
-		if(damaged instanceof Player){
-			Player pplayer = (Player)damaged;
-			RPlayer rpp = RPlayer.get(pplayer);
-			if(cause.equals(RDamageCause.ABILITY)){
-				damages *= 1-rpp.getAbilityDefenseFactor();
-			}
-			rpp.setLastCombat(System.currentTimeMillis());
-		}
-		
-		Monster monster = Monsters.get(damager);
-		if(critical || monster != null){
-			if(RandomUtils.random.nextInt(100) < 20+(rp != null ? rp.getCriticalStrikeChanceFactor()*100 : -10)){
-				damages *= rp != null ? rp.getCriticalStrikeDamagesFactor() : 2.0;
-				damaged.getWorld().spawnParticle(Particle.CRIT, damaged.getLocation().add(0,damaged.getHeight(),0), 44, damaged.getWidth(), .4, damaged.getWidth(), 0);
-			}
-		}
-		
-		if(!cause.equals(RDamageCause.ABILITY)){
-			damages *= 10.0/getDamageResistance(cause, damaged, false);
-		}
-		
-		if(damages < .5)damages = .5;
+		double damages = DamageManager.getBaseDamages(damager, damaged, item, cause, false);
+		damages = DamageManager.applyDamageModifiers(damages, damager, damaged, cause, false);
 		
 		RubidiaEntityDamageEvent e = new RubidiaEntityDamageEvent(damaged, damager, projectile, damages, cause);
 		Bukkit.getPluginManager().callEvent(e);
@@ -290,7 +246,7 @@ public class DamageManager {
 		}
 		
 		if(!cause.equals(RDamageCause.ABILITY)){
-			if(RandomUtils.random.nextInt(1000) < (rpDamaged != null ? rpDamaged.getBlockChanceFactor()*1000 : 25)){
+			if(Math.random() < (rpDamaged != null ? rpDamaged.getBlockChanceFactor() : Settings.DEFAULT_BLOCK_CHANCE)){
 				if(rpDamager != null){
 					if(rpDamaged == null)rpDamager.sendActionBar("§cTarget has blocked your attack!", "§cLa cible a bloqué votre attaque !");
 					else rpDamager.sendActionBar("§c" + rpDamaged.getName() + " blocked your attack!", "§c" + rpDamaged.getName() + " a bloqué votre attaque !");
@@ -300,7 +256,7 @@ public class DamageManager {
 					else rpDamaged.sendActionBar("§aYou blocked " + rpDamager.getName() + "'s attack!", "§aVous avez bloqué l'attaque de " + rpDamager.getName() + " !");
 				}
 				damaged.setNoDamageTicks(12);
-				damaged.getWorld().spawnParticle(Particle.SLIME, damaged.getLocation().add(0,damaged.getHeight()/2.,0), 50, damaged.getWidth(), .3, damaged.getWidth(), 0);
+				damaged.getWorld().spawnParticle(Particle.DAMAGE_INDICATOR, damaged.getLocation().add(0, .3, 0), 20, damaged.getWidth() / 3, .8, damaged.getWidth() / 3, 0);
 				damaged.getWorld().playSound(damaged.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, 2);
 				return false;
 			}
@@ -308,12 +264,14 @@ public class DamageManager {
 		return true;
 	}
 	
-	public static double getDamages(LivingEntity damager, LivingEntity damaged, ItemStack item, RDamageCause cause, boolean critical, boolean average){
+	public static double getBaseDamages(LivingEntity damager, LivingEntity damaged, ItemStack item, RDamageCause cause, boolean average){
 		double damages = 0.0;
 		double factor = 1.0;
+		
 		Player player = damager instanceof Player ? (Player)damager : null;
 		RPlayer rp = player != null ? RPlayer.get(player) : null;
 		Monster monster = Monsters.get(damager);
+		
 		boolean handAttack = false;
 		if(monster == null || monster.getDamagesFactor() == 0){
 			if(!Pet.isPet(damager)){
@@ -419,6 +377,43 @@ public class DamageManager {
 		if(cause.equals(RDamageCause.MAGIC))factor += rp != null ? rp.getAdditionalFactor(BuffType.MAGIC_DAMAGE) : Set.getAdditionalFactor(damager, BuffType.MAGIC_DAMAGE);
 		
 		return damages*factor;
+	}
+	
+	public static double applyDamageModifiers(double damages, LivingEntity damager, LivingEntity damaged, RDamageCause cause, boolean forceCritical) {
+		double criticalStrikeChance = forceCritical ? 1. : Settings.DEFAULT_CRITICAL_STRIKE_CHANCE;
+		double criticalStrikeDamageFactor = 2.;
+		
+		if(damager instanceof Player){
+			RPlayer rp = RPlayer.get((Player) damager);
+			if(cause.equals(RDamageCause.ABILITY)){
+				damages *= rp.getAbilityDamagesFactor();
+			}
+			
+			criticalStrikeChance += rp.getCriticalStrikeChanceFactor();
+			criticalStrikeDamageFactor = rp.getCriticalStrikeDamagesFactor();
+			rp.setLastCombat(System.currentTimeMillis());
+		}
+		
+		if(damaged instanceof Player) {
+			RPlayer rpp = RPlayer.get((Player) damaged);
+			if(cause.equals(RDamageCause.ABILITY)){
+				damages *= 1-rpp.getAbilityDefenseFactor();
+			}
+			rpp.setLastCombat(System.currentTimeMillis());
+		}
+		
+		if (!cause.equals(RDamageCause.ABILITY)) {
+			if(Math.random() < criticalStrikeChance){
+				damages *= criticalStrikeDamageFactor;
+				if (damaged != null) damaged.getWorld().spawnParticle(Particle.CRIT, damaged.getLocation().add(0,damaged.getHeight(),0), 44, damaged.getWidth(), .4, damaged.getWidth(), 0);
+			}
+		}
+		
+		if (damaged != null) damages *= 10.0 / getDamageResistance(cause, damaged, false);
+		
+		if(damages < .5)damages = .5;
+		
+		return damages;
 	}
 	
 	public static List<LivingEntity> toDamageableEntityList(List<? extends Entity> entities) {

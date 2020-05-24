@@ -35,6 +35,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityInteractEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
@@ -518,6 +519,19 @@ public class ClaimsListener implements Listener {
 					}
 					
 					if(!guild.isClaimBuildable())event.setCancelled(true);//we cancel unless...
+				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onExplode(EntityExplodeEvent event){
+		for(final Block block : event.blockList()){
+			Claim claim = Claim.get(block.getLocation());
+			if(claim != null){
+				Guild guild = claim.getGuild();
+				if(guild != null){
+					event.setCancelled(true);
 				}
 			}
 		}

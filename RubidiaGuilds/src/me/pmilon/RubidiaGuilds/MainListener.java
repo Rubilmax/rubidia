@@ -17,11 +17,9 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -148,19 +146,6 @@ public class MainListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onExplode(EntityExplodeEvent event){
-		for(final Block block : event.blockList()){
-			Claim claim = Claim.get(block.getLocation());
-			if(claim != null){
-				Guild guild = claim.getGuild();
-				if(guild != null){
-					event.setCancelled(true);
-				}
-			}
-		}
-	}
-	
-	@EventHandler
 	public void onDeath(RPlayerDeathEvent event){
 		RPlayer rp = event.getRPlayer();
 		GMember member = GMember.get(rp);
@@ -179,6 +164,7 @@ public class MainListener implements Listener {
 						}
 					}
 					rp.sendMessage("§eTapez §6/raid§e pour être téléporté au champ de bataille !");
+					//event.setKeepInventory(true); // otherwise too easy!
 				}
 			}
 		}
