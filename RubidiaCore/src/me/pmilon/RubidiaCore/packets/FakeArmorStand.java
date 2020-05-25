@@ -23,6 +23,7 @@ public class FakeArmorStand {
 		this.name = name;
 		this.invisible = invisible;
 		this.stand = new EntityArmorStand(((CraftWorld) world).getHandle(), 0, 0, 0);
+		this.stand.setMarker(true);
 	}
 
 	private WrapperPlayServerSpawnEntityLiving getSpawnPacket(Location location) {
