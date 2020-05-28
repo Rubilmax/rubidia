@@ -173,7 +173,7 @@ public abstract class PNJHandler {
 	
 	public void updateTag(){
 		if(this.getTag() != null){
-			this.getTag().setLayers(new String[]{this.getTitlePrefix() + this.getTitle(), this.getNamePrefix() + this.getName()}, true);
+			this.getTag().setLayers(new String[]{this.getTitlePrefix() + this.getTitle()}, true);
 		}
 	}
 	

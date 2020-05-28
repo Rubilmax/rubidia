@@ -33,8 +33,8 @@ public class RLevels {
 		return (level <= Settings.LEVEL_MAX ? 1 : 0) + (level <= Mastery.ADVENTURER.getLevel() ? 1 : 0) + (level <= Mastery.SPECIALIST.getLevel() ? 2 : 0);
 	}
 	
-	public static int getDistinctionpoints(int level) {//TOTAL: 150+25+60+30 = 265
-		return (level <= Settings.LEVEL_MAX ? 1 : 0) + (level <= Mastery.ASPIRANT.getLevel() ? 1 : 0) + (level <= Mastery.EXPERT.getLevel() ? 1 : 0) + (level <= Mastery.ADVENTURER.getLevel() ? 2 : 0);
+	public static int getDistinctionpoints(int level) {//TOTAL: 150+120+30 = 300
+		return (level <= Settings.LEVEL_MAX ? 1 : 0) + (level <= Mastery.EXPERT.getLevel() ? 2 : 0) + (level <= Mastery.ADVENTURER.getLevel() ? 2 : 0);
 	}
 	
 	public static void firework(Location location) {

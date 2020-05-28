@@ -1797,6 +1797,7 @@ public class RPlayer {
 		if((action.contains("LEFT_CLICK") && this.getLastAction().contains("LEFT_CLICK"))
 				|| (action.contains("RIGHT_CLICK") && this.getLastAction().contains("RIGHT_CLICK"))) {
 			if(System.currentTimeMillis() - this.getLastActionTime() < 50) {
+				// to avoid registering double clicks in one tick
 				return null;
 			}
 		}
@@ -1807,13 +1808,13 @@ public class RPlayer {
 			Weapon weapon = rItem.getWeapon();
 			if(weapon.isAttack()) {
 				List<RAbility> available = RAbility.getAvailable(this);
-				if(available.isEmpty())return null;
+				if(available.isEmpty()) return null;
+				
 				String click = action.contains("LEFT_CLICK") ? "G" : (action.contains("RIGHT_CLICK") ? "D" : "");
 				this.setKeystroke(this.getKeystroke() + click);
 				int length = this.getKeystroke().length();
-				if(length > 3) {
-					this.setKeystroke(this.getKeystroke().substring(length-3));
-				}
+				if(length > 3) this.setKeystroke(this.getKeystroke().substring(length-3));
+				
 				this.setLastAction(action);
 				this.setLastActionTime(System.currentTimeMillis());
 				
@@ -1835,42 +1836,44 @@ public class RPlayer {
 				for(RAbility ability : available){
 					if(!ability.isPassive()
 							&& (!this.isActiveAbility(ability) || ability.isToggleable())
-							&& (!ability.isMelee() || action.contains("MELEE_"))){
+							&& (length < 3 || !ability.isMelee() || action.contains("MELEE_"))){
 						String[] sequence = ability.getSequence().split(",");
 						if(sequence[0].startsWith(this.getKeystroke())){
 							if(sequence.length > 1){
-								if(sequence[1].contains("!SN")) {
-									if(player.isSneaking())continue;
-								} else if(sequence[1].contains("SN") && !player.isSneaking())continue;
-								else if(sequence[1].contains("!SP")) {
-									if(player.isSprinting())continue;
-								} else if(sequence[1].contains("SP") && !player.isSprinting())continue;
+								if(sequence[1].contains("!SN") && player.isSneaking()) continue;
+								if(sequence[1].contains("SN") && !player.isSneaking()) continue;
+								if(sequence[1].contains("!SP") && player.isSprinting()) continue;
+								if(sequence[1].contains("SP") && !player.isSprinting()) continue;
 							}
 							
 							if(this.getClickSound()){
-								if(click.equals("G"))player.playSound(player.getLocation(), Sound.BLOCK_LEVER_CLICK, 1, .5F);
-								else if(click.equals("D"))player.playSound(player.getLocation(), Sound.BLOCK_LEVER_CLICK, 1, 1);
+								if(click.equals("G")) player.playSound(player.getLocation(), Sound.BLOCK_LEVER_CLICK, 1, .5F);
+								else if(click.equals("D")) player.playSound(player.getLocation(), Sound.BLOCK_LEVER_CLICK, 1, 1);
 							}
 							
-							if(sequence[0].equals(this.getKeystroke())) {
+							if(this.getKeystroke().contains(sequence[0])) {
 								this.setKeystroke("");
 								return ability;
 							} else {
 								String keystroke = "§7";
 								String[] seq = sequence[0].split("");
-								if(player.isSneaking())keystroke += "Sneak + ";
-								if(player.isSprinting())keystroke += "Sprint + ";
+								if(player.isSneaking()) keystroke += "Sneak + ";
+								if(player.isSprinting()) keystroke += "Sprint + ";
+								
 								if(length > 0)keystroke += "Clic ";
+								
 								for(int i = 0;i < length;i++){
-									if(i != 0)keystroke += "§f/§7";
-									if(seq[i].equals("D"))keystroke += "Droit";
-									else if(seq[i].equals("G"))keystroke += "Gauche";
+									if(i > 0)keystroke += "§f/§7";
+									if(seq[i].equals("D")) keystroke += "Droit";
+									else if(seq[i].equals("G")) keystroke += "Gauche";
 								}
 								for(int i = length;i < seq.length;i++){
-									if(i != seq.length)keystroke += "§f/§8";
-									if(seq[i].equals("D"))keystroke += "Droit";
-									else if(seq[i].equals("G"))keystroke += "Gauche";
+									if(i < seq.length)keystroke += "§f/§8";
+									if(seq[i].equals("D")) keystroke += "Droit";
+									else if(seq[i].equals("G")) keystroke += "Gauche";
 								}
+								
+								if (ability.isMelee()) keystroke += " §7(Melée)";
 								
 								ItemMessage.sendMessage(player, keystroke, Settings.ABILITY_CLICK_TICKS);
 							}

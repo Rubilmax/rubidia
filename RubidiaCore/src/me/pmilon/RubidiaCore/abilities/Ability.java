@@ -32,7 +32,7 @@ public abstract class Ability {
 	private final String suppInfo;
 	private final String unit;
 	private final int toggleableTicks;
-	private final boolean melee;
+	private final boolean melee; // should only be triggered during melee
 	public Ability(String name, List<String> description, RClass rClass, int index, boolean passive,
 			String sequence, String suppInfo, String unit, int toggleableTicks, boolean melee){
 		this.name = name;

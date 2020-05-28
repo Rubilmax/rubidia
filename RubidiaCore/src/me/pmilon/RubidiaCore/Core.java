@@ -133,7 +133,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
@@ -150,7 +149,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-//import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryAction;
@@ -1131,21 +1129,6 @@ public class Core extends JavaPlugin implements Listener {
 		}
 	}
 
-	/*
-	 * @EventHandler public void onPickUp(EntityPickupItemEvent e){ if(e.getEntity()
-	 * instanceof Player){ final Player player = (Player) e.getEntity(); RPlayer rp
-	 * = RPlayer.get(player); ItemStack pickUp = e.getItem().getItemStack();
-	 * if(pickUp.getType().toString().contains("SHULKER_BOX")){ boolean contains =
-	 * false; for(int slot = 0;slot < 36;slot++){ ItemStack item =
-	 * player.getInventory().getItem(slot); if(item != null){
-	 * if(item.getType().toString().contains("SHULKER_BOX")) {
-	 * player.getWorld().dropItem(player.getLocation(),
-	 * player.getInventory().getItem(slot)); player.getInventory().remove(item);
-	 * contains = true; } } } if(contains){ e.setCancelled(true);
-	 * rp.sendMessage("§cVous ne pouvez transporter plus d'une boîte de Shulker !");
-	 * } } } }
-	 */
-
 	@EventHandler
 	public void onCraft(CraftItemEvent e) {
 		ItemStack is = e.getCurrentItem();
@@ -1951,13 +1934,5 @@ public class Core extends JavaPlugin implements Listener {
 		Configs.saveDatabase();
 		console.sendMessage("§a   Rubidia Core Plugin Disabled");
 		Weapons.onDisable();
-
-		for (World world : Bukkit.getWorlds()) {
-			for (Entity entity : world.getEntities()) {
-				if (entity instanceof LivingEntity && !(entity instanceof ArmorStand) && !(entity instanceof Player)) {
-					entity.remove();
-				}
-			}
-		}
 	}
 }

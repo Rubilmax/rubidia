@@ -74,7 +74,7 @@ public enum RAbility {
 
 		@Override
 		public void animate(RPlayer rp, LivingEntity target) {
-			if(RandomUtils.random.nextDouble() < this.getDamages(rp)*.01) {
+			if(Math.random() < this.getDamages(rp)*.01) {
 				rp.getPlayer().playSound(rp.getPlayer().getLocation(), Sound.BLOCK_ANVIL_HIT, 1, .5F);
 				RAbility.stun(target, 30);
 			}
@@ -1419,7 +1419,7 @@ public enum RAbility {
 
 		@Override
 		public void animate(RPlayer rp, LivingEntity target) {
-			if(RandomUtils.random.nextDouble() < this.getDamages(rp)*.01) {
+			if(Math.random() < this.getDamages(rp)*.01) {
 				rp.getPlayer().playSound(rp.getPlayer().getLocation(), Sound.ENTITY_GHAST_SHOOT, 1, 1);
 				target.setFireTicks(100);
 			}
@@ -1443,7 +1443,7 @@ public enum RAbility {
 
 		@Override
 		public void animate(RPlayer rp, final LivingEntity target) {
-			if(RandomUtils.random.nextDouble() < this.getDamages(rp)*.01) {
+			if(Math.random() < this.getDamages(rp)*.01) {
 				rp.getPlayer().playSound(rp.getPlayer().getLocation(), Sound.BLOCK_GLASS_HIT, 1, 1);
 				final AttributeModifier modifier = new AttributeModifier("RubidiaTrap", -10000.0, Operation.ADD_NUMBER);
 				if(target instanceof Player){
@@ -1502,7 +1502,7 @@ public enum RAbility {
 
 		@Override
 		public void animate(RPlayer rp, LivingEntity target) {
-			if(RandomUtils.random.nextDouble() < this.getDamages(rp)*.01) {
+			if(Math.random() < this.getDamages(rp) * .01) {
 				FakeLightning lightning = new FakeLightning(false);
 				lightning.strike(target);
 				DamageManager.damage(target, rp.getPlayer(), 2, RDamageCause.ABILITY);
@@ -1530,7 +1530,7 @@ public enum RAbility {
 		}
 				
 	}),
-	MAGE_5(new Ability("Soin", Arrays.asList("Le mage crée une zone de soin", "instantané autour de lui"),
+	MAGE_5(new Ability("Soin", Arrays.asList("Le mage crée une zone de soin", "instantanée autour de lui"),
 			RClass.MAGE, 5, false, "DDD,SN", "Vie restaurée", "PV", 0, false) {
 		
 		@Override

@@ -51,11 +51,10 @@ public class ItemListener implements Listener {
 		}
 		
 		for(RItemStack drop : RItemStacks.ITEMS){
-			if(RandomUtils.random.nextInt(drop.getDropRarity()) < 1){
+			if(Math.random() < 1. / drop.getDropRarity()){
 				ItemStack dropItem = drop.getItemStack();
 				dropItem.setAmount(dropItem.getAmount()*lootFactor);
 				entity.getWorld().dropItemNaturally(entity.getLocation(), dropItem);
-				//break;//we only want one drop aaahaahahaaah
 			}
 		}
 		

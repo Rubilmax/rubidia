@@ -17,8 +17,11 @@ import me.pmilon.RubidiaGuilds.raids.RaidColl;
 import me.pmilon.RubidiaGuilds.utils.Configs;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class GuildsPlugin extends JavaPlugin {
@@ -62,6 +65,15 @@ public class GuildsPlugin extends JavaPlugin {
 		Configs.saveDefaultMembersConfig();
 		Configs.saveDefaultRaidsConfig();
 		Configs.saveDefaultClaimsConfig();
+
+		// RubidiaGuilds is the first to be loaded so we get rid of every entity
+		for (World world : Bukkit.getWorlds()) {
+			for (Entity entity : world.getEntities()) {
+				if (entity instanceof LivingEntity) {
+					entity.remove();
+				}
+			}
+		}
 	}
 	
 	public static void onStart(){

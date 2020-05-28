@@ -299,7 +299,7 @@ public class Monster {
 					}
 					
 					for(final Drop drop : this.getDrops()){
-						if(drop.getProbability()*1000000 > RubidiaMonstersPlugin.random.nextInt(1000000)){
+						if(Math.random() < drop.getProbability()){
 							ItemStack dropItem = drop.getItem();
 							dropItem.setAmount(dropItem.getAmount()*lootFactor);
 							entity.getWorld().dropItemNaturally(entity.getLocation(), dropItem);

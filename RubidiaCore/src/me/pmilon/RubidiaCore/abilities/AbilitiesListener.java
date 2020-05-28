@@ -40,9 +40,6 @@ import org.bukkit.metadata.MetadataValue;
 import org.bukkit.projectiles.ProjectileSource;
 
 public class AbilitiesListener implements Listener{
-
-	public AbilitiesListener(){
-	}
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event){

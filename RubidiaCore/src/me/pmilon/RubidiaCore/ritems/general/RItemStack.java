@@ -20,5 +20,9 @@ public class RItemStack {
 		return dropRarity;
 	}
 	
+	public double getDropProbability() {
+		return 1. / this.getDropRarity();
+	}
+	
 	
 }

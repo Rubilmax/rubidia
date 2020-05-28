@@ -79,7 +79,7 @@ public class RItemStacks {
 		ely.setItemMeta(META);
 		ELYTRA = new RItemStack(ely, 1456);
 		
-		EMERALD = new RItemStack(new ItemStack(Material.EMERALD, 1), 99);
+		EMERALD = new RItemStack(new ItemStack(Material.EMERALD, 1), 40);
 		
 		for(Field field : RItemStacks.class.getFields()){
 			if(field.getType().equals(RItemStack.class)){

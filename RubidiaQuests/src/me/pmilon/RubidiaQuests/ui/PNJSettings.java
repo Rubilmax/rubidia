@@ -14,7 +14,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
-import me.pmilon.RubidiaQuests.QuestsPlugin;
 import me.pmilon.RubidiaQuests.dialogs.MessageManager;
 import me.pmilon.RubidiaQuests.pnjs.DialogerPNJ;
 import me.pmilon.RubidiaQuests.pnjs.HostPNJ;
@@ -60,6 +59,7 @@ public class PNJSettings extends UIHandler {
 	public PNJSettings(Player p, PNJHandler pnj) {
 		super(p);
 		this.pnj = pnj;
+		this.menu = Bukkit.createInventory(this.getHolder(), 9, StringUtils.abbreviate(pnj.getName() + " | Settings",32));
 	}
 
 	@Override
@@ -134,30 +134,25 @@ public class PNJSettings extends UIHandler {
 				}
 			}
 		}
-		this.menu = Bukkit.createInventory(this.getHolder(), 9, StringUtils.abbreviate(pnj.getName() + " Settings",32));
 		
+		getMenu().setItem(SLOT_TITLE, getTitle());
+		getMenu().setItem(SLOT_NAME, getName());
+		getMenu().setItem(SLOT_FIX, getFix());
+		if(getPnj() instanceof PastorPNJ){
+			getMenu().setItem(SLOT_DIAL_QUST, getLoc1());
+			getMenu().setItem(SLOT_NO_QUEST, getLoc2());
+		}else if(getPnj() instanceof PasserPNJ){
+			getMenu().setItem(SLOT_DIAL_QUST, getDialQust());
+			getMenu().setItem(SLOT_NO_QUEST, getTargetLoc());
+		}else{
+			if(getPnj().getType().equals(PNJType.HOST))getMenu().setItem(SLOT_DIAL_QUST, getHouseManager());
+			else getMenu().setItem(SLOT_DIAL_QUST, getDialQust());
+			if(getPnj().getType().equals(PNJType.QUEST))getMenu().setItem(SLOT_NO_QUEST, getNoQuestDial());
+		}
+		getMenu().setItem(SLOT_AGE, getAge());
+		getMenu().setItem(SLOT_MOVE, getMove());
+		getMenu().setItem(SLOT_DELETE, getDelete());
 		
-		Bukkit.getScheduler().runTaskLater(QuestsPlugin.instance, new Runnable(){//to avoid entity nullException on move (delayed teleportation)
-			public void run(){
-				getMenu().setItem(SLOT_TITLE, getTitle());
-				getMenu().setItem(SLOT_NAME, getName());
-				getMenu().setItem(SLOT_FIX, getFix());
-				if(getPnj() instanceof PastorPNJ){
-					getMenu().setItem(SLOT_DIAL_QUST, getLoc1());
-					getMenu().setItem(SLOT_NO_QUEST, getLoc2());
-				}else if(getPnj() instanceof PasserPNJ){
-					getMenu().setItem(SLOT_DIAL_QUST, getDialQust());
-					getMenu().setItem(SLOT_NO_QUEST, getTargetLoc());
-				}else{
-					if(getPnj().getType().equals(PNJType.HOST))getMenu().setItem(SLOT_DIAL_QUST, getHouseManager());
-					else getMenu().setItem(SLOT_DIAL_QUST, getDialQust());
-					if(getPnj().getType().equals(PNJType.QUEST))getMenu().setItem(SLOT_NO_QUEST, getNoQuestDial());
-				}
-				getMenu().setItem(SLOT_AGE, getAge());
-				getMenu().setItem(SLOT_MOVE, getMove());
-				getMenu().setItem(SLOT_DELETE, getDelete());
-			}
-		}, 2);
 		return this.getHolder().openInventory(this.getMenu()) != null;
 	}
 
@@ -192,7 +187,7 @@ public class PNJSettings extends UIHandler {
 	private ItemStack getAge(){
 		ItemMeta meta = ITEM_AGE.getItemMeta();
 		meta.setDisplayName("Age");
-		meta.setLore(Arrays.asList(String.valueOf(this.getPnj().getEntity().getAge())));
+		meta.setLore(Arrays.asList(String.valueOf(this.getPnj().isBaby() ? "Baby" : "Adult")));
 		ITEM_AGE.setItemMeta(meta);
 		return ITEM_AGE;
 	}
