@@ -26,6 +26,7 @@ import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Horse;
+import org.bukkit.entity.Llama;
 import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.Horse.Style;
 import org.bukkit.entity.Ocelot;
@@ -36,6 +37,8 @@ import org.bukkit.entity.Rabbit;
 import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Snowman;
 import org.bukkit.entity.Tameable;
+import org.bukkit.entity.Villager;
+import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -59,12 +62,14 @@ public class Pet {
 	private boolean active;
 	private DyeColor collarColor;
 	private Color color;
+	private Llama.Color llamaColor;
 	private Style style;
 	private int domestication;
 	private ItemStack armor;
 	private Rabbit.Type rabbitType;
 	private Ocelot.Type catType;
 	private Parrot.Variant parrotType;
+	private Profession profession;
 	
 	private TagStand stand;
 	private Creature entity;
@@ -72,7 +77,7 @@ public class Pet {
 	private boolean move = true;
 	private BukkitTask task;
 	private boolean canBeFood = true;
-	public Pet(String UUID, String name, int level, double exp, double health, int distinctionPoints, int ardor, int patience, int acuity, EntityType type, int age, boolean saddle, List<Pearl> activePearls, boolean active, DyeColor collarColor, Color color, Style style, int domestication, ItemStack armor, Rabbit.Type rabbitType, Ocelot.Type catType, Parrot.Variant parrotType){
+	public Pet(String UUID, String name, int level, double exp, double health, int distinctionPoints, int ardor, int patience, int acuity, EntityType type, int age, boolean saddle, List<Pearl> activePearls, boolean active, DyeColor collarColor, Color color, Style style, int domestication, ItemStack armor, Rabbit.Type rabbitType, Ocelot.Type catType, Parrot.Variant parrotType, Profession profession, Llama.Color llamaColor){
 		this.uuid = UUID;
 		this.name = name;
 		this.level = level;
@@ -95,6 +100,8 @@ public class Pet {
 		this.rabbitType = rabbitType;
 		this.catType = catType;
 		this.parrotType = parrotType;
+		this.profession = profession;
+		this.llamaColor = llamaColor;
 	}
 	
 	public static boolean isPet(Entity entity){
@@ -195,13 +202,8 @@ public class Pet {
 		creature.targetSelector = new PathfinderGoalSelector(creature.world.methodProfiler);
 		creature.goalSelector = new PathfinderGoalSelector(creature.world.methodProfiler);
 		
-		/*((LinkedHashSet<?>) getPrivateField("b", PathfinderGoalSelector.class, creature.targetSelector)).clear();
-		((LinkedHashSet<?>) getPrivateField("c", PathfinderGoalSelector.class, creature.targetSelector)).clear();
-		((LinkedHashSet<?>) getPrivateField("b", PathfinderGoalSelector.class, creature.goalSelector)).clear();
-		((LinkedHashSet<?>) getPrivateField("c", PathfinderGoalSelector.class, creature.goalSelector)).clear();*/
 		creature.goalSelector.a(0, new PathfinderGoalFloat(creature));
 		creature.goalSelector.a(2, new PathfinderGoalMeleeAttack(creature, 1.44D, false));
-		//creature.goalSelector.a(3, new PathfinderGoalAttack(creature, this));
 		creature.goalSelector.a(5, new PathfinderGoalMoveTowardsRestriction(creature, 1.0D));
 		creature.goalSelector.a(8, new PathfinderGoalLookAtPlayer(creature, EntityHuman.class, 8.0F));
 		creature.goalSelector.a(8, new PathfinderGoalRandomLookaround(creature));
@@ -243,6 +245,10 @@ public class Pet {
         	((Ocelot) pet).setCatType(this.getCatType());
 	    }else if(pet instanceof Parrot){
         	((Parrot) pet).setVariant(this.getParrotType());
+	    } else if (pet instanceof Villager) {
+	    	((Villager) pet).setProfession(this.getProfession());
+	    } else if (pet instanceof Llama) {
+	    	((Llama) pet).setColor(this.getLlamaColor());
 	    }
 	}
 	
@@ -269,7 +275,11 @@ public class Pet {
 	        	this.setParrotType(((Parrot) pet).getVariant());
 	        }else if(pet instanceof Snowman){
 	        	this.setSaddle(((Snowman) pet).isDerp());
-	        }
+	        } else if (pet instanceof Villager) {
+		    	this.setProfession(((Villager) pet).getProfession());
+		    } else if (pet instanceof Llama) {
+		    	this.setLlamaColor(((Llama) pet).getColor());
+		    }
 	        if(pet instanceof Ageable){
 	        	this.setAge(((Ageable) pet).getAge());
 	        }else this.setAge(0);
@@ -371,7 +381,10 @@ public class Pet {
 						if(this.canMove()){
 							if(distance > Math.pow(3.9, 2)){
 								if(distance < Math.pow(20, 2)){
-									((CraftCreature)this.getEntity()).getHandle().getNavigation().a(location.getX(), location.getY(), location.getZ(), this.getHealth() > 1.0 ? (distance < 121 ? 1.57 : 1.98) : 1.18);
+									double speed = 1.57;
+									if (distance > 121) speed = 1.98;
+									if (this.getEntity() instanceof Villager) speed *= .45;
+									((CraftCreature)this.getEntity()).getHandle().getNavigation().a(location.getX(), location.getY(), location.getZ(), speed);
 								}else TeleportHandler.teleport(this.getEntity(), location);
 							}
 						}else if(distance > Math.pow(50, 2))TeleportHandler.teleport(this.getEntity(), location);
@@ -577,5 +590,21 @@ public class Pet {
 				
 			}.runTaskLater(0);
 		}
+	}
+
+	public Profession getProfession() {
+		return profession;
+	}
+
+	public void setProfession(Profession profession) {
+		this.profession = profession;
+	}
+
+	public Llama.Color getLlamaColor() {
+		return llamaColor;
+	}
+
+	public void setLlamaColor(Llama.Color llamaColor) {
+		this.llamaColor = llamaColor;
 	}
 }

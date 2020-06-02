@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
 import me.pmilon.RubidiaGuilds.guilds.GMember;
 import me.pmilon.RubidiaGuilds.guilds.Guild;
 
@@ -52,7 +52,6 @@ public class GMembersUI extends ListMenuUIHandler<GMember> {
 
 	@Override
 	public void onInventoryClose(InventoryCloseEvent arg0, Player arg1) {
-		//not listening
 	}
 
 	@Override
@@ -60,7 +59,7 @@ public class GMembersUI extends ListMenuUIHandler<GMember> {
 		ItemStack infos = new ItemStack(Material.MAP, 1);
 		ItemMeta meta = infos.getItemMeta();
 		meta.setDisplayName("§8Informations");
-		meta.setLore(Arrays.asList(("§7Choisissez un membre dont vous souhaitez éditer les permissions"), ("§7ou cliquez pour revenir au menu précédent")));
+		meta.setLore(Arrays.asList("§7Choisissez un membre dont vous souhaitez éditer les permissions", "§7ou cliquez pour revenir au menu précédent"));
 		infos.setItemMeta(meta);
 		return infos;
 	}
@@ -80,13 +79,10 @@ public class GMembersUI extends ListMenuUIHandler<GMember> {
 
 	@Override
 	protected void onOpen() {
-		// nothing
 	}
 
 	@Override
 	protected void onPageTurn() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

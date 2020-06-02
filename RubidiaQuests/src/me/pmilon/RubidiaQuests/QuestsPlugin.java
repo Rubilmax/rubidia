@@ -109,17 +109,6 @@ public class QuestsPlugin extends JavaPlugin {
 	}
 	
 	public static void onEnd(){
-		for(List<Villager> villagers : PNJManager.pnjTemps.values()){
-			for(Villager villager : villagers){
-				villager.remove();
-			}
-		}
-		for(List<Villager> villagers : PNJManager.pnjTokillTemps.values()){
-			for(Villager villager : villagers){
-				villager.remove();
-			}
-		}
-
 		questColl.saveAll(true);
 		PNJManager.save(true);
 		shopColl.saveAll(true);

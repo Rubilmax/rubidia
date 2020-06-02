@@ -63,7 +63,9 @@ public class TagStand {
 	}
 	public void hide(Player player) {
 		for (FakeArmorStand stand : this.displays) {
-			stand.destroy(player);
+			if (stand != null) {
+				stand.destroy(player);
+			}
 		}
 	}
 	

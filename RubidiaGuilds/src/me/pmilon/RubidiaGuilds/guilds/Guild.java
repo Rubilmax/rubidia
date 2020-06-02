@@ -146,7 +146,7 @@ public class Guild {
 	}
 
 	public List<GMember> getMembers() {
-		if(this.members.isEmpty() && !this.getMembersUUIDs().isEmpty()){
+		if(this.members.isEmpty()){
 			for(String uuid : this.getMembersUUIDs()){
 				GMember member = GMember.get(uuid);
 				if(member != null && member.getGuildId().equals(this.getUUID())){
@@ -154,12 +154,14 @@ public class Guild {
 				}
 			}
 		}
+		
 		return members;
 	}
 	
 	public void addMember(GMember member){
 		if(!this.getMembers().contains(member)){
 			this.getMembers().add(member);
+			this.getMembersUUIDs().add(member.getUniqueId());
 			member.setGuild(this);
 			member.setRankId(this.getDefaultRankId());
 		}

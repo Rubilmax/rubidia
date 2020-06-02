@@ -7,23 +7,29 @@ import org.bukkit.entity.Player;
 
 public class TagStandManager {
 
-	public static HashMap<Entity, TagStand> tagStands = new HashMap<Entity,TagStand>();
+	public static HashMap<String, TagStand> tagStands = new HashMap<String,TagStand>();
 	
 	public static void registerTagStand(TagStand tag){
-		TagStandManager.tagStands.put(tag.getHolder(), tag);
+		TagStandManager.tagStands.put(tag.getHolder().getUniqueId().toString(), tag);
 	}
 	
 	public static void unregisterTagStand(TagStand tag){
-		if(TagStandManager.tagStands.containsKey(tag.getHolder())) TagStandManager.tagStands.remove(tag.getHolder());
+		String uuid = tag.getHolder().getUniqueId().toString();
+		if(TagStandManager.tagStands.containsKey(uuid)) {
+			TagStandManager.tagStands.remove(uuid);
+		}
 	}
 	
 	public static TagStand getTagStand(Entity holder){
-		if(TagStandManager.tagStands.containsKey(holder)) return TagStandManager.tagStands.get(holder);
+		String uuid = holder.getUniqueId().toString();
+		if(TagStandManager.tagStands.containsKey(uuid)) {
+			return TagStandManager.tagStands.get(uuid);
+		}
 		return null;
 	}
 	
 	public static boolean hasTagStand(Entity holder){
-		return TagStandManager.tagStands.containsKey(holder);
+		return TagStandManager.tagStands.containsKey(holder.getUniqueId().toString());
 	}
 	
 	public static void update(Player player) {

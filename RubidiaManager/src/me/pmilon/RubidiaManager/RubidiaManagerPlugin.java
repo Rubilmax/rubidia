@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
-import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaManager.chunks.Chunk;
 import me.pmilon.RubidiaManager.chunks.ChunkColl;
 import me.pmilon.RubidiaManager.chunks.ChunkListener;
@@ -22,8 +21,13 @@ import me.pmilon.RubidiaManager.tasks.WorldsRegenTask;
 import me.pmilon.RubidiaManager.utils.Configs;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.onarandombox.MultiverseCore.MultiverseCore;
@@ -69,6 +73,7 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 	}
 	
 	public void onDisable(){
+		RubidiaManagerPlugin.clearEntities();
 		RubidiaManagerPlugin.getChunkColl().save();
 		this.saveConfig();
 	}
@@ -92,7 +97,7 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 				Bukkit.getScheduler().runTaskLater(RubidiaManagerPlugin.instance, new Runnable(){
 					public void run(){
 						manager.pasteFromFile();
-						Core.console.sendMessage("§6Regenerated §echunk #" + index);
+						Bukkit.getConsoleSender().sendMessage("§6Regenerated §echunk #" + index);
 					}
 				}, id*RubidiaManagerPlugin.TICKS_PER_CHUNK_REGEN);
 				id++;
@@ -137,7 +142,7 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 		long seconds = TimeUnit.MILLISECONDS.toSeconds(time);
 		time -= TimeUnit.SECONDS.toMillis(seconds);
 		String.format("%02d:%02d:%02d", hours, minutes, seconds);
-		Core.console.sendMessage("§6Next §erestart §6in §e" + String.format("%02d days, %02d:%02d:%02d", daysToDate, hours, minutes, seconds));
+		Bukkit.getConsoleSender().sendMessage("§6Next §erestart §6in §e" + String.format("%02d days, %02d:%02d:%02d", daysToDate, hours, minutes, seconds));
 	}
 	
 	private void scheduleEndRegen(){
@@ -160,7 +165,7 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 		long seconds = TimeUnit.MILLISECONDS.toSeconds(time);
 		time -= TimeUnit.SECONDS.toMillis(seconds);
 		String.format("%02d:%02d:%02d", hours, minutes, seconds);
-		Core.console.sendMessage("§6Next §eEnd regeneration §6in §e" + String.format("%02d days, %02d:%02d:%02d", days, hours, minutes, seconds));
+		Bukkit.getConsoleSender().sendMessage("§6Next §eEnd regeneration §6in §e" + String.format("%02d days, %02d:%02d:%02d", days, hours, minutes, seconds));
 	}
 	
 	private void scheduleNetherRegen(){
@@ -184,7 +189,7 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 		long seconds = TimeUnit.MILLISECONDS.toSeconds(time);
 		time -= TimeUnit.SECONDS.toMillis(seconds);
 		String.format("%02d:%02d:%02d", hours, minutes, seconds);
-		Core.console.sendMessage("§6Next §eNether regeneration §6in §e" + String.format("%02d days, %02d:%02d:%02d", days, hours, minutes, seconds));
+		Bukkit.getConsoleSender().sendMessage("§6Next §eNether regeneration §6in §e" + String.format("%02d days, %02d:%02d:%02d", days, hours, minutes, seconds));
 	}
 	
 	private void scheduleWorldsRegen(){
@@ -208,6 +213,24 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 		long seconds = TimeUnit.MILLISECONDS.toSeconds(time);
 		time -= TimeUnit.SECONDS.toMillis(seconds);
 		String.format("%02d:%02d:%02d", hours, minutes, seconds);
-		Core.console.sendMessage("§6Next §eRubidia regeneration §6in §e" + String.format("%02d days, %02d:%02d:%02d", days, hours, minutes, seconds));
+		Bukkit.getConsoleSender().sendMessage("§6Next §eRubidia regeneration §6in §e" + String.format("%02d days, %02d:%02d:%02d", days, hours, minutes, seconds));
+	}
+	
+	public static void clearEntities() {
+		for (World world : Bukkit.getWorlds()) {
+			for (Entity entity : world.getEntities()) {
+				if (entity instanceof LivingEntity && !(entity instanceof ArmorStand || entity instanceof Player)) {
+					Location location = entity.getLocation();
+					
+					if (!location.getChunk().isLoaded()) {
+						// force loads the chunk to load entities
+						location.getChunk().load(true);
+					}
+					
+					entity.remove();
+				}
+			}
+		}
+		Bukkit.getConsoleSender().sendMessage("Cleared all living entities!");
 	}
 }

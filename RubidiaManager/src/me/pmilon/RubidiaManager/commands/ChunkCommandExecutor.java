@@ -64,7 +64,6 @@ public class ChunkCommandExecutor extends HybridAdminCommandExecutor {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onAdminCommand(final CommandSender sender, final String[] args) {
 		if(sender instanceof Player){

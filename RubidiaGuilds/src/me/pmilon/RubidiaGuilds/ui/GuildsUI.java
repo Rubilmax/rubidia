@@ -1,10 +1,8 @@
 package me.pmilon.RubidiaGuilds.ui;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
@@ -16,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.pmilon.RubidiaCore.Core;
-import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 import me.pmilon.RubidiaGuilds.GuildsPlugin;
 import me.pmilon.RubidiaGuilds.guilds.Guild;
@@ -30,30 +28,12 @@ public class GuildsUI extends ListMenuUIHandler<Guild> {
 	
 	public GuildsUI(Player p) {
 		super(p, "Existing guilds", "Guildes existantes", 3);
-		for(Guild guild : GuildsPlugin.gcoll.data()){
-			if(!guild.equals(Guild.getNone()) && guild.isConnected()){
-				this.list.add(guild);
-			}
-		}
-		Collections.sort(list, new Comparator<Guild>(){
-			@Override
-			public int compare(Guild g1, Guild g2) {
-				return g2.getLevel()-g1.getLevel();
-			}
-		});
-		List<Guild> notCo = new ArrayList<Guild>();
-		for(Guild guild : GuildsPlugin.gcoll.data()){
-			if(!guild.equals(Guild.getNone()) && !guild.isConnected() && guild.isActive()){
-				notCo.add(guild);
-			}
-		}
-		Collections.sort(notCo, new Comparator<Guild>(){
-			@Override
-			public int compare(Guild g1, Guild g2) {
-				return Long.compare(g2.getLastConnection(), g1.getLastConnection());
-			}
-		});
-		this.list.addAll(notCo);
+		this.list.addAll(GuildsPlugin.gcoll.data().stream()
+				.filter((Guild guild) -> !guild.equals(Guild.getNone()) && guild.isConnected())
+				.sorted(Comparator.comparing(Guild::getLevel).reversed()).collect(Collectors.toList()));
+		this.list.addAll(GuildsPlugin.gcoll.data().stream()
+				.filter((Guild guild) -> !guild.equals(Guild.getNone()) && !guild.isConnected() && guild.isActive())
+				.sorted(Comparator.comparing(Guild::getLastConnection).reversed()).collect(Collectors.toList()));
 	}
 
 	@Override

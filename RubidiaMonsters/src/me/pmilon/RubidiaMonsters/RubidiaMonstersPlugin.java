@@ -14,10 +14,8 @@ import me.pmilon.RubidiaMonsters.utils.Configs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Entity;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RubidiaMonstersPlugin extends JavaPlugin {
@@ -86,18 +84,6 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 	public static void onEnd(){
 		Monsters.save(true);
 		Regions.save(true);
-	}
-	
-	public void onDisable(){
-		// Bukkit.getEntity doesn't work well
-		for (World world : Bukkit.getWorlds()) {
-			for (Entity entity : world.getEntities()) {
-				Monster monster = Monsters.get(entity);
-				if (monster != null) {
-					entity.remove();
-				}
-			}
-		}
 	}
 	
 	public static RubidiaMonstersPlugin getInstance(){

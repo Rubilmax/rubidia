@@ -8,12 +8,16 @@ import me.pmilon.RubidiaPets.commands.PetsCommandExecutor;
 import me.pmilon.RubidiaPets.pets.Pet;
 import me.pmilon.RubidiaPets.pets.Pets;
 import me.pmilon.RubidiaPets.utils.Configs;
+import me.pmilon.RubidiaPets.utils.Settings;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PetsPlugin extends JavaPlugin{
@@ -51,6 +55,15 @@ public class PetsPlugin extends JavaPlugin{
 	    this.getCommand("pets").setExecutor(new PetsCommandExecutor());
 	    
 	    this.getServer().getPluginManager().registerEvents(new EventsHandler(), this);
+	    
+	    for(EntityType type : EntityType.values()){
+			if (type.getEntityClass() != null && Creature.class.isAssignableFrom(type.getEntityClass())) {
+				try {
+					Material.valueOf(type.toString() + "_SPAWN_EGG");
+					Settings.ENTITY_TYPES.add(type);
+				} catch(Exception ex) {}
+			}
+		}
 	}
   
 	public void onEnd(){

@@ -2,12 +2,14 @@ package me.pmilon.RubidiaPets.commands;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.utils.RandomUtils;
 import me.pmilon.RubidiaPets.pets.Pearl;
 import me.pmilon.RubidiaPets.pets.Pet;
 import me.pmilon.RubidiaPets.pets.Pets;
+import me.pmilon.RubidiaPets.utils.Settings;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -19,8 +21,10 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Rabbit;
+import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.Horse.Style;
+import org.bukkit.entity.Llama;
 import org.bukkit.inventory.ItemStack;
 
 public class PetCommandExecutor implements CommandExecutor {
@@ -38,10 +42,7 @@ public class PetCommandExecutor implements CommandExecutor {
 							type = EntityType.valueOf(args[1].toUpperCase());
 						}catch(Exception e){
 							sender.sendMessage("§4" + args[1].toUpperCase() + "§c is not a valid entity type! See existing:");
-							String types = "§c";
-							for(EntityType tpe : EntityType.values()){
-								if(tpe.getEntityClass() != null && Creature.class.isAssignableFrom(tpe.getEntityClass()))types += tpe.toString() + ", ";
-							}
+							String types = "§c" + String.join(", ", Settings.ENTITY_TYPES.stream().map((EntityType acceptedType) -> acceptedType.toString()).collect(Collectors.toList()));
 							sender.sendMessage(types);
 							return false;
 						}
@@ -61,7 +62,7 @@ public class PetCommandExecutor implements CommandExecutor {
 								rp.getPets().remove(rppet);
 								sender.sendMessage("§4" + name + " §cdoes no longer exist... Sad choice :'(");
 							}else{
-								Pet pet = new Pet(UUID.randomUUID().toString(), name, 0, 0.0, 20.0, 0, 0, 0, 0, type, 0, false, new ArrayList<Pearl>(), false, DyeColor.BLACK, Color.BLACK, Style.BLACK_DOTS, 0, new ItemStack(Material.AIR,1), Rabbit.Type.BLACK, Ocelot.Type.BLACK_CAT, Parrot.Variant.BLUE);
+								Pet pet = new Pet(UUID.randomUUID().toString(), name, 0, 0.0, 20.0, 0, 0, 0, 0, type, 0, false, new ArrayList<Pearl>(), false, DyeColor.BLACK, Color.BLACK, Style.BLACK_DOTS, 0, new ItemStack(Material.AIR,1), Rabbit.Type.BLACK, Ocelot.Type.BLACK_CAT, Parrot.Variant.BLUE, Profession.BLACKSMITH, Llama.Color.BROWN);
 								Pets.pets.add(pet);
 								rp.getPets().add(pet);
 								sender.sendMessage("§4§l" + rp.getName() + " §ahas been given §4" + name + " §a!");

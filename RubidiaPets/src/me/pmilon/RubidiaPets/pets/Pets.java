@@ -11,6 +11,8 @@ import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Rabbit;
 import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.Horse.Style;
+import org.bukkit.entity.Llama;
+import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.inventory.ItemStack;
 
@@ -38,6 +40,20 @@ public class Pets {
 				} catch (Exception ex) {
 				}
 				
+				String professionName = Configs.getPetsConfig().getString("pets." + uuid + ".villager.profession");
+				Profession profession = Profession.BLACKSMITH;
+				try {
+					profession = Profession.valueOf(professionName);
+				} catch (Exception ex) {
+				}
+				
+				String llamaColorName = Configs.getPetsConfig().getString("pets." + uuid + ".llama.color");
+				Llama.Color llamaColor = Llama.Color.BROWN;
+				try {
+					llamaColor = Llama.Color.valueOf(llamaColorName);
+				} catch (Exception ex) {
+				}
+				
 				Pet pet = new Pet(uuid,
 						Configs.getPetsConfig().getString("pets." + uuid + ".name"),
 						Configs.getPetsConfig().getInt("pets." + uuid + ".level"),
@@ -58,7 +74,8 @@ public class Pets {
 						(ItemStack) Configs.getPetsConfig().get("pets." + uuid + ".horse.armor"),
 						Rabbit.Type.valueOf(Configs.getPetsConfig().getString("pets." + uuid + ".rabbit.type")),
 						catType,
-						Configs.getPetsConfig().contains("pets." + uuid + ".parrot.type") ? Parrot.Variant.valueOf(Configs.getPetsConfig().getString("pets." + uuid + ".parrot.type")) : Parrot.Variant.BLUE);
+						Configs.getPetsConfig().contains("pets." + uuid + ".parrot.type") ? Parrot.Variant.valueOf(Configs.getPetsConfig().getString("pets." + uuid + ".parrot.type")) : Parrot.Variant.BLUE,
+						profession, llamaColor);
 				pets.add(pet);
 				if(pet.getType() == null || pet.getType().getEntityClass() == null || !Creature.class.isAssignableFrom(pet.getType().getEntityClass())){
 					pet.destroy();
@@ -117,6 +134,8 @@ public class Pets {
 			Configs.getPetsConfig().set(path + ".rabbit.type", pet.getRabbitType().toString());
 			Configs.getPetsConfig().set(path + ".cat.type", pet.getCatType().toString());
 			Configs.getPetsConfig().set(path + ".parrot.type", pet.getParrotType().toString());
+			Configs.getPetsConfig().set(path + ".villager.profession", pet.getProfession().toString());
+			Configs.getPetsConfig().set(path + ".llama.color", pet.getLlamaColor().toString());
 			List<String> pearls = new ArrayList<String>();
 			for(Pearl pearl : pet.getActivePearls()){
 				if(pearl != null)pearls.add(pearl.toString());

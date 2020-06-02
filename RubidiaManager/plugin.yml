@@ -4,7 +4,8 @@ version: 2.0
 api-version: 1.13
 description: The Manager plugin of Rubidias server.
 main: me.pmilon.RubidiaManager.RubidiaManagerPlugin
-softdepend: [RubidiaCore, RubidiaGuilds, WorldEdit, Multiverse-Core]
+softdepend: [Multiverse-Core]
+loadbefore: [RubidiaCore, RubidiaGuilds, RubidiaMonsters, RubidiaQuests, RubidiaPets]
 commands:
   chunk:
     description: Chunk management.
