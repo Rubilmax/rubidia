@@ -121,13 +121,19 @@ public class PNJSettings extends UIHandler {
 			if(!this.getMessage().isEmpty()){
 				if(this.getListeningId() == this.LISTENING_ID_NAME){
 					this.getPnj().setName(this.getMessage());
-				}else if(this.getListeningId() == this.LISTENING_ID_TITLE)this.getPnj().setTitle(this.getMessage());
-				else if(this.getListeningId() == this.LISTENING_ID_NOQUEST){
-					if(this.getPnj().getType().equals(PNJType.QUEST))((QuestPNJ)this.getPnj()).setNoQuestDialog(MessageManager.filterDialog(this.getMessage()));
-				}else if(this.getListeningId() == this.LISTENING_ID_MOVE)this.getPnj().setLocation(this.getHolder().getLocation());
-				else if(this.getListeningId() == this.LISTENING_ID_LOC1)((PastorPNJ)this.getPnj()).setLocation1(this.getHolder().getLocation());
-				else if(this.getListeningId() == this.LISTENING_ID_LOC2)((PastorPNJ)this.getPnj()).setLocation2(this.getHolder().getLocation());
-				else if(this.getListeningId() == this.LISTENING_ID_TARGET){
+				} else if(this.getListeningId() == this.LISTENING_ID_TITLE) {
+					this.getPnj().setTitle(this.getMessage());
+				} else if(this.getListeningId() == this.LISTENING_ID_NOQUEST){
+					if(this.getPnj().getType().equals(PNJType.QUEST)) {
+						((QuestPNJ)this.getPnj()).setNoQuestDialog(MessageManager.filterDialog(this.getMessage()));
+					}
+				} else if(this.getListeningId() == this.LISTENING_ID_MOVE) {
+					this.getPnj().setLocation(this.getHolder().getLocation());
+				} else if(this.getListeningId() == this.LISTENING_ID_LOC1) {
+					((PastorPNJ)this.getPnj()).setLocation1(this.getHolder().getLocation());
+				} else if(this.getListeningId() == this.LISTENING_ID_LOC2) {
+					((PastorPNJ)this.getPnj()).setLocation2(this.getHolder().getLocation());
+				} else if(this.getListeningId() == this.LISTENING_ID_TARGET){
 					PasserPNJ passer = (PasserPNJ)this.getPnj();
 					passer.setTargetName(this.getMessage());
 					passer.setTargetLocation(this.getHolder().getLocation());

@@ -1,7 +1,5 @@
 package me.pmilon.RubidiaQuests;
 
-import java.util.List;
-
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
@@ -35,7 +33,6 @@ import me.pmilon.RubidiaQuests.utils.Utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Villager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;

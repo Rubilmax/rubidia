@@ -168,12 +168,19 @@ public abstract class PNJHandler {
 
 	public void requestTag(){
 		this.tag = new TagStand(this.getEntity(), new String[]{this.getTitlePrefix() + this.getTitle()}, this.isFix());
-		this.getTag().display();
+		this.tag.display();
+		if (this.getEntity() != null) {
+			this.getEntity().setCustomName(this.getNamePrefix() + this.getName());
+			this.getEntity().setCustomNameVisible(true);
+		}
 	}
 	
 	public void updateTag(){
 		if(this.getTag() != null){
 			this.getTag().setLayers(new String[]{this.getTitlePrefix() + this.getTitle()}, true);
+		}
+		if (this.getEntity() != null) {
+			this.getEntity().setCustomName(this.getNamePrefix() + this.getName());
 		}
 	}
 	
@@ -188,6 +195,11 @@ public abstract class PNJHandler {
 					}
 				}
 			}
+			
+			Entity entity = Bukkit.getEntity(this.getEntityUUID());
+			if (entity instanceof Villager) {
+				return (Villager) entity;
+			}
 		}
 		return this.pnj;
 	}
@@ -198,8 +210,6 @@ public abstract class PNJHandler {
 		this.pnj.setAge(this.getAge());
 		this.pnj.setAgeLock(true);
 		this.pnj.setCanPickupItems(false);
-		this.pnj.setCustomName(this.getNamePrefix() + this.getName());
-		this.pnj.setCustomNameVisible(true);
 		this.pnj.setFallDistance(-1);
 		this.pnj.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(666.0);
 		this.pnj.setRemoveWhenFarAway(false);
