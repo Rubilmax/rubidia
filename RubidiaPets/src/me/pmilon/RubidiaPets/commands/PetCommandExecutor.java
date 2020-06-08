@@ -16,7 +16,6 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Creature;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Parrot;
@@ -46,7 +45,7 @@ public class PetCommandExecutor implements CommandExecutor {
 							sender.sendMessage(types);
 							return false;
 						}
-						if(type != null && type.getEntityClass() != null && Creature.class.isAssignableFrom(type.getEntityClass())){
+						if(type != null && Settings.ENTITY_TYPES.contains(type)){
 							String name;
 							if(args.length > 2)name = args[2];
 							else name = "PET" + RandomUtils.random.nextInt(10000);

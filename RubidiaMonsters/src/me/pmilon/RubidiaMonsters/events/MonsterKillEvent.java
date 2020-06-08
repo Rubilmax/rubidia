@@ -1,23 +1,31 @@
 package me.pmilon.RubidiaMonsters.events;
 
+import java.util.HashMap;
+
 import org.bukkit.entity.Player;
 
 import me.pmilon.RubidiaMonsters.regions.Monster;
 
 public class MonsterKillEvent extends MonsterEvent {
 
-	private Player player;
-	public MonsterKillEvent(Monster monster, Player player) {
+	private Player killer;
+	private final HashMap<String, Double> killers;
+	public MonsterKillEvent(Monster monster, Player killer, HashMap<String, Double> killers) {
 		super(monster);
-		this.player = player;
+		this.killer = killer;
+		this.killers = killers;
 	}
 	
-	public Player getPlayer() {
-		return player;
+	public HashMap<String, Double> getKillers() {
+		return killers;
 	}
-	
-	public void setPlayer(Player player) {
-		this.player = player;
+
+	public Player getKiller() {
+		return killer;
+	}
+
+	public void setKiller(Player killer) {
+		this.killer = killer;
 	}
 
 }

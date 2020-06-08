@@ -1,92 +1,84 @@
 package me.pmilon.RubidiaMonsters.pathfinders;
 
-import org.bukkit.entity.LivingEntity;
+import net.minecraft.server.v1_13_R2.EntityCreature;
+import net.minecraft.server.v1_13_R2.EntityLiving;
+import net.minecraft.server.v1_13_R2.PathEntity;
+import net.minecraft.server.v1_13_R2.PathfinderGoal;
 
-import net.minecraft.server.v1_13_R2.*;
-
-@SuppressWarnings({"rawtypes", "unchecked"})
 public class PathfinderGoalMeleeAttack extends PathfinderGoal {
 
-    World a;
-    EntityCreature b;
-    int c;
-    double d;
-    boolean e;
-    PathEntity f;
-	Class g;
-    private int h;
+	final Targetter targetter;
+    final EntityCreature creature;
+    final double speed;
+    
+    int cooldown;
+    int defaultCooldown;
+    PathEntity pathEntity;
+    private int counter;
+    
     private double i;
     private double j;
     private double k;
 
-    public PathfinderGoalMeleeAttack(EntityCreature entitycreature, Class oclass, double d0, boolean flag) {
-        this(entitycreature, d0, flag);
-        this.g = oclass;
+    public PathfinderGoalMeleeAttack(Targetter targetter, EntityCreature entitycreature, double d0) {
+        this(targetter, entitycreature, d0, 30);
     }
-
-    public PathfinderGoalMeleeAttack(EntityCreature entitycreature, double d0, boolean flag) {
-        this.b = entitycreature;
-        this.a = entitycreature.world;
-        this.d = d0;
-        this.e = flag;
-        //this.a(3);
+    public PathfinderGoalMeleeAttack(Targetter targetter, EntityCreature entitycreature, double d0, int defaultCooldown) {
+    	this.targetter = targetter;
+        this.creature = entitycreature;
+        this.defaultCooldown = defaultCooldown;
+        this.speed = d0;
+        this.a(3);
     }
 
     public boolean a() {
-        EntityLiving entityliving = this.b.getGoalTarget();
+        EntityLiving entityliving = this.targetter.getTargetHandle();
 
         if (entityliving == null) {
             return false;
         } else if (!entityliving.isAlive()) {
-        	this.b.setGoalTarget(null);
-            return false;
-        } else if (!this.b.getEntitySenses().a(entityliving)) {
-        	this.b.setGoalTarget(null);
-            return false;
-        } else if (this.g != null && !this.g.isAssignableFrom(entityliving.getClass())) {
             return false;
         } else {
-        	this.f = this.b.getNavigation().a(entityliving);
-            return this.f != null;
+            this.pathEntity = this.creature.getNavigation().a(entityliving);
+            return this.pathEntity != null;
         }
     }
 
     public void c() {
-        if(this.e)this.b.getNavigation().a(this.f, this.d);
-        this.h = 0;
+        this.creature.getNavigation().a(this.pathEntity, this.speed);
+        this.counter = 0;
     }
 
     public void e() {
-        EntityLiving entityliving = this.b.getGoalTarget();
+        EntityLiving entityliving = this.targetter.getTargetHandle();
 
-        if(entityliving != null){
-            this.b.getControllerLook().a(entityliving, 30.0F, 30.0F);
-            double d0 = this.b.d(entityliving.locX, entityliving.locY, entityliving.locZ);
-            double d1 = (double) (this.b.width + entityliving.width * 2.0F);
+        this.creature.getControllerLook().a(entityliving, 30.0F, 30.0F);
+        double d0 = this.creature.d(entityliving.locX, entityliving.locY, entityliving.locZ);
+        double d1 = (double) (this.creature.width * 2.0F * this.creature.width * 2.0F + entityliving.length);
 
-            --this.h;
-            if (this.e && this.h <= 0 && (this.i == 0.0D && this.j == 0.0D && this.k == 0.0D || entityliving.d(this.i, this.j, this.k) >= 1.0D || this.b.getRandom().nextFloat() < 0.05F)) {
-                this.i = entityliving.locX;
-                this.j = entityliving.width;
-                this.k = entityliving.locZ;
-                this.h = 4 + this.b.getRandom().nextInt(7);
-                if (d0 > 1024.0D) {
-                    this.h += 10;
-                } else if (d0 > 256.0D) {
-                    this.h += 5;
-                }
-
-                if (!this.b.getNavigation().a((Entity) entityliving, this.d)) {
-                    this.h += 15;
-                }
+        --this.counter;
+        if (this.creature.getEntitySenses().a(entityliving) && this.counter <= 0 && (this.i == 0.0D && this.j == 0.0D && this.k == 0.0D || entityliving.e(this.i, this.j, this.k) >= 1.0D || this.creature.getRandom().nextFloat() < 0.05F)) {
+            this.i = entityliving.locX;
+            this.j = entityliving.length;
+            this.k = entityliving.locZ;
+            
+            this.counter = 4 + this.creature.getRandom().nextInt(7);
+            if (d0 > 1024.0D) {
+                this.counter += 10;
+            } else if (d0 > 256.0D) {
+                this.counter += 5;
             }
 
-            this.c = Math.max(this.c - 1, 0);
-            if (d0 <= d1 && this.c <= 0) {
-                this.c = 20;
-
-            	((LivingEntity)entityliving.getBukkitEntity()).damage(1.0, this.b.getBukkitEntity());
+            if (!this.creature.getNavigation().a(entityliving, this.speed)) {
+                this.counter += 15;
             }
+        }
+
+        this.cooldown = Math.max(this.cooldown - 1, 0);
+        if (d0 <= d1 && this.cooldown <= 0) {
+            this.cooldown = this.defaultCooldown;
+
+        	this.targetter.getTarget().damage(1.0, this.creature.getBukkitEntity());
         }
     }
 }

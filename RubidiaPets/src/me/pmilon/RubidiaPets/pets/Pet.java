@@ -9,6 +9,7 @@ import me.pmilon.RubidiaCore.tags.TagStand;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaCore.utils.RandomUtils;
 import me.pmilon.RubidiaMonsters.pathfinders.PathfinderGoalMeleeAttack;
+import me.pmilon.RubidiaMonsters.pathfinders.Targetter;
 import me.pmilon.RubidiaPets.PetsPlugin;
 import me.pmilon.RubidiaPets.utils.Configs;
 import me.pmilon.RubidiaPets.utils.LevelUtils;
@@ -26,6 +27,7 @@ import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Horse;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Llama;
 import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.Horse.Style;
@@ -39,12 +41,13 @@ import org.bukkit.entity.Snowman;
 import org.bukkit.entity.Tameable;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
+import org.bukkit.entity.Vindicator;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
-public class Pet {
+public class Pet extends Targetter {
 
 	private String uuid;
 	private String name;
@@ -78,6 +81,7 @@ public class Pet {
 	private BukkitTask task;
 	private boolean canBeFood = true;
 	public Pet(String UUID, String name, int level, double exp, double health, int distinctionPoints, int ardor, int patience, int acuity, EntityType type, int age, boolean saddle, List<Pearl> activePearls, boolean active, DyeColor collarColor, Color color, Style style, int domestication, ItemStack armor, Rabbit.Type rabbitType, Ocelot.Type catType, Parrot.Variant parrotType, Profession profession, Llama.Color llamaColor){
+		super(null);
 		this.uuid = UUID;
 		this.name = name;
 		this.level = level;
@@ -167,7 +171,9 @@ public class Pet {
 
 	public void setName(String name) {
 		this.name = name;
-		if(this.getStand() != null)this.getStand().setLayers(new String[]{this.getName(),"§7[" + getLevel() + "] " + getHealthDisplay()}, true);
+		if(this.getStand() != null) {
+			this.getStand().setLayers(new String[]{this.getName(), "§7[" + getLevel() + "] " + this.getHealthDisplay()}, true);
+		}
 	}
 	
 	public Creature getEntity(){
@@ -196,59 +202,68 @@ public class Pet {
 	
 	public void spawn(Player owner){
 		this.owner = owner;
-		Creature pet = (Creature) owner.getWorld().spawnEntity(owner.getLocation().add(new Vector(RandomUtils.random.nextDouble(),0,RandomUtils.random.nextDouble()).normalize().multiply(2.5)), this.getType());
-		EntityCreature creature = ((CraftCreature)pet).getHandle();
+		this.entity = (Creature) owner.getWorld().spawnEntity(owner.getLocation().add(new Vector(RandomUtils.random.nextDouble(),0,RandomUtils.random.nextDouble()).normalize().multiply(2.5)), this.getType());
 		
+		EntityCreature creature = ((CraftCreature)this.entity).getHandle();
+		int attackTicks = (int) Math.round(20 / this.getAttackSpeed());
 		creature.targetSelector = new PathfinderGoalSelector(creature.world.methodProfiler);
-		creature.goalSelector = new PathfinderGoalSelector(creature.world.methodProfiler);
 		
-		creature.goalSelector.a(0, new PathfinderGoalFloat(creature));
-		creature.goalSelector.a(2, new PathfinderGoalMeleeAttack(creature, 1.44D, false));
-		creature.goalSelector.a(5, new PathfinderGoalMoveTowardsRestriction(creature, 1.0D));
-		creature.goalSelector.a(8, new PathfinderGoalLookAtPlayer(creature, EntityHuman.class, 8.0F));
-		creature.goalSelector.a(8, new PathfinderGoalRandomLookaround(creature));
+		if (creature instanceof EntityAnimal) {
+			creature.goalSelector = new PathfinderGoalSelector(creature.world.methodProfiler);
+			
+			creature.goalSelector.a(0, new PathfinderGoalFloat(creature));
+			creature.goalSelector.a(1, new PathfinderGoalMeleeAttack(this, creature, 1.36D, attackTicks));
+			creature.goalSelector.a(2, new PathfinderGoalMoveTowardsTarget(creature, 1.0D, 10.0f));
+			creature.goalSelector.a(3, new PathfinderGoalMoveTowardsRestriction(creature, 1.0D));
+			creature.goalSelector.a(4, new PathfinderGoalLookAtPlayer(creature, EntityHuman.class, 8.0F));
+			creature.goalSelector.a(5, new PathfinderGoalRandomLookaround(creature));
+		}
 		
-	    this.entity = pet;
-	    pet.setMetadata("pet", new FixedMetadataValue(PetsPlugin.instance, this.getUUID()));
-	    pet.setRemoveWhenFarAway(false);
-	    pet.setCanPickupItems(false);
-	    pet.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(this.getMaxHealth());
-	    pet.setHealth(this.getHealth());
-	    if(pet instanceof Ageable){
-	    	Ageable ageable = (Ageable) pet;
+	    this.entity.setMetadata("pet", new FixedMetadataValue(PetsPlugin.instance, this.getUUID()));
+	    this.entity.setRemoveWhenFarAway(false);
+	    this.entity.setCanPickupItems(false);
+	    
+	    this.entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(this.getMaxHealth());
+	    this.entity.setHealth(this.getHealth());
+	    
+	    if(this.entity instanceof Ageable){
+	    	Ageable ageable = (Ageable) this.entity;
 	    	ageable.setAge(this.getAge());
 	    	ageable.setAgeLock(true);
 	    }
-	    this.stand = new TagStand(pet, new String[]{this.getName(),"§7[" + getLevel() + "] " + getHealthDisplay()}, false);
-	    this.stand.display();
-	    if(pet instanceof Tameable){
-	    	((Tameable) pet).setTamed(true);
-	    	((Tameable) pet).setOwner(owner);
+	    if(this.entity instanceof Tameable){
+	    	Tameable tameable = (Tameable) this.entity;
+	    	tameable.setTamed(true);
+	    	tameable.setOwner(owner);
 	    }
-	    if(pet instanceof Wolf){
-	    	((Wolf) pet).setCollarColor(this.getCollarColor());
-	    }else if(pet instanceof Sheep){
-	    	((Sheep) pet).setColor(this.getCollarColor());
-	    }else if(pet instanceof Horse){
-	    	((Horse) pet).setColor(this.getColor());
-	    	((Horse) pet).setStyle(this.getStyle());
-	    	((Horse) pet).setDomestication(this.getDomestication());
-    		if(this.isSaddle())((Horse) pet).getInventory().setSaddle(new ItemStack(Material.SADDLE, 1));
-    		((Horse) pet).getInventory().setArmor(this.getArmor());
-	    }else if(pet instanceof Pig){
-        	((Pig) pet).setSaddle(this.isSaddle());
-	    }else if(pet instanceof Snowman){
-        	((Snowman) pet).setDerp(this.isSaddle());
-	    }else if(pet instanceof Rabbit){
-        	((Rabbit) pet).setRabbitType(this.getRabbitType());
-	    }else if(pet instanceof Ocelot){
-        	((Ocelot) pet).setCatType(this.getCatType());
-	    }else if(pet instanceof Parrot){
-        	((Parrot) pet).setVariant(this.getParrotType());
-	    } else if (pet instanceof Villager) {
-	    	((Villager) pet).setProfession(this.getProfession());
-	    } else if (pet instanceof Llama) {
-	    	((Llama) pet).setColor(this.getLlamaColor());
+	    
+	    this.stand = new TagStand(this.entity, new String[]{this.getName(),"§7[" + getLevel() + "] " + getHealthDisplay()}, false);
+	    this.stand.display();
+	    
+	    if(this.entity instanceof Wolf){
+	    	((Wolf) this.entity).setCollarColor(this.getCollarColor());
+	    }else if(this.entity instanceof Sheep){
+	    	((Sheep) this.entity).setColor(this.getCollarColor());
+	    }else if(this.entity instanceof Horse){
+	    	((Horse) this.entity).setColor(this.getColor());
+	    	((Horse) this.entity).setStyle(this.getStyle());
+	    	((Horse) this.entity).setDomestication(this.getDomestication());
+    		if(this.isSaddle())((Horse) this.entity).getInventory().setSaddle(new ItemStack(Material.SADDLE, 1));
+    		((Horse) this.entity).getInventory().setArmor(this.getArmor());
+	    }else if(this.entity instanceof Pig){
+        	((Pig) this.entity).setSaddle(this.isSaddle());
+	    }else if(this.entity instanceof Snowman){
+        	((Snowman) this.entity).setDerp(this.isSaddle());
+	    }else if(this.entity instanceof Rabbit){
+        	((Rabbit) this.entity).setRabbitType(this.getRabbitType());
+	    }else if(this.entity instanceof Ocelot){
+        	((Ocelot) this.entity).setCatType(this.getCatType());
+	    }else if(this.entity instanceof Parrot){
+        	((Parrot) this.entity).setVariant(this.getParrotType());
+	    } else if (this.entity instanceof Villager) {
+	    	((Villager) this.entity).setProfession(this.getProfession());
+	    } else if (this.entity instanceof Llama) {
+	    	((Llama) this.entity).setColor(this.getLlamaColor());
 	    }
 	}
 	
@@ -373,24 +388,24 @@ public class Pet {
 				this.getEntity().teleport(location);
 			}
 			
-			if(this.getEntity().getTarget() == null || this.getEntity().getTarget().isDead() || !this.getEntity().getTarget().isValid()){
-				if(this.getEntity().isValid() && !this.getEntity().isDead()){
-					Location location = this.getOwner().getLocation().add(new Vector(RandomUtils.random.nextDouble(), 0, RandomUtils.random.nextDouble()).normalize().multiply(RandomUtils.random.nextInt(3)*RandomUtils.random.nextDouble()+1.9));
-					if(this.getEntity().getWorld().equals(this.getOwner().getWorld())){
-						double distance = this.getEntity().getLocation().distanceSquared(this.getOwner().getLocation());
-						if(this.canMove()){
-							if(distance > Math.pow(3.9, 2)){
-								if(distance < Math.pow(20, 2)){
+			if(this.getEntity().isValid() && !this.getEntity().isDead()){
+				Location location = this.getOwner().getLocation().add(new Vector(RandomUtils.random.nextDouble(), 0, RandomUtils.random.nextDouble()).normalize().multiply(RandomUtils.random.nextInt(3)*RandomUtils.random.nextDouble()+1.9));
+				if (this.getEntity().getWorld().equals(this.getOwner().getWorld())) {
+					double distance = this.getEntity().getLocation().distanceSquared(this.getOwner().getLocation());
+					if (this.canMove()) {
+						if (this.getEntity().getTarget() == null || this.getEntity().getTarget().isDead() || !this.getEntity().getTarget().isValid()) {
+							if (distance > Math.pow(3.9, 2)) {
+								if (distance < Math.pow(20, 2)) {
 									double speed = 1.57;
 									if (distance > 121) speed = 1.98;
-									if (this.getEntity() instanceof Villager) speed *= .45;
+									if (this.getEntity() instanceof Villager || this.getEntity() instanceof Vindicator) speed *= .45;
 									((CraftCreature)this.getEntity()).getHandle().getNavigation().a(location.getX(), location.getY(), location.getZ(), speed);
-								}else TeleportHandler.teleport(this.getEntity(), location);
+								} else TeleportHandler.teleport(this.getEntity(), location);
 							}
-						}else if(distance > Math.pow(50, 2))TeleportHandler.teleport(this.getEntity(), location);
-					}else TeleportHandler.teleport(this.getEntity(), location);
-				}
-				this.getEntity().setTarget(null);
+							this.setTarget(null);
+						}
+					} else if(distance > Math.pow(50, 2)) TeleportHandler.teleport(this.getEntity(), location);
+				} else TeleportHandler.teleport(this.getEntity(), location);
 			}
 			
 			this.addPearlsEffects(owner);
@@ -431,6 +446,7 @@ public class Pet {
 				else this.getStand().setLayers(new String[]{this.getName(), "§6>  Niveau §lsupérieur§6 !  <"}, true);
 				LevelUtils.firework(this.getEntity().getLocation());
 			}
+			
 			if(this.task != null)this.task.cancel();
 			this.task = new BukkitTask(PetsPlugin.instance){
 
@@ -447,7 +463,7 @@ public class Pet {
 				public void onCancel() {
 				}
 				
-			}.runTaskLater(60);
+			}.runTaskLater(80);
 		}
 	}
 	
@@ -511,15 +527,15 @@ public class Pet {
 	}
 
 	public double getDamages(){
-		return 15+this.getArdor()*Settings.ARDOR_DAMAGES_FACTOR;
+		return Settings.DEFAULT_DAMAGES + this.getArdor() * Settings.ARDOR_DAMAGES_FACTOR;
 	}
 	
 	public double getMaxHealth(){
-		return 100+this.getPatience()*Settings.PATIENCE_HEALTH_FACTOR;
+		return Settings.DEFAULT_HEALTH + this.getPatience() * Settings.PATIENCE_HEALTH_FACTOR;
 	}
 	
 	public double getAttackSpeed(){
-		return .5+this.getAcuity()*Settings.ACUITY_ATTACKSPEED_FACTOR;
+		return Settings.DEFAULT_ATTACK_SPEED + this.getAcuity() * Settings.ACUITY_ATTACK_SPEED_FACTOR;
 	}
 
 	public Player getOwner() {
@@ -546,7 +562,7 @@ public class Pet {
 		double health = Math.round(this.getEntity().getHealth() * 10) / 10.;
 		this.setHealth(health);
 		this.getStand().setLayers(new String[]{getName(), "§7[" + getLevel() + "] " + getHealthDisplay()}, true);
-		if(this.getEntity().getHealth() <= 1.0)this.getEntity().setTarget(null);
+		if(this.getEntity().getHealth() <= 1.0) this.setTarget(null);
 	}
 
 	public boolean canBeFood() {
@@ -606,5 +622,13 @@ public class Pet {
 
 	public void setLlamaColor(Llama.Color llamaColor) {
 		this.llamaColor = llamaColor;
+	}
+	
+	@Override
+	public void setTarget(LivingEntity target) {
+		this.target = target;
+		if (this.getEntity() != null) {
+			this.getEntity().setTarget(target);
+		}
 	}
 }

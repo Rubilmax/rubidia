@@ -11,7 +11,9 @@ commands:
     description: Opens your Skill Tree.
     aliases: [skt, skills, skill]
   class:
-    description: Choose your class.
+    description: Set class of a specific player.
+  mastery:
+    description: Set mastery of a specific player.
   spawn:
     description: Teleports you to spawn.
   playmode:

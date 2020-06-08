@@ -13,7 +13,6 @@ import me.pmilon.RubidiaMonsters.regions.Regions;
 import me.pmilon.RubidiaMonsters.utils.Configs;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -48,22 +47,19 @@ public class RubidiaMonstersPlugin extends JavaPlugin {
 					if(region.getMonsters().size() > 0){
 						if(region.entities.size() < region.getMaxMonstersAmount()){
 							Monster monster = region.getMonsters().get(RubidiaMonstersPlugin.random.nextInt(region.getMonsters().size()));
-							Location location = region.getRandomSpawnLocation(monster);
 							
-							if(location != null) {
-								new BukkitTask(RubidiaMonstersPlugin.instance) {
+							new BukkitTask(RubidiaMonstersPlugin.instance) {
 
-									@Override
-									public void run() {
-										monster.spawnInRegion(location);
-									}
+								@Override
+								public void run() {
+									monster.spawnInRegion(region);
+								}
 
-									@Override
-									public void onCancel() {
-									}
-									
-								}.runTaskLater(0);
-							}
+								@Override
+								public void onCancel() {
+								}
+								
+							}.runTaskLater(0);
 						}
 					}
 				}

@@ -10,7 +10,6 @@ import me.pmilon.RubidiaCore.ritems.weapons.Rarity;
 import me.pmilon.RubidiaCore.ritems.weapons.Weapon;
 import me.pmilon.RubidiaCore.ritems.weapons.Weapons;
 import me.pmilon.RubidiaCore.utils.Settings;
-import me.pmilon.RubidiaCore.utils.RandomUtils;
 import me.pmilon.RubidiaMonsters.events.MonsterKillEvent;
 import me.pmilon.RubidiaMonsters.regions.Monster;
 
@@ -36,49 +35,50 @@ public class ItemListener implements Listener {
 	
 	@EventHandler
 	public void onKill(MonsterKillEvent event){
-		Player player = event.getPlayer();
+		Player player = event.getKiller();
 		RPlayer rp = RPlayer.get(player);
 		Monster monster = event.getMonster();
 		LivingEntity entity = monster.getEntity();
 		
 		int lootFactor = 1;
 		ItemStack item = player.getInventory().getItemInMainHand();
-		if(item.hasItemMeta()){
+		if (item.hasItemMeta()) {
 			ItemMeta meta = item.getItemMeta();
-			if(meta.hasEnchant(Enchantment.LOOT_BONUS_MOBS)){
-				lootFactor += meta.getEnchantLevel(Enchantment.LOOT_BONUS_MOBS)*Settings.ENCHANTMENT_LOOT_BONUS_FACTOR;
+			if (meta.hasEnchant(Enchantment.LOOT_BONUS_MOBS)) {
+				lootFactor += meta.getEnchantLevel(Enchantment.LOOT_BONUS_MOBS) * Settings.ENCHANTMENT_LOOT_BONUS_FACTOR;
 			}
 		}
 		
-		for(RItemStack drop : RItemStacks.ITEMS){
-			if(Math.random() < 1. / drop.getDropRarity()){
-				ItemStack dropItem = drop.getItemStack();
-				dropItem.setAmount(dropItem.getAmount()*lootFactor);
+		for(RItemStack rItem : RItemStacks.ITEMS){
+			if(Math.random() < 1 / rItem.getDropRarity()){
+				ItemStack dropItem = rItem.getItemStack();
+				dropItem.setAmount(dropItem.getAmount() * lootFactor);
 				entity.getWorld().dropItemNaturally(entity.getLocation(), dropItem);
 			}
 		}
 		
-		int rarityProb = RandomUtils.random.nextInt(1000000);
 		Rarity rarity = null;
+		double rarityFactor = (1 + rp.getLootBonusChanceFactor());
 		for(int i = Rarity.values().length-1;i >= 0;i--){
 			rarity = Rarity.values()[i];
-			if(rarity.getFactor()*(1+rp.getLootBonusChanceFactor())*1000000 > rarityProb){
+			if(Math.random() < rarity.getFactor() * rarityFactor){
 				break;
 			}
 		}
 		
-		int probability = RandomUtils.random.nextInt(1000000);
 		HashSet<Weapon> weapons = Weapons.getByLevel(monster.getLevel(), (int) (6+(monster.getLevel()/30.0)));
 		weapons.addAll(Weapons.getByRarity(rarity));
 		List<Weapon> available = Arrays.asList(weapons.toArray(new Weapon[weapons.size()]));
 		Collections.shuffle(available);
 		for(Weapon weapon : available){
-			if(weapon.getDropChance()*1000000/Settings.GLOBAL_WEAPON_DROP_REDUCTION > probability){
-				int supp = RandomUtils.random.nextInt(100);
+			if(Math.random() < weapon.getDropChance() / Settings.GLOBAL_WEAPON_DROP_REDUCTION){
+				double suppProbability = Math.random();
+				
 				int suppLevel = 0;
-				if(supp >= 49)suppLevel++;
-				if(supp >= 74)suppLevel++;
-				if(supp >= 88)suppLevel++;
+				if(suppProbability < .51) suppLevel++;
+				if(suppProbability < .26) suppLevel++;
+				if(suppProbability < .12) suppLevel++;
+				
 				Weapon toDrop = weapon.getNewInstance();
 				toDrop.setSuppLevel(suppLevel);
 				entity.getWorld().dropItemNaturally(entity.getLocation(), toDrop.getNewItemStack(rp));
@@ -107,17 +107,6 @@ public class ItemListener implements Listener {
 		final Projectile projectile = event.getEntity();
 		if(projectile.hasMetadata("autoremove")) {
 			projectile.remove();
-			/*new BukkitTask(Core.instance) {
-
-				@Override
-				public void run() {
-				}
-
-				@Override
-				public void onCancel() {
-				}
-				
-			}.runTaskLater(10);*/
 		}
 	}
 

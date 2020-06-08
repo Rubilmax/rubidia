@@ -5,6 +5,9 @@ import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.events.RPlayerXPEvent;
 import me.pmilon.RubidiaCore.events.RubidiaEntityDamageEvent;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
+import me.pmilon.RubidiaMonsters.events.MonsterKillEvent;
+import me.pmilon.RubidiaMonsters.regions.Monster;
+import me.pmilon.RubidiaMonsters.regions.Monsters;
 import me.pmilon.RubidiaPets.pets.Pet;
 import me.pmilon.RubidiaPets.pets.Pets;
 import me.pmilon.RubidiaPets.pets.RItemPearls;
@@ -12,7 +15,6 @@ import me.pmilon.RubidiaPets.ui.PetUI;
 import me.pmilon.RubidiaPets.utils.Settings;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Pig;
@@ -34,12 +36,11 @@ import org.bukkit.inventory.ItemStack;
 public class EventsHandler implements Listener {
 
 	@EventHandler
-	public void onPetTargetPet(EntityTargetLivingEntityEvent e){//natural targetting cancelled
-		Entity targetter = e.getEntity();
-		Entity target = e.getTarget();
-		if(targetter != null && target != null){
-			if(Pet.isPet(targetter))e.setCancelled(true);
-			else if(Pet.isPet(target))e.setCancelled(true);
+	public void onPetTargetPet(EntityTargetLivingEntityEvent event){//natural targetting cancelled
+		Entity targetter = event.getEntity();
+		Entity target = event.getTarget();
+		if(targetter != null && Pet.isPet(targetter) || target != null && Pet.isPet(target)){
+			event.setCancelled(true);
 		}
 	}
 	
@@ -135,7 +136,7 @@ public class EventsHandler implements Listener {
 				if(pet.isActive()){
 					if(pet.getEntity() != null){
 						if(pet.getEntity().getHealth() > 1.0){
-							pet.getEntity().setTarget((LivingEntity) event.getEntity());
+							pet.setTarget(entity);
 						}
 					}
 				}
@@ -148,23 +149,27 @@ public class EventsHandler implements Listener {
 					if(pet.isActive()){
 						if(pet.getEntity() != null){
 							if(pet.getEntity().getHealth() > 1.0){
-								pet.getEntity().setTarget((LivingEntity) event.getDamager());
+								pet.setTarget(damager);
 							}
 						}
 					}
 				}
 			}
 		}
+		
 		if(Pet.isPet(entity)){
 			final Pet pet = Pets.get(entity);
 			if(pet != null){
 				if(entity.getHealth()-event.getDamages() <= 1.0){
 					event.setDamages(0.0);
 					entity.setHealth(1.0);
-					if(damager instanceof Creature){
-						((Creature)damager).setTarget(pet.getOwner());
+					
+					Monster monster = Monsters.get(damager);
+					if (monster != null) {
+						monster.setTarget(pet.getOwner());
 					}
 				}
+				
 				new BukkitTask(PetsPlugin.instance){
 					
 					@Override
@@ -203,6 +208,19 @@ public class EventsHandler implements Listener {
 	public void onFall(EntityDamageEvent event){
 		if(Pet.isPet(event.getEntity()) && !event.getCause().equals(DamageCause.ENTITY_ATTACK) && !event.getCause().equals(DamageCause.PROJECTILE) && !event.getCause().equals(DamageCause.MAGIC)){
 			event.setCancelled(true);
+		}
+	}
+	
+	@EventHandler
+	public void onMonsterKill(MonsterKillEvent event) {
+		Player player = event.getKiller();
+		RPlayer rp = RPlayer.get(player);
+		if (!rp.getPets().isEmpty()) {
+			for (Pet pet : rp.getPets()) {
+				if (pet.isActive()) {
+					event.getKillers().put(pet.getName(), event.getMonster().getXP(player.getLevel()) * Settings.PET_EXPERIENCE_FACTOR);
+				}
+			}
 		}
 	}
 }

@@ -111,13 +111,14 @@ public class QuestListener implements Listener {
 	
 	@EventHandler
 	public void onKill(MonsterKillEvent e){
-		Player player = e.getPlayer();
+		Player player = e.getKiller();
 		RPlayer rp = RPlayer.get(player);
 		if(!rp.getQuestsOfType(ObjectiveType.KILL).isEmpty()){
 			for(Quest quest : rp.getQuestsOfType(ObjectiveType.KILL)){
 				quest.check(rp, e.getMonster());
 			}
 		}
+		
 		Monster monster = e.getMonster();
 		LivingEntity entity = monster.getEntity();
 		if(entity.hasMetadata("questUUID")){

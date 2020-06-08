@@ -21,13 +21,8 @@ import me.pmilon.RubidiaManager.tasks.WorldsRegenTask;
 import me.pmilon.RubidiaManager.utils.Configs;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.onarandombox.MultiverseCore.MultiverseCore;
@@ -73,7 +68,6 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 	}
 	
 	public void onDisable(){
-		RubidiaManagerPlugin.clearEntities();
 		RubidiaManagerPlugin.getChunkColl().save();
 		this.saveConfig();
 	}
@@ -214,23 +208,5 @@ public class RubidiaManagerPlugin extends JavaPlugin {
 		time -= TimeUnit.SECONDS.toMillis(seconds);
 		String.format("%02d:%02d:%02d", hours, minutes, seconds);
 		Bukkit.getConsoleSender().sendMessage("§6Next §eRubidia regeneration §6in §e" + String.format("%02d days, %02d:%02d:%02d", days, hours, minutes, seconds));
-	}
-	
-	public static void clearEntities() {
-		for (World world : Bukkit.getWorlds()) {
-			for (Entity entity : world.getEntities()) {
-				if (entity instanceof LivingEntity && !(entity instanceof ArmorStand || entity instanceof Player)) {
-					Location location = entity.getLocation();
-					
-					if (!location.getChunk().isLoaded()) {
-						// force loads the chunk to load entities
-						location.getChunk().load(true);
-					}
-					
-					entity.remove();
-				}
-			}
-		}
-		Bukkit.getConsoleSender().sendMessage("Cleared all living entities!");
 	}
 }

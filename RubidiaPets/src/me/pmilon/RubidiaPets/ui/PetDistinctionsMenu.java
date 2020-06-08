@@ -136,7 +136,7 @@ public class PetDistinctionsMenu extends UIHandler {
 		ItemMeta meta = item.getItemMeta();
 		String color = this.getPet().getAcuity() > 0 ? "§2" : "§4";
 		meta.setDisplayName(color + "§l" + this.getPet().getAcuity() + color + " " + ("point") + (this.getPet().getAcuity() > 1 ? "s" : "") + (" d'acuité"));
-		meta.setLore(Arrays.asList("§7" + ("L'acuité améliore la vitesse d'attaque de votre compagnon."), "§4" + Utils.round(this.getPet().getAttackSpeed(), 2) + " " + (this.getPet().getDistinctionPoints() > 0 ? "§c§o(+" + Utils.round(Settings.ACUITY_ATTACKSPEED_FACTOR, 2) + ")" : "") + "§l §8" + ("attaque/seconde")));
+		meta.setLore(Arrays.asList("§7L'acuité améliore la vitesse d'attaque de votre compagnon.", "§4" + Utils.round(this.getPet().getAttackSpeed(), 2) + " " + (this.getPet().getDistinctionPoints() > 0 ? "§c§o(+" + Utils.round(Settings.ACUITY_ATTACK_SPEED_FACTOR, 2) + ")" : "") + "§l §8attaque/seconde"));
 		item.setItemMeta(meta);
 		return item;
 	}

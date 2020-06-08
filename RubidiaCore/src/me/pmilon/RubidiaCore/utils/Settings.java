@@ -75,7 +75,7 @@ public class Settings {
 	public static final double ENCHANTMENT_LUCK_FACTOR = .01;
 	public static final double POTIONEFFECT_DAMAGES_FACTOR = .025;
 	
-	public static final double GLOBAL_WEAPON_DROP_REDUCTION = 1.15;
+	public static final double GLOBAL_WEAPON_DROP_REDUCTION = 3.5;
 	public static final double WEAPON_RARITY_MIN = .001;
 	public static final double WEAPON_RARITY_MAX = .02;
 	

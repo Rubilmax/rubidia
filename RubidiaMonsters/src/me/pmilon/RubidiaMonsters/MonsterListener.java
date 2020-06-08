@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityUnleashEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -46,37 +47,12 @@ public class MonsterListener implements Listener {
 	@EventHandler
 	public void onEntityDamage(RubidiaEntityDamageEvent event){
 		LivingEntity entity = (LivingEntity) event.getEntity();
-		if(entity instanceof Creature){
-			Creature creature = (Creature)entity;
-			LivingEntity damager = event.getDamager();
-			/*if(creature.getTarget() == null){
-				creature.setTarget(damager);
-			}else if(creature.getTarget().isDead() || !creature.getTarget().isValid()){
-				creature.setTarget(damager);
-			}else if(creature.getTarget() instanceof Player){
-				if(!((Player)creature.getTarget()).getGameMode().equals(GameMode.SURVIVAL)){
-				}
-			}else if(creature.getWorld().equals(creature.getTarget().getWorld())){
-				if(creature.getTarget().getLocation().distanceSquared(creature.getLocation()) > 441){
-					creature.setTarget(damager);
-				}
-			}else creature.setTarget(damager);*/
-			creature.setTarget(damager);
+		
+		Monster monster = Monsters.get(entity);
+		if (monster != null) {
+			monster.setTarget(event.getDamager());
 		}
 	}
-	
-	/*@EventHandler
-	public void onChunkUnload(ChunkUnloadEvent event){
-		final Chunk chunk = event.getChunk();
-		for(Entity entity : chunk.getEntities()){
-			if(entity instanceof LivingEntity){
-				Monster monster = Monsters.get((LivingEntity)entity);
-				if(monster != null){
-					monster.kill(true);
-				}
-			}
-		}
-	}*/
 
 	@EventHandler
 	public void onInteract(PlayerInteractEntityEvent event){
@@ -114,6 +90,20 @@ public class MonsterListener implements Listener {
 			Monster monster = Monsters.get(entity);
 			if(monster != null){
 				monster.setTamer(null);
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onTarget(EntityTargetEvent event) {
+		Entity entity = event.getEntity();
+		if (entity != null && entity instanceof Creature) {
+			Entity target = event.getTarget();
+			if (target == null || target instanceof LivingEntity) {
+				Monster monster = Monsters.get(entity);
+				if (monster != null) {
+					monster.setTarget((LivingEntity) target);
+				}
 			}
 		}
 	}

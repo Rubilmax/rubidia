@@ -36,6 +36,7 @@ import me.pmilon.RubidiaCore.commands.HelpCommandExecutor;
 import me.pmilon.RubidiaCore.commands.ItemCommandExecutor;
 import me.pmilon.RubidiaCore.commands.LevelCommandExecutor;
 import me.pmilon.RubidiaCore.commands.MarryCommandExecutor;
+import me.pmilon.RubidiaCore.commands.MasteryCommandExecutor;
 import me.pmilon.RubidiaCore.commands.MoneyCommandExecutor;
 import me.pmilon.RubidiaCore.commands.MuteCommandExecutor;
 import me.pmilon.RubidiaCore.commands.ProfileCommandExecutor;
@@ -62,11 +63,11 @@ import me.pmilon.RubidiaCore.events.RTeleportEvent.RTeleportCause.RTeleportType;
 import me.pmilon.RubidiaCore.handlers.EntityHandler;
 import me.pmilon.RubidiaCore.handlers.GamePlayEffectsHandler;
 import me.pmilon.RubidiaCore.handlers.HealthBarHandler;
+import me.pmilon.RubidiaCore.handlers.NetherHandler;
 import me.pmilon.RubidiaCore.handlers.PlaymodeHandler;
 import me.pmilon.RubidiaCore.handlers.ResourcePackHandler;
 import me.pmilon.RubidiaCore.handlers.TeleportHandler;
 import me.pmilon.RubidiaCore.levels.RLevelListener;
-import me.pmilon.RubidiaCore.listeners.NetherListener;
 import me.pmilon.RubidiaCore.packets.WrapperPlayServerPlayerListHeaderFooter;
 import me.pmilon.RubidiaCore.packets.WrapperPlayServerWindowItems;
 import me.pmilon.RubidiaCore.ranks.Ranks;
@@ -1540,7 +1541,7 @@ public class Core extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(new RChatListener(), this);
 		Bukkit.getPluginManager().registerEvents(new RDuelListener(), this);
 		Bukkit.getPluginManager().registerEvents(new AbilitiesListener(), this);
-		Bukkit.getPluginManager().registerEvents(new NetherListener(), this);
+		Bukkit.getPluginManager().registerEvents(new NetherHandler(), this);
 
 		this.getCommand("item").setExecutor(new ItemCommandExecutor());
 		this.getCommand("profile").setExecutor(new ProfileCommandExecutor());
@@ -1548,6 +1549,7 @@ public class Core extends JavaPlugin implements Listener {
 		this.getCommand("couple").setExecutor(new CoupleCommandExecutor());
 		this.getCommand("events").setExecutor(new EventsCommandExecutor());
 		this.getCommand("class").setExecutor(new ClassCommandExecutor());
+		this.getCommand("mastery").setExecutor(new MasteryCommandExecutor());
 		this.getCommand("vip").setExecutor(new VIPCommandExecutor());
 		this.getCommand("reboot").setExecutor(new RebootCommandExecutor());
 		this.getCommand("level").setExecutor(new LevelCommandExecutor());
@@ -1595,8 +1597,6 @@ public class Core extends JavaPlugin implements Listener {
 						rp.setRenom(rp.getRenom() + 1);
 					}
 				}
-
-				NetherListener.updateEntities();
 			}
 
 			@Override

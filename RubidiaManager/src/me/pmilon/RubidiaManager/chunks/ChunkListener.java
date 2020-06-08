@@ -3,13 +3,16 @@ package me.pmilon.RubidiaManager.chunks;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.pmilon.RubidiaCore.tasks.BukkitTask;
 import me.pmilon.RubidiaManager.RubidiaManagerPlugin;
 import me.pmilon.RubidiaManager.events.PlayerChunkEnterEvent;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -19,6 +22,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.ExplosionPrimeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
 
 public class ChunkListener implements Listener {
 	
@@ -182,6 +186,38 @@ public class ChunkListener implements Listener {
 					if(!manager.isSaved()){
 						manager.saveToFile();
 					}
+				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onChunkLoad(ChunkLoadEvent event) {
+		// to run when chunk is loaded
+		new BukkitTask(RubidiaManagerPlugin.instance) {
+
+			@Override
+			public void run() {
+				ChunkListener.clearEntities(event.getChunk());
+			}
+
+			@Override
+			public void onCancel() {
+			}
+			
+		}.runTaskLater(10);
+	}
+	
+	/*@EventHandler
+	public void onEntitySpawn(EntitySpawnEvent event) {
+		ChunkListener.clearEntities(event.getLocation().getChunk());
+	}*/
+	
+	public static void clearEntities(org.bukkit.Chunk chunk) {
+		for (Entity entity : chunk.getEntities()) {
+			if (entity instanceof LivingEntity && !(entity instanceof ArmorStand) && !(entity instanceof Player)) {
+				if (!entity.hasMetadata("monster") && !entity.hasMetadata("PNJ") && !entity.hasMetadata("pet")) {
+					entity.remove();
 				}
 			}
 		}

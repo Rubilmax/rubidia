@@ -37,7 +37,13 @@ public class PetsUI extends ListMenuUIHandler<Pet> {
 
 	@Override
 	protected ItemStack getItem(Pet pet) {
-		ItemStack stack = new ItemStack(Material.valueOf(pet.getType().toString() + "_SPAWN_EGG"), 1);
+		Material eggType;
+		try {
+			eggType = Material.valueOf(pet.getType().toString() + "_SPAWN_EGG");
+		} catch(Exception ex) {
+			eggType = Material.BAT_SPAWN_EGG;
+		}
+		ItemStack stack = new ItemStack(eggType, 1);
 		ItemMeta meta = stack.getItemMeta();
 		meta.setDisplayName("§f" + pet.getName());
 		List<String> lore = new ArrayList<String>();
