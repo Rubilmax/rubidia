@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import me.pmilon.RubidiaCore.ritems.general.RItemStack;
 import me.pmilon.RubidiaCore.ritems.general.RItemStacks;
-import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
 
 public class ItemListUI extends ListMenuUIHandler<RItemStack> {
 

@@ -17,7 +17,7 @@ import com.comphenix.protocol.wrappers.BlockPosition;
 
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.packets.WrapperPlayServerBlockAction;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 
 public class EnderChestUI extends UIHandler{
 

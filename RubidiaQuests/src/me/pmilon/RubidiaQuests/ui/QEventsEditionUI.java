@@ -16,7 +16,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import me.pmilon.RubidiaCore.Core;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaMonsters.regions.Monsters;
 import me.pmilon.RubidiaQuests.pnjs.QuestPNJ;
 import me.pmilon.RubidiaQuests.quests.QEvent;

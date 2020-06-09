@@ -29,7 +29,7 @@ import me.pmilon.RubidiaCore.scrolls.Scroll;
 import me.pmilon.RubidiaCore.scrolls.ScrollType;
 import me.pmilon.RubidiaCore.scrolls.ScrollType.ScrollUsage;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 import me.pmilon.RubidiaQuests.QuestsPlugin;
 

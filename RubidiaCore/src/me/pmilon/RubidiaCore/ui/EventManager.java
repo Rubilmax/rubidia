@@ -8,7 +8,7 @@ import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.REvents.Event;
 import me.pmilon.RubidiaCore.REvents.Events;
 import me.pmilon.RubidiaCore.REvents.Event.EventType;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 
 import org.bukkit.Bukkit;

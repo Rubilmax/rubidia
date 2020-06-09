@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import me.pmilon.RubidiaCore.boosters.RBooster;
 import me.pmilon.RubidiaCore.boosters.RBooster.RBoosterType;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 
 import org.bukkit.Bukkit;

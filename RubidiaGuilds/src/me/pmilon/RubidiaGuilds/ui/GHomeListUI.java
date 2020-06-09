@@ -17,7 +17,7 @@ import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.events.RTeleportEvent.RTeleportCause;
 import me.pmilon.RubidiaCore.events.RTeleportEvent.RTeleportCause.RTeleportType;
 import me.pmilon.RubidiaCore.handlers.TeleportHandler;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaGuilds.claims.Claim;
 import me.pmilon.RubidiaGuilds.guilds.GHome;
 import me.pmilon.RubidiaGuilds.guilds.Guild;

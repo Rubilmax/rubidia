@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.tasks.BukkitTask;
-
+
 
 public abstract class ConfirmationUI extends UIHandler {
 

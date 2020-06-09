@@ -5,7 +5,7 @@ import java.util.Arrays;
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.RManager.RPlayer;
 import me.pmilon.RubidiaCore.RManager.SPlayer;
-import me.pmilon.RubidiaCore.ui.abstracts.ConfirmationUI;
+import me.pmilon.RubidiaCore.ui.abstracts.ConfirmationUI;
 import me.pmilon.RubidiaCore.utils.Configs;
 import net.md_5.bungee.api.ChatColor;
 

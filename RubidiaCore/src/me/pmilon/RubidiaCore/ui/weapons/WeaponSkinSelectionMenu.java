@@ -7,7 +7,7 @@ import java.util.List;
 import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.ritems.weapons.Weapon;
 import me.pmilon.RubidiaCore.ritems.weapons.Weapons;
-import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

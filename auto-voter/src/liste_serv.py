@@ -37,7 +37,7 @@ def vote_liste_serveur_minecraft(index):
 
 if __name__ == "__main__":
 
-    iterations = list(range(3, 8)) * 1000
+    iterations = list(range(3, 8)) * 2000
     total = len(iterations)
 
     import multiprocessing

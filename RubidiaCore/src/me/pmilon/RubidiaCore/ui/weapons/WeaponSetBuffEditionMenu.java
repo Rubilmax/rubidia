@@ -5,7 +5,7 @@ import me.pmilon.RubidiaCore.ritems.weapons.Buff;
 import me.pmilon.RubidiaCore.ritems.weapons.BuffType;
 import me.pmilon.RubidiaCore.ritems.weapons.Set;
 import me.pmilon.RubidiaCore.ritems.weapons.Weapon;
-import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.UIHandler;
 import me.pmilon.RubidiaCore.utils.Utils;
 
 import org.bukkit.Bukkit;

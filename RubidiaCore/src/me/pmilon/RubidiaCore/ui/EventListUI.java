@@ -15,7 +15,7 @@ import me.pmilon.RubidiaCore.Core;
 import me.pmilon.RubidiaCore.REvents.Event;
 import me.pmilon.RubidiaCore.REvents.Events;
 import me.pmilon.RubidiaCore.REvents.Event.EventType;
-import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
+import me.pmilon.RubidiaCore.ui.abstracts.ListMenuUIHandler;
 
 public class EventListUI extends ListMenuUIHandler<Event> {
 
