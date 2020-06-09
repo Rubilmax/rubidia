@@ -1,0 +1,15 @@
+version: "2.4"
+services:
+  voter:
+    build:
+      context: ./build
+      shm_size: "2gb"
+    image: rubidia-auto-voter
+    container_name: rubidia-auto-voter
+    command: python -u liste_serv.py
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./src:/app"
